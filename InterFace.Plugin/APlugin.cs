@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InterFace.Plugin
+﻿namespace InterFace.Plugin
 {
     public abstract class APlugin
     {
