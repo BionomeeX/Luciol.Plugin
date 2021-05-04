@@ -36,14 +36,17 @@ namespace InterFace.Plugin
                 .UsePlatformDetect()
                 .LogToTrace()
                 .UseReactiveUI()
-                .AfterPlatformServicesSetup(a => {
-                    if (a.Instance.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                .AfterSetup(a => {
+                    ((App)a.Instance).OnFrameworkInitializationCompletedCallback = (app) =>
                     {
-                        desktop.MainWindow = new T
+                        if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                         {
-                            DataContext = new U()
-                        };
-                    }
+                            desktop.MainWindow = new T
+                            {
+                                DataContext = new U()
+                            };
+                        }
+                    };
                 });
     }
 }

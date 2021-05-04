@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Markup.Xaml;
+using System;
 
 namespace InterFace.Plugin
 {
@@ -12,7 +13,10 @@ namespace InterFace.Plugin
 
         public override void OnFrameworkInitializationCompleted()
         {
+            OnFrameworkInitializationCompletedCallback.Invoke(this);
             base.OnFrameworkInitializationCompleted();
         }
+
+        public Action<App> OnFrameworkInitializationCompletedCallback { set; private get;}
     }
 }
