@@ -10,15 +10,20 @@ namespace InterFace.Plugin
     {
         protected abstract void Init();
 
-        internal void Init(IMainTriangle triangle, string pluginPath)
+        internal void Init(string pluginPath)
         {
             PluginPath = pluginPath;
-            Triangle = triangle;
             Init();
+        }
+
+        internal void InitMainTriangle(IMainTriangle triangle)
+        {
+            Triangle = triangle;
         }
 
         public abstract Window GetView();
         public abstract object GetViewModel();
+        public abstract string GetName();
 
         protected string PluginPath { private set; get; }
 
