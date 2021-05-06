@@ -17,6 +17,9 @@ namespace InterFace.Plugin
             Init();
         }
 
+        public abstract Window GetView();
+        public abstract object GetViewModel();
+
         protected string PluginPath { private set; get; }
 
         protected IMainTriangle Triangle { private set; get; }
