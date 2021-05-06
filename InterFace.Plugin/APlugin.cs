@@ -21,7 +21,7 @@ namespace InterFace.Plugin
             Triangle = triangle;
         }
 
-        public abstract Window GetView();
+        public abstract Control GetView();
         public abstract object GetViewModel();
         public abstract string GetName();
 
@@ -30,7 +30,7 @@ namespace InterFace.Plugin
         protected IMainTriangle Triangle { private set; get; }
 
         public void Test<T, U>()
-            where T : Window, new()
+            where T : Control, new()
             where U : new()
         {
             BuildAvaloniaApp<T, U>()
@@ -38,7 +38,7 @@ namespace InterFace.Plugin
         }
 
         public static AppBuilder BuildAvaloniaApp<T, U>()
-            where T : Window, new()
+            where T : Control, new()
             where U : new()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
@@ -49,9 +49,12 @@ namespace InterFace.Plugin
                     {
                         if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                         {
-                            desktop.MainWindow = new T
+                            desktop.MainWindow = new MainWindow
                             {
-                                DataContext = new U()
+                                Content = new T()
+                                {
+                                    DataContext = new U()
+                                }
                             };
                         }
                     };
