@@ -21,6 +21,9 @@ namespace InterFace.Plugin
             Triangle = triangle;
         }
 
+        protected virtual void OnMainTriangleInit()
+        { }
+
         public abstract Control GetView();
         public abstract object GetViewModel();
         public abstract string GetName();
