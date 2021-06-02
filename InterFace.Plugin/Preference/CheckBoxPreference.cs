@@ -10,14 +10,23 @@ namespace InterFace.Plugin.Preference
         public event EventHandler<PreferenceEventArgs<bool>> OnChange;
 
         public IControl GetComponent()
-        {
-            return _component;
-        }
+            => _component;
 
-        private StackPanel _component;
+        private readonly StackPanel _component;
+        private readonly CheckBox _checkBox;
+        private readonly string _name;
+
+        public string Name => _name;
+
+        public bool Value
+        {
+            get => _checkBox.IsChecked.Value;
+            set => _checkBox.IsChecked = value;
+        }
 
         public CheckBoxPreference(string name)
         {
+            _checkBox = new CheckBox();
             _component = new();
             _component.Orientation = Orientation.Horizontal;
             _component.Children.AddRange(new IControl[]
@@ -26,8 +35,9 @@ namespace InterFace.Plugin.Preference
                 {
                     Content = name
                 },
-                new CheckBox()
+                _checkBox
             });
+            _name = name;
         }
     }
 }

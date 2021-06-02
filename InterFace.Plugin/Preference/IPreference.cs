@@ -9,5 +9,9 @@ namespace InterFace.Plugin.Preference
         public event EventHandler<PreferenceEventArgs<T>> OnChange;
 
         public IControl GetComponent();
+
+        public string Name { get; }
+
+        public T Value { set; get; }
     }
 }
