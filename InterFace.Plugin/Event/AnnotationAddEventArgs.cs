@@ -4,9 +4,9 @@ namespace InterFace.Plugin.Event
 {
     public sealed class AnnotationAddEventArgs : EventArgs
     {
-        public AnnotationAddEventArgs(AAnnotation annotation)
+        public AnnotationAddEventArgs(IAnnotation annotation)
             => Annotation = annotation;
 
-        public AAnnotation Annotation { get; }
+        public IAnnotation Annotation { get; }
     }
 }
