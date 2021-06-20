@@ -2,9 +2,9 @@
 
 namespace InterFace.Plugin.Event
 {
-    public sealed class AnnotationAddEventArgs : EventArgs
+    public sealed class AnnotationEventArgs : EventArgs
     {
-        public AnnotationAddEventArgs(IAnnotation annotation)
+        public AnnotationEventArgs(IAnnotation annotation)
             => Annotation = annotation;
 
         public IAnnotation Annotation { get; }

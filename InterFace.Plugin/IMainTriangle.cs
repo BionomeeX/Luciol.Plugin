@@ -7,6 +7,7 @@ namespace InterFace.Plugin
     {
         public event EventHandler<ClickEventArgs> OnClick;
         public event EventHandler<DataLoadEventArgs> OnDataLoad;
-        public event EventHandler<AnnotationAddEventArgs> OnAnnotationAdd;
+        public event EventHandler<AnnotationEventArgs> OnAnnotationAdd;
+        public event EventHandler<AnnotationEventArgs> OnAnnotationRemove;
     }
 }
