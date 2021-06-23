@@ -2,7 +2,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
-using InterFace.Plugin.Preference;
 using System;
 using System.Collections.Generic;
 
