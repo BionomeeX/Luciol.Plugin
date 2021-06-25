@@ -17,9 +17,9 @@ namespace InterFace.Plugin
             Init();
         }
 
-        internal void InitMainTriangle(IMainTriangle triangle)
+        internal void InitMainTriangle(IContext context)
         {
-            Triangle = triangle;
+            Context = context;
         }
 
         protected virtual void OnMainTriangleInit()
@@ -27,12 +27,11 @@ namespace InterFace.Plugin
 
         public abstract Control GetView();
         public abstract object GetViewModel();
-        public abstract string GetName();
         public abstract IEnumerable<IControl> GetPreferences();
 
         protected string PluginPath { private set; get; }
 
-        protected IMainTriangle Triangle { private set; get; }
+        protected IContext Context { private set; get; }
 
         public void Test<T, U>()
             where T : Control, new()
