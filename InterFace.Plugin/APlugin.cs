@@ -17,7 +17,7 @@ namespace InterFace.Plugin
             Init();
         }
 
-        internal void InitMainTriangle(IContext context)
+        internal void InitContext(IContext context)
         {
             Context = context;
         }
