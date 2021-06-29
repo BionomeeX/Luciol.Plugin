@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
+using InterFace.Plugin.Preference;
 using System;
 using System.Collections.Generic;
 
@@ -27,7 +28,7 @@ namespace InterFace.Plugin
 
         public abstract Control GetView();
         public abstract object GetViewModel();
-        public abstract IEnumerable<IControl> GetPreferences();
+        public abstract IEnumerable<IPreferenceExport> GetPreferences();
 
         protected string PluginPath { private set; get; }
 
