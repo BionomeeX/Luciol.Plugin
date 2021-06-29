@@ -1,4 +1,6 @@
-﻿namespace InterFace.Plugin
+﻿using System.Collections.Generic;
+
+namespace InterFace.Plugin
 {
     public interface IContext
     {
@@ -11,7 +13,7 @@
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
-        public APlugin[] Plugins { get; }
+        public IReadOnlyCollection<APlugin> Plugins { get; }
         /// <summary>
         /// Used to access the save file
         /// </summary>
