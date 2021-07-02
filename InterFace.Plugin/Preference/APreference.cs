@@ -38,6 +38,6 @@ namespace InterFace.Plugin.Preference
         protected readonly Component _component;
 
         public IControl GetComponent()
-            => _component;
+            => _parent;
     }
 }
