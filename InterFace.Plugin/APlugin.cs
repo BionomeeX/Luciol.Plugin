@@ -12,25 +12,15 @@ namespace InterFace.Plugin
     {
         protected abstract void Init();
 
-        internal void Init(string pluginPath)
-        {
-            PluginPath = pluginPath;
-            Init();
-        }
-
-        internal void InitContext(IContext context)
+        internal void Init(IContext context)
         {
             Context = context;
+            Init();
         }
-
-        protected virtual void OnMainTriangleInit()
-        { }
 
         public abstract Control GetView();
         public abstract object GetViewModel();
         public abstract IEnumerable<IPreferenceExport> GetPreferences();
-
-        protected string PluginPath { private set; get; }
 
         protected IContext Context { private set; get; }
 
