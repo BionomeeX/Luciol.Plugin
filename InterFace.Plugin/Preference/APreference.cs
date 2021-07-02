@@ -14,7 +14,7 @@ namespace InterFace.Plugin.Preference
 
         public Type DefaultValue { init; get; }
 
-        public abstract string Name { get; }
+        public string Name { init; get; }
 
         protected APreference(string name, Type defaultValue)
         {

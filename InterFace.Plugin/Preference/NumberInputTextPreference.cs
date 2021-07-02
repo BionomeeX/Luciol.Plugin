@@ -1,29 +1,28 @@
-﻿using System.Linq;
+﻿using Avalonia.Controls;
+using System;
+using System.Linq;
 
 namespace InterFace.Plugin.Preference
 {
-    public class NumberInputTextPreference : InputTextPreference
+    public class NumberInputTextPreference<Type> : APreference<TextBox, Type>
+        where Type : IComparable<Type>
     {
-        public override string Value
+        public override Type Value
         {
-            get => _component.Text;
+            get => (Type)Convert.ChangeType(_component.Text, typeof(Type));
             set
             {
-                if (value.All(x => char.IsDigit(x)))
+                try
                 {
-                    if (value == "")
-                    {
-                        _component.Text = "0";
-                    }
-                    else
-                    {
-                        _component.Text = value.TrimStart('0');
-                    }
+                    var res = Convert.ChangeType(value, typeof(Type));
+                    _component.Text = res.ToString();
                 }
+                catch (InvalidCastException)
+                { }
             }
         }
 
-        public NumberInputTextPreference(string name, string defaultValue = "0") : base(name, defaultValue)
+        public NumberInputTextPreference(string name, Type defaultValue) : base(name, defaultValue)
         { }
     }
 }
