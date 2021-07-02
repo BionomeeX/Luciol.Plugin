@@ -4,13 +4,13 @@ namespace InterFace.Plugin.Preference
 {
     public class CheckBoxPreference : APreference<CheckBox, bool>
     {
-        public override bool Value
-        {
-            get => _component.IsChecked.Value;
-            set => _component.IsChecked = value;
-        }
-
         public CheckBoxPreference(string name, bool defaultValue) : base(name, defaultValue)
         { }
+
+        public override bool ComponentValue
+        {
+            get => _component.IsChecked == true;
+            set => _component.IsChecked = value;
+        }
     }
 }

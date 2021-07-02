@@ -4,13 +4,13 @@ namespace InterFace.Plugin.Preference
 {
     public class InputTextPreference : APreference<TextBox, string>
     {
-        public override string Value
+        public InputTextPreference(string name, string defaultValue) : base(name, defaultValue)
+        { }
+
+        public override string ComponentValue
         {
             get => _component.Text;
             set => _component.Text = value;
         }
-
-        public InputTextPreference(string name, string defaultValue) : base(name, defaultValue)
-        { }
     }
 }

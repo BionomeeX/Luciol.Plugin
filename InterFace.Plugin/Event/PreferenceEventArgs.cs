@@ -4,6 +4,9 @@ namespace InterFace.Plugin.Event
 {
     public class PreferenceEventArgs<T> : EventArgs
     {
-        public T Content;
+        public PreferenceEventArgs(T content)
+            => Content = content;
+
+        public T Content { init; get; }
     }
 }
