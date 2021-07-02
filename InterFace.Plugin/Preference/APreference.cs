@@ -12,11 +12,15 @@ namespace InterFace.Plugin.Preference
 
         public abstract Type Value { set; get; }
 
+        public Type DefaultValue { init; get; }
+
         public abstract string Name { get; }
 
-        protected APreference(string name)
+        protected APreference(string name, Type defaultValue)
         {
             _component = new();
+            DefaultValue = defaultValue;
+            Value = DefaultValue;
 
             _parent = new();
             _parent.Orientation = Orientation.Horizontal;

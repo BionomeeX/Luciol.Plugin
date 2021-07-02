@@ -21,7 +21,7 @@ namespace InterFace.Plugin.Preference
             set => _component.Text = value;
         }
 
-        public InputTextPreference(string name) : base(name)
+        public InputTextPreference(string name, string defaultValue = "") : base(name, defaultValue)
         { }
     }
 }

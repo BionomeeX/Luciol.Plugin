@@ -21,7 +21,7 @@ namespace InterFace.Plugin.Preference
             set => _component.IsChecked = value;
         }
 
-        public CheckBoxPreference(string name) : base(name)
+        public CheckBoxPreference(string name, bool defaultValue = false) : base(name, defaultValue)
         { }
     }
 }

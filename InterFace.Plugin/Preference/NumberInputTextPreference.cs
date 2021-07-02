@@ -11,12 +11,19 @@ namespace InterFace.Plugin.Preference
             {
                 if (value.All(x => char.IsDigit(x)))
                 {
-                    _component.Text = value;
+                    if (value == "")
+                    {
+                        _component.Text = "0";
+                    }
+                    else
+                    {
+                        _component.Text = value.TrimStart('0');
+                    }
                 }
             }
         }
 
-        public NumberInputTextPreference(string name) : base(name)
+        public NumberInputTextPreference(string name, string defaultValue = "0") : base(name, defaultValue)
         { }
     }
 }
