@@ -1,5 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Layout;
 using InterFace.Plugin.Event;
 using System;
@@ -8,12 +7,11 @@ namespace InterFace.Plugin.Preference
 {
     public abstract class APreference<Component, Type> : IPreferenceExport
         where Component : IControl, new()
-        where Type : IComparable<Type>
     {
         public event EventHandler<PreferenceEventArgs<Type>> OnChange;
 
         public abstract Type ComponentValue { set; get; }
-        private Type _value;
+        protected Type _value { private set; get; }
         private readonly Type _defaultValue;
 
         public string Name { init; get; }
