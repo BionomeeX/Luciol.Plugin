@@ -6,6 +6,7 @@ namespace InterFace.Plugin.Preference
     {
         public IControl GetComponent();
 
-        public string Name { get; }
+        public string Key { get; }
+        public object Value { set; get; }
     }
 }

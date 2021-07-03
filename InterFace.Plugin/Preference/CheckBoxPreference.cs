@@ -4,7 +4,7 @@ namespace InterFace.Plugin.Preference
 {
     public class CheckBoxPreference : APreference<CheckBox, bool>
     {
-        public CheckBoxPreference(string name, bool defaultValue) : base(name, defaultValue)
+        public CheckBoxPreference(string key, string name, bool defaultValue) : base(key, name, defaultValue)
         { }
 
         public override bool ComponentValue

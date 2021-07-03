@@ -14,14 +14,23 @@ namespace InterFace.Plugin.Preference
         protected Type _value { private set; get; }
         private readonly Type _defaultValue;
 
+        public string Key { init; get; }
         public string Name { init; get; }
 
-        protected APreference(string name, Type defaultValue)
+        public object Value
         {
-            Name = name;
-            _defaultValue = defaultValue;
-            _value = defaultValue;
+            set
+            {
+                _value = (Type)Convert.ChangeType(value, typeof(Type));
+            }
+            get
+            {
+                return _value;
+            }
         }
+
+        protected APreference(string key, string name, Type defaultValue)
+            => (Key, Name, _defaultValue, _value) = (key, name, defaultValue, _defaultValue);
 
         protected Component _component;
 

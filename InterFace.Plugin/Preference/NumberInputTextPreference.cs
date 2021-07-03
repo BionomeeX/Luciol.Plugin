@@ -6,7 +6,7 @@ namespace InterFace.Plugin.Preference
     public class NumberInputTextPreference<Type> : APreference<TextBox, Type>
         where Type : IConvertible
     {
-        public NumberInputTextPreference(string name, Type defaultValue) : base(name, defaultValue)
+        public NumberInputTextPreference(string key, string name, Type defaultValue) : base(key, name, defaultValue)
         { }
 
         public override Type ComponentValue
