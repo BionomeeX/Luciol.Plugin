@@ -7,7 +7,7 @@ namespace InterFace.Plugin.Preference
         public CheckBoxPreference(string key, string name, bool defaultValue) : base(key, name, defaultValue)
         { }
 
-        public override bool ComponentValue
+        protected override bool ComponentValue
         {
             get => _component.IsChecked == true;
             set => _component.IsChecked = value;

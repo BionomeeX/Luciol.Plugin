@@ -7,7 +7,7 @@ namespace InterFace.Plugin.Preference
         public InputTextPreference(string key, string name, string defaultValue) : base(key, name, defaultValue)
         { }
 
-        public override string ComponentValue
+        protected override string ComponentValue
         {
             get => _component.Text;
             set => _component.Text = value;
