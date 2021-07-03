@@ -34,14 +34,15 @@ namespace InterFace.Plugin.Preference
 
         protected Component _component;
 
-        public IControl GetComponent()
+        public IControl GetComponent(IContext context)
         {
             _component = new();
             ComponentValue = _value;
             _component.PropertyChanged += (sender, e) =>
             {
-                _value = ComponentValue; // TODO: Doesn't work for NumberInputText
+                _value = ComponentValue;
                 OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value));
+                context.SavedData.Save();
             };
 
             var parent = new StackPanel();
