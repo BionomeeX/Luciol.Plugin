@@ -32,6 +32,11 @@ namespace InterFace.Plugin
         public IReadOnlyCollection<IAnnotation> GetAnnotations();
 
         /// <summary>
+        /// Get all values on the diagonal
+        /// </summary>
+        public IReadOnlyCollection<double> GetDiagonal();
+
+        /// <summary>
         /// Called before data are load
         /// This happens when the user move the triangle view
         /// </summary>
