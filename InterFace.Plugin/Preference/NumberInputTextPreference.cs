@@ -9,7 +9,7 @@ namespace InterFace.Plugin.Preference
         public NumberInputTextPreference(string key, string name, Type defaultValue) : base(key, name, defaultValue)
         { }
 
-        public override Type ComponentValue
+        protected override Type ComponentValue
         {
             get
             {
