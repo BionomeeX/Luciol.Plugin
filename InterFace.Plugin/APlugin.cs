@@ -40,7 +40,14 @@ namespace InterFace.Plugin
         /// Get the preference (settings)
         /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
         /// </summary>
-        public abstract IEnumerable<IPreferenceExport> GetPreferences();
+        protected abstract IEnumerable<IPreferenceExport> GetPreferences();
+        private IEnumerable<IPreferenceExport> _preferences;
+
+        public IEnumerable<IPreferenceExport> GetPreferencesInstance()
+        {
+            _preferences ??= GetPreferences();
+            return _preferences;
+        }
 
         /// <summary>
         /// Global context, contains various information about the current program
