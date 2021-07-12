@@ -7,6 +7,11 @@
         public byte G { set; get; }
         public byte B { set; get; }
 
+        public System.Drawing.Color ToSystemColor()
+        {
+            return System.Drawing.Color.FromArgb(R, G, B);
+        }
+
         public static Color FromRgb(byte r, byte g, byte b)
             => new()
             {
