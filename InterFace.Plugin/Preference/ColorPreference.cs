@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Media;
 using System;
+using System.Globalization;
 
 namespace InterFace.Plugin.Preference
 {
@@ -24,12 +24,19 @@ namespace InterFace.Plugin.Preference
                     {
                         text = text[1..];
                     }
-                    var color = Color.FromUInt32(Convert.ToUInt32("FF" + text, 16));
+                    var r = byte.Parse(text[0..2], NumberStyles.AllowHexSpecifier);
+                    var g = byte.Parse(text[2..4], NumberStyles.AllowHexSpecifier);
+                    var b = byte.Parse(text[4..6], NumberStyles.AllowHexSpecifier);
                     if (_colorPreview != null)
                     {
-                        _colorPreview.Background = new SolidColorBrush(color);
+                        _colorPreview.Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.FromRgb(r, g, b));
                     }
-                    return color;
+                    return new Color
+                    {
+                        R = r,
+                        G = g,
+                        B = b
+                    };
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -46,11 +53,12 @@ namespace InterFace.Plugin.Preference
 
         public override IControl GetComponent(IContext context)
         {
-               var component = (StackPanel)base.GetComponent(context);
+            var component = (StackPanel)base.GetComponent(context);
+            var color = ComponentValue;
             _colorPreview = new TextBox
             {
                 IsReadOnly = true,
-                Background = new SolidColorBrush(ComponentValue)
+                Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.FromRgb(color.R, color.G, color.B))
             };
             component.Children.Add(_colorPreview);
             return component;

@@ -1,7 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Layout;
+using Avalonia.Media;
 using InterFace.Plugin.Event;
 using System;
+using System.Buffers;
+using System.Text.Json;
 
 namespace InterFace.Plugin.Preference
 {
@@ -37,7 +40,7 @@ namespace InterFace.Plugin.Preference
         {
             set
             {
-                _value = (Type)Convert.ChangeType(value, typeof(Type));
+                _value = JsonSerializer.Deserialize<Type>(((JsonElement)value).GetRawText());
             }
             get
             {
