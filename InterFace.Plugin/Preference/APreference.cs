@@ -60,7 +60,7 @@ namespace InterFace.Plugin.Preference
         protected Component _component;
 
         /// <inheritdoc/>
-        public IControl GetComponent(IContext context)
+        public virtual IControl GetComponent(IContext context)
         {
             // Create a new instance of the component and set its value to our current value saved
             _component = new();
