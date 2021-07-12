@@ -69,9 +69,12 @@ namespace InterFace.Plugin.Preference
             // When property is changed...
             _component.PropertyChanged += (sender, e) =>
             {
-                _value = ComponentValue; // Set internal value to its current value
-                OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
-                context.SavedData.Save(); // Save change in file
+                if (e.Property.Name == "Text")
+                {
+                    _value = ComponentValue; // Set internal value to its current value
+                    OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
+                    context.SavedData.Save(); // Save change in file
+                }
             };
 
             // Stack panel containing our component and the explanation label
