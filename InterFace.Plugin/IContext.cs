@@ -4,6 +4,8 @@ namespace InterFace.Plugin
 {
     public interface IContext
     {
+        public void Create(string path, string dataFolderName, IReadOnlyCollection<APlugin> plugins);
+
         public void Load(string path, string dataFolderName);
 
         /// <summary>
