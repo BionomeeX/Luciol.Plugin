@@ -52,7 +52,7 @@ namespace InterFace.Plugin.Preference
         /// <param name="name">Text displayed on the preference label</param>
         /// <param name="defaultValue">Default value used for the preference</param>
         protected APreference(string key, string name, Type defaultValue)
-            => (Key, Name, _defaultValue, _value) = (key, name, defaultValue, _defaultValue);
+            => (Key, Name, _defaultValue, _value) = (key, name, defaultValue, defaultValue);
 
         /// <summary>
         /// Control used to store your preference
