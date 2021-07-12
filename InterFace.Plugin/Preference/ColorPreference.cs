@@ -25,9 +25,9 @@ namespace InterFace.Plugin.Preference
                     {
                         text = text[1..];
                     }
-                    return Color.FromUInt32(Convert.ToUInt32(text, 16));
+                    return Color.FromUInt32(Convert.ToUInt32("FF" + text, 16));
                 }
-                catch (FormatException)
+                catch (ArgumentOutOfRangeException)
                 {
                     return _value;
                 }
@@ -41,12 +41,10 @@ namespace InterFace.Plugin.Preference
         public override IControl GetComponent(IContext context)
         {
             var component = (StackPanel)base.GetComponent(context);
-            component.Children.Add(new Rectangle
+            component.Children.Add(new TextBox
             {
-                Fill = new SolidColorBrush
-                {
-                    Color = ComponentValue
-                }
+                IsReadOnly = true,
+                Background = new SolidColorBrush(ComponentValue)
             });
             return component;
         }
