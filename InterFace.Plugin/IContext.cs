@@ -4,7 +4,7 @@ namespace InterFace.Plugin
 {
     public interface IContext
     {
-        public void Load(string path);
+        public void Load(string path, string dataFolderName);
 
         /// <summary>
         /// Data about the main triangle
