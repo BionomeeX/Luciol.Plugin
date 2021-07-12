@@ -46,6 +46,11 @@ namespace InterFace.Plugin
         /// </summary>
         public event EventHandler<EventArgs> OnDataLoaded;
         /// <summary>
+        /// Called right after the resource manager clean removed old data
+        /// </summary>
+        /// <remarks>This is not called from the main thread</remarks>
+        public event EventHandler<EventArgs> OnDataCleaned;
+        /// <summary>
         /// Called when an annotation is added
         /// </summary>
         public event EventHandler<AnnotationEventArgs> OnAnnotationAdd;
