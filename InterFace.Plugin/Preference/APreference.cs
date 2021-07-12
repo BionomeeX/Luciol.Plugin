@@ -81,7 +81,7 @@ namespace InterFace.Plugin.Preference
             };
             parent.Children.AddRange(new IControl[] // Add component and label inside the StackPanel
             {
-                new Label()
+                new Label
                 {
                     Content = Name
                 },

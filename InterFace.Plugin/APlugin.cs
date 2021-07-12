@@ -69,7 +69,7 @@ namespace InterFace.Plugin
                         {
                             desktop.MainWindow = new MainWindow
                             {
-                                Content = new T()
+                                Content = new T
                                 {
                                     DataContext = new U()
                                 }
