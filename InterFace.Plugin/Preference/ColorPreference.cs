@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 using System;
 
@@ -25,7 +24,12 @@ namespace InterFace.Plugin.Preference
                     {
                         text = text[1..];
                     }
-                    return Color.FromUInt32(Convert.ToUInt32("FF" + text, 16));
+                    var color = Color.FromUInt32(Convert.ToUInt32("FF" + text, 16));
+                    if (_colorPreview != null)
+                    {
+                        _colorPreview.Background = new SolidColorBrush(color);
+                    }
+                    return color;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -38,14 +42,17 @@ namespace InterFace.Plugin.Preference
             }
         }
 
+        private TextBox _colorPreview;
+
         public override IControl GetComponent(IContext context)
         {
-            var component = (StackPanel)base.GetComponent(context);
-            component.Children.Add(new TextBox
+               var component = (StackPanel)base.GetComponent(context);
+            _colorPreview = new TextBox
             {
                 IsReadOnly = true,
                 Background = new SolidColorBrush(ComponentValue)
-            });
+            };
+            component.Children.Add(_colorPreview);
             return component;
         }
     }
