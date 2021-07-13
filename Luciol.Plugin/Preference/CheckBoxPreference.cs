@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace InterFace.Plugin.Preference
+namespace Luciol.Plugin.Preference
 {
     public class CheckBoxPreference : APreference<CheckBox, bool>
     {

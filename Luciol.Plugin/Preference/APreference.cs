@@ -1,12 +1,12 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
-using InterFace.Plugin.Event;
+using Luciol.Plugin.Event;
 using System;
 using System.Buffers;
 using System.Text.Json;
 
-namespace InterFace.Plugin.Preference
+namespace Luciol.Plugin.Preference
 {
     public abstract class APreference<Component, Type> : IPreferenceExport
         where Component : IControl, new()

@@ -1,5 +1,5 @@
-# InterFace.Plugin
-Plugin interface for InterFace
+# Luciol.Plugin
+Plugin interface for Luciol
 
 ## Dependencies Guideline
 

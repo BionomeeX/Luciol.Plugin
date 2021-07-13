@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using System;
 
-namespace InterFace.Plugin
+namespace Luciol.Plugin
 {
     public class TriangleContainer : DockPanel
     {

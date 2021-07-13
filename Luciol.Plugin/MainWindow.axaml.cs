@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace InterFace.Plugin
+namespace Luciol.Plugin
 {
     public class MainWindow : Window
     {

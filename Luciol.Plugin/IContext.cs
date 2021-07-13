@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InterFace.Plugin
+namespace Luciol.Plugin
 {
     public interface IContext
     {

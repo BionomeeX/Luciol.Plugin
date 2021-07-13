@@ -1,8 +1,8 @@
-﻿using InterFace.Plugin.Event;
+﻿using Luciol.Plugin.Event;
 using System;
 using System.Collections.Generic;
 
-namespace InterFace.Plugin
+namespace Luciol.Plugin
 {
     public interface IMainTriangle
     {

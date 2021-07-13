@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Markup.Xaml;
 using System;
 
-namespace InterFace.Plugin
+namespace Luciol.Plugin
 {
     public class App : Application
     {

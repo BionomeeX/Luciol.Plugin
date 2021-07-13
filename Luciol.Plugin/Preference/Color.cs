@@ -1,4 +1,4 @@
-﻿namespace InterFace.Plugin.Preference
+﻿namespace Luciol.Plugin.Preference
 {
     // Because somehow (de)serialization doesn't work properly for Color from System and Avalonia
     public class Color

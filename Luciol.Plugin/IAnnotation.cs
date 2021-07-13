@@ -1,4 +1,4 @@
-﻿namespace InterFace.Plugin
+﻿namespace Luciol.Plugin
 {
     public interface IAnnotation
     {

@@ -1,4 +1,4 @@
-﻿namespace InterFace.Plugin.Preference
+﻿namespace Luciol.Plugin.Preference
 {
     public enum NumberType
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InterFace.Plugin.Event
+namespace Luciol.Plugin.Event
 {
     public class PreferenceEventArgs<T> : EventArgs
     {

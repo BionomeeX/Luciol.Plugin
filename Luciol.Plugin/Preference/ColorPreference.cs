@@ -2,7 +2,7 @@
 using System;
 using System.Globalization;
 
-namespace InterFace.Plugin.Preference
+namespace Luciol.Plugin.Preference
 {
     public class ColorPreference : APreference<TextBox, Color>
     {

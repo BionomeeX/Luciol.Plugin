@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using System;
 
-namespace InterFace.Plugin.Preference
+namespace Luciol.Plugin.Preference
 {
     public class NumberInputTextPreference<Type> : APreference<TextBox, Type>
         where Type : IConvertible
