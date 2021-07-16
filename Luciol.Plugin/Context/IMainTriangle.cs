@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Context
 {
     public interface IMainTriangle
     {

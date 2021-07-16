@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luciol.Plugin.Context;
+using System;
 
 namespace Luciol.Plugin.Event
 {

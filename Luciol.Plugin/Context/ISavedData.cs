@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin
+﻿namespace Luciol.Plugin.Context
 {
     public interface ISavedData
     {

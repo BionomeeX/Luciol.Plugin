@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Layout;
+using Luciol.Plugin.Context;
 using Luciol.Plugin.Event;
 using System;
 using System.Text.Json;
