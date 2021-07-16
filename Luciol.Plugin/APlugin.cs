@@ -18,6 +18,7 @@ namespace Luciol.Plugin
              Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
                 GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
              );
+            _viewModelInstance = GetViewModel();
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace Luciol.Plugin
         internal void Init(IContext context)
         {
             Context = context;
-            _viewModelInstance = GetViewModel(this);
+            _viewModelInstance.Init(this);
             Init();
         }
 
@@ -57,8 +58,8 @@ namespace Luciol.Plugin
         /// The goal is to separate the code that display stuffs (in the view) and the code that don't (in the view model)
         /// See MVVM model for more information
         /// </summary>
-        protected abstract object GetViewModel(APlugin plugin);
-        private object _viewModelInstance;
+        protected abstract APluginViewModel GetViewModel();
+        private APluginViewModel _viewModelInstance;
         /// <summary>
         /// Get the preference (settings)
         /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
