@@ -17,6 +17,6 @@ namespace Luciol.Plugin
             base.OnFrameworkInitializationCompleted();
         }
 
-        public Action<App> OnFrameworkInitializationCompletedCallback { set; private get;}
+        public Action<App> OnFrameworkInitializationCompletedCallback { set; private get; }
     }
 }

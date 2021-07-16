@@ -3,6 +3,10 @@ using System;
 
 namespace Luciol.Plugin.Preference
 {
+    /// <summary>
+    /// Input text preference but can only contains numbers
+    /// </summary>
+    /// <typeparam name="Type">The kind of number stored (int, float...)</typeparam>
     public class NumberInputTextPreference<Type> : APreference<TextBox, Type>
         where Type : IConvertible
     {

@@ -1,9 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Layout;
-using Avalonia.Media;
 using Luciol.Plugin.Event;
 using System;
-using System.Buffers;
 using System.Text.Json;
 
 namespace Luciol.Plugin.Preference

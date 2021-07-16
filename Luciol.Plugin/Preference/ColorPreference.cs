@@ -4,6 +4,9 @@ using System.Globalization;
 
 namespace Luciol.Plugin.Preference
 {
+    /// <summary>
+    /// Color preference, store RGB values
+    /// </summary>
     public class ColorPreference : APreference<TextBox, Color>
     {
         public ColorPreference(string key, string name, Color defaultValue) : base(key, name, defaultValue)

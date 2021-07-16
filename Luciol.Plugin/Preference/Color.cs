@@ -7,11 +7,20 @@
         public byte G { set; get; }
         public byte B { set; get; }
 
+        /// <summary>
+        /// Convert current color to System.Drawing.Color
+        /// </summary>
         public System.Drawing.Color ToSystemColor()
         {
             return System.Drawing.Color.FromArgb(R, G, B);
         }
 
+        /// <summary>
+        /// Create a new color from its RGB values
+        /// </summary>
+        /// <param name="r">Red</param>
+        /// <param name="g">Green</param>
+        /// <param name="b">Blue</param>
         public static Color FromRgb(byte r, byte g, byte b)
             => new()
             {
