@@ -3,6 +3,10 @@
     public interface IAnnotation
     {
         /// <summary>
+        /// Layer the annotation was placed on
+        /// </summary>
+        public int Layer { get; }
+        /// <summary>
         /// First snip of the annotation (also equals to X position)
         /// </summary>
         public int Snip1 { get; }
