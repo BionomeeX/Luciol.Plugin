@@ -26,6 +26,10 @@ namespace Luciol.Plugin.Context
         /// <param name="layer">Layer to check</param>
         /// <returns></returns>
         public bool DoesContainsAnnotation(int posX, int posY, int layer);
+        /// <summary>
+        /// Get all annotations already placed
+        /// </summary>
+        public IReadOnlyCollection<IAnnotation> GetAnnotations();
 
         /// <summary>
         /// Get data about a snip
@@ -34,11 +38,6 @@ namespace Luciol.Plugin.Context
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
         public double[] GetSnipData(int pos, int layer);
-
-        /// <summary>
-        /// Get all annotations already placed
-        /// </summary>
-        public IReadOnlyCollection<IAnnotation> GetAnnotations();
 
         /// <summary>
         /// Get all values on the diagonal
