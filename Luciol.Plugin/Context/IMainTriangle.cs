@@ -26,6 +26,7 @@ namespace Luciol.Plugin.Context
         /// <param name="layer">Layer to check</param>
         /// <returns></returns>
         public bool DoesContainsAnnotation(int posX, int posY, int layer);
+        public bool IsPositionValid(int posX, int posY, int layer);
         /// <summary>
         /// Get all annotations already placed
         /// </summary>
