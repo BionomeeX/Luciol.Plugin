@@ -27,6 +27,14 @@ namespace Luciol.Plugin.Context
         /// <returns></returns>
         public bool DoesContainsAnnotation(int posX, int posY, int layer);
         /// <summary>
+        /// Check if the given position is in the triangle
+        /// </summary>
+        /// <param name="posX">X position to check</param>
+        /// <param name="posY">Y position to check</param>
+        /// <param name="layer">Layer to check</param>
+        /// <returns>true if in the triangle, false otherwise</returns>
+        public bool IsPositionValid(int posX, int posY, int layer);
+        /// <summary>
         /// Get all annotations already placed
         /// </summary>
         public IReadOnlyCollection<IAnnotation> GetAnnotations();
