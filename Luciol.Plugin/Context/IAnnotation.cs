@@ -17,6 +17,6 @@
         /// <summary>
         /// Value of the annotation
         /// </summary>
-        public double Value { get; }
+        public float Value { get; }
     }
 }

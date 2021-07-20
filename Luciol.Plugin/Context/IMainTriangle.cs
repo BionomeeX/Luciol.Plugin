@@ -45,7 +45,7 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public double[] GetSnipData(int pos, int layer);
+        public float[] GetSnipData(int pos, int layer);
 
         /// <summary>
         /// Get all values on the diagonal
