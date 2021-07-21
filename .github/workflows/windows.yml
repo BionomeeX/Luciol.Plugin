@@ -1,0 +1,33 @@
+name: Linux
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Publish Win 64 bits
+      run: dotnet publish -c Release -r win-x64 -o Release-64 Luciol/Luciol.Plugin.csproj
+    - name: Publish Win 32 bits
+      run: dotnet publish -c Release -r win-x86 -o Release-86 Luciol/Luciol.Plugin.csproj
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Windows-64
+        path: ./Release-64/Luciol.Plugin.dll
+        retention-days: 1
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Windows-32
+        path: ./Release-86/Luciol.Plugin.dll
+        retention-days: 1
