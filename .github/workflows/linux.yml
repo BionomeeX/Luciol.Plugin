@@ -18,7 +18,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish Linux 64 bits
-      run: dotnet publish -c Release -r linux-x64 -o Release Luciol/Luciol.Plugin.csproj
+      run: dotnet publish -c Release -r linux-x64 -o Release Luciol.Plugin/Luciol.Plugin.csproj
     - uses: actions/upload-artifact@v2
       with:
         name: Linux
