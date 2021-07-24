@@ -50,7 +50,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<double> GetDiagonal();
+        public IReadOnlyCollection<float> GetDiagonal();
 
         /// <summary>
         /// Called before data are load
