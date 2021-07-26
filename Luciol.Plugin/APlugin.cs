@@ -59,7 +59,7 @@ namespace Luciol.Plugin
         /// See MVVM model for more information
         /// </summary>
         protected abstract APluginViewModel GetViewModel();
-        private APluginViewModel _viewModelInstance;
+        private readonly APluginViewModel _viewModelInstance;
         /// <summary>
         /// Get the preference (settings)
         /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
