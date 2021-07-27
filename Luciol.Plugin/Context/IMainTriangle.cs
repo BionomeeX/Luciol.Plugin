@@ -41,6 +41,7 @@ namespace Luciol.Plugin.Context
 
         /// <summary>
         /// Get data about a snip
+        /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="layer"></param>
