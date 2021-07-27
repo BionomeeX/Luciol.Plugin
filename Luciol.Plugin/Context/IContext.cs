@@ -17,7 +17,7 @@ namespace Luciol.Plugin.Context
         /// </summary>
         /// <param name="path">Path to the existing save file</param>
         /// <param name="dataFolderName">Name of the folder containing triangle data</param>
-        public void Load(string path, string dataFolderName);
+        public void Load(string path);
 
         /// <summary>
         /// Data about the main triangle
