@@ -29,6 +29,9 @@
                 B = b
             };
 
+        public static implicit operator System.Drawing.Color(Color color) => System.Drawing.Color.FromArgb(255, color.R, color.G, color.B);
+        public static explicit operator Color(System.Drawing.Color color) => FromRgb(color.R, color.G, color.B);
+
         public static Color Red { get; } = FromRgb(255, 0, 0);
         public static Color Green { get; } = FromRgb(0, 255, 0);
         public static Color Blue { get; } = FromRgb(0, 0, 255);

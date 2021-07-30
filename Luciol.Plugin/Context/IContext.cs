@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Luciol.Plugin.Models.Preference;
+using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context
 {
@@ -31,5 +32,7 @@ namespace Luciol.Plugin.Context
         /// Used to access the save file
         /// </summary>
         public ISavedData SavedData { get; }
+
+        public GlobalSettings GlobalSettings { get; }
     }
 }
