@@ -55,8 +55,7 @@ namespace Luciol.Plugin
         protected abstract Control GetView();
         /// <summary>
         /// Returns the view model of the plugin window
-        /// The goal is to separate the code that display stuffs (in the view) and the code that don't (in the view model)
-        /// See MVVM model for more information
+        /// Allow to do the junction between what is display and your models (the code behind)
         /// </summary>
         protected abstract APluginViewModel GetViewModel();
         private readonly APluginViewModel _viewModelInstance;
