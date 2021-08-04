@@ -18,6 +18,8 @@ namespace Luciol.Plugin
 
         /// <summary>
         /// Apply a transformation on triangle data
+        /// This is useful if you need to modify them because they are displayed
+        /// By default we just display a scale of blue depending of its value
         /// </summary>
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>

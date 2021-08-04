@@ -3,8 +3,17 @@
     // Because somehow (de)serialization doesn't work properly for Color from System and Avalonia
     public class Color
     {
+        /// <summary>
+        /// Red component
+        /// </summary>
         public byte R { set; get; }
+        /// <summary>
+        /// Green component
+        /// </summary>
         public byte G { set; get; }
+        /// <summary>
+        /// Blue component
+        /// </summary>
         public byte B { set; get; }
 
         /// <summary>
@@ -28,6 +37,8 @@
                 G = g,
                 B = b
             };
+
+        // Allow to do cast from/to System.Drawing.Color
 
         public static implicit operator System.Drawing.Color(Color color) => System.Drawing.Color.FromArgb(255, color.R, color.G, color.B);
         public static explicit operator Color(System.Drawing.Color color) => FromRgb(color.R, color.G, color.B);

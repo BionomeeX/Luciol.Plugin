@@ -23,15 +23,18 @@ namespace Luciol.Plugin.Preference
                 }
                 try
                 {
+                    // Try to parse the hex value written
                     var text = _component.Text;
-                    if (text.StartsWith("#"))
+                    if (text.StartsWith("#")) // Remove the # at the start if there is one
                     {
                         text = text[1..];
                     }
+
+                    // Parse the RGB values written in hex
                     var r = byte.Parse(text[0..2], NumberStyles.AllowHexSpecifier);
                     var g = byte.Parse(text[2..4], NumberStyles.AllowHexSpecifier);
                     var b = byte.Parse(text[4..6], NumberStyles.AllowHexSpecifier);
-                    if (_colorPreview != null)
+                    if (_colorPreview != null) // If the component that preview the color is set
                     {
                         _colorPreview.Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.FromRgb(r, g, b));
                     }
@@ -42,7 +45,7 @@ namespace Luciol.Plugin.Preference
                         B = b
                     };
                 }
-                catch (ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException) // Invalid color written, we used the last one valid that was set
                 {
                     return _value;
                 }
@@ -59,7 +62,7 @@ namespace Luciol.Plugin.Preference
         {
             var component = (StackPanel)base.GetComponent(context);
             var color = ComponentValue;
-            _colorPreview = new TextBox
+            _colorPreview = new TextBox // Textbox that preview the color by changing its background
             {
                 IsReadOnly = true,
                 Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.FromRgb(color.R, color.G, color.B))

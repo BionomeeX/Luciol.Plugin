@@ -66,6 +66,9 @@ namespace Luciol.Plugin
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
 
+        /// <summary>
+        /// Get the preferences for the current plugin
+        /// </summary>
         public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
 
         /// <summary>

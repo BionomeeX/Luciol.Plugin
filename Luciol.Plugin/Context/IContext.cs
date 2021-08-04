@@ -32,7 +32,6 @@ namespace Luciol.Plugin.Context
         /// Used to access the save file
         /// </summary>
         public ISavedData SavedData { get; }
-
         public GlobalSettings GlobalSettings { get; }
     }
 }
