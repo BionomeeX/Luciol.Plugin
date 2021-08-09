@@ -25,14 +25,14 @@ namespace Luciol.Plugin.Preference
             }
         }
 
-        public override IControl GetComponent(IContext context)
+        public override IControl GetComponent(Window window, IContext context)
         {
-            var c = base.GetComponent(context); // We need to call that before because it init _component
+            var c = base.GetComponent(window, context); // We need to call that before because it init _component
             _component.Width = 50;
             _component.Height = 15;
             _component.Click += (sender, e) =>
             {
-                ColorPicker.Show(null, (color) =>
+                ColorPicker.Show(window, (color) =>
                 {
                     PropertyChanged(Color.FromRgb(color.R, color.G, color.B));
                 });

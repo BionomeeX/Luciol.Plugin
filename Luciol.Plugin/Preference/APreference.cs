@@ -71,7 +71,7 @@ namespace Luciol.Plugin.Preference
         }
 
         /// <inheritdoc/>
-        public virtual IControl GetComponent(IContext context)
+        public virtual IControl GetComponent(Window window, IContext context)
         {
             _context = context; // TODO: Move that to ctor
 
