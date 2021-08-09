@@ -61,9 +61,20 @@ namespace Luciol.Plugin.Preference
         /// </summary>
         protected Component _component;
 
+        private IContext _context;
+
+        protected void PropertyChanged(Type value)
+        {
+            _value = value; // Set internal value to its current value
+            OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
+            _context.SavedData.Save(); // Save change in file
+        }
+
         /// <inheritdoc/>
         public virtual IControl GetComponent(IContext context)
         {
+            _context = context; // TODO: Move that to ctor
+
             // Create a new instance of the component and set its value to our current value saved
             _component = new();
             ComponentValue = _value;
@@ -73,9 +84,7 @@ namespace Luciol.Plugin.Preference
             {
                 if (e.Property.Name == "Text")
                 {
-                    _value = ComponentValue; // Set internal value to its current value
-                    OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
-                    context.SavedData.Save(); // Save change in file
+                    PropertyChanged(ComponentValue);
                 }
             };
 
