@@ -36,7 +36,7 @@ namespace Luciol.Plugin.Preference
                 {
                     ComponentValue = _value;
                     PropertyChanged(Color.FromRgb(color.R, color.G, color.B));
-                });
+                }, _value);
             };
             return c;
         }
