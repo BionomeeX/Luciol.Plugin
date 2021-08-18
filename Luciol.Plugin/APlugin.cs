@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
+using Luciol.Plugin.SaveLoad;
 using Luciol.Plugin.Preference;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,21 @@ namespace Luciol.Plugin
         /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
+
+        internal object CustomDataInit;
+        private ICustomData _customData;
+        internal protected ICustomData CustomData
+        {
+            set
+            {
+                _customData = value;
+                _customData.Init(CustomDataInit);
+            }
+            get
+            {
+                return _customData;
+            }
+        }
 
         public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
 
