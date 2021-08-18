@@ -69,7 +69,7 @@ namespace Luciol.Plugin
 
         internal object CustomDataInit;
         private ICustomData _customData;
-        internal protected ICustomData CustomData
+        public ICustomData CustomData
         {
             set
             {

@@ -3,6 +3,7 @@
 namespace Luciol.Plugin.SaveLoad
 {
     public class CustomData<T> : ICustomData
+        where T : new()
     {
         public T Data { private set; get; }
 
@@ -10,12 +11,14 @@ namespace Luciol.Plugin.SaveLoad
 
         public void Init(object data)
         {
-            Data = JsonSerializer.Deserialize<T>(((JsonElement)data).GetRawText());
-        }
-
-        void ICustomData.Init(object data)
-        {
-            throw new System.NotImplementedException();
+            if (data != null)
+            {
+                Data = JsonSerializer.Deserialize<T>(((JsonElement)data).GetRawText());
+            }
+            else
+            {
+                Data = new();
+            }
         }
     }
 }
