@@ -13,15 +13,17 @@ namespace Luciol.Plugin
                 throw new ArgumentNullException(nameof(assembly), "Assembly cannot be null");
             }
             var version = assembly.GetName().Version;
-            Version = version == null ? "Dev" : $"{version.Major}.{version.Minor}.{version.Revision}";
             _name = assembly.GetName().Name;
             _author = assembly.GetCustomAttribute<AssemblyAuthorAttribute>()?.Author ?? "Unkown";
+            Version = version == null ? "Dev" : $"{version.Major}.{version.Minor}.{version.Revision}";
+            Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description ?? string.Empty;
             _plugin = plugin;
         }
 
         private readonly string _name;
         private readonly string _author;
-        public string Version { init; get; }
+        public string Description { private init; get; }
+        public string Version { private init; get; }
         private readonly Type _plugin;
 
         internal APlugin Instanciate()
