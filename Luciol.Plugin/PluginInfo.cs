@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luciol.Plugin.AssemblyAttribute;
+using System;
 using System.Reflection;
 
 namespace Luciol.Plugin
@@ -14,7 +15,7 @@ namespace Luciol.Plugin
             var version = assembly.GetName().Version;
             Version = version == null ? "Dev" : $"{version.Major}.{version.Minor}.{version.Revision}";
             _name = assembly.GetName().Name;
-            _author = "Unknown";
+            _author = assembly.GetCustomAttribute<AssemblyAuthorAttribute>()?.Author ?? "Unkown";
             _plugin = plugin;
         }
 
@@ -32,7 +33,7 @@ namespace Luciol.Plugin
 
         public override string ToString()
         {
-            return $"{_name} ({Version})";
+            return $"{_name} by {_author} ({Version})";
         }
 
         public string Key
