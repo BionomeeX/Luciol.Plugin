@@ -23,18 +23,24 @@
         public float Value { get; }
 
         public static bool operator ==(Annotation a, Annotation b)
-            => a.Layer == b.Layer && a.Snp1 == b.Snp1 && a.Snp2 == b.Snp2;
+        {
+            if (a == null)
+            {
+                return b == null; // True if a and b are null, else false
+            }
+            return a.Equals(b);
+        }
 
         public static bool operator !=(Annotation a, Annotation b)
-            => a.Layer != b.Layer || a.Snp1 != b.Snp1 || a.Snp2 != b.Snp2;
+            => !(a == b);
 
         public override bool Equals(object obj)
-        {
-            var ann = obj as Annotation;
-            return ann != null && ann == this;
-        }
+            => Equals(obj as Annotation);
 
         public override int GetHashCode()
             => (Layer, Snp1, Snp2).GetHashCode();
+
+        private bool Equals(Annotation other)
+            => other != null && Layer == other.Layer && Snp1 == other.Snp1 && Snp2 == other.Snp2;
     }
 }
