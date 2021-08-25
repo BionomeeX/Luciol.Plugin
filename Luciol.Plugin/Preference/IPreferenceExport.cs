@@ -10,7 +10,7 @@ namespace Luciol.Plugin.Preference
         /// Contains the preference label and its component (checkbox, textbox, etc...)
         /// </summary>
         /// <param name="context">Global context, preference needs to access Save() methods when its modified</param>
-        public IControl GetComponent(IContext context);
+        public IControl GetComponent(Window window, IContext context);
 
         /// <summary>
         /// Key of the preference, used to identify it
