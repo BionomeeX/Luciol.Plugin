@@ -24,9 +24,9 @@
 
         public static bool operator ==(Annotation a, Annotation b)
         {
-            if (a == null)
+            if (a is null)
             {
-                return b == null; // True if a and b are null, else false
+                return b is null; // True if a and b are null, else false
             }
             return a.Equals(b);
         }
