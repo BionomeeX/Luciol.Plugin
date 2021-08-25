@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context
         /// Add an annotation to the triangle
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
-        public void AddAnnotation(IAnnotation annotation);
+        public void AddAnnotation(Annotation annotation);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>
@@ -38,7 +38,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Get all annotations already placed
         /// </summary>
-        public IReadOnlyCollection<IAnnotation> GetAnnotations();
+        public IReadOnlyCollection<Annotation> GetAnnotations();
 
         /// <summary>
         /// Get data about a snip
