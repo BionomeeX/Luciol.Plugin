@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
+using Luciol.Plugin.SaveLoad;
 using Luciol.Plugin.Preference;
 using System;
 using System.Collections.Generic;
@@ -66,12 +67,29 @@ namespace Luciol.Plugin
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
 
+        internal object CustomDataInit;
+        private ICustomData _customData;
+        public ICustomData CustomData
+        {
+            set
+            {
+                _customData = value;
+                _customData.Init(CustomDataInit);
+            }
+            get
+            {
+                return _customData;
+            }
+        }
+
         public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
 
         /// <summary>
         /// Global context, contains various information about the current program
         /// </summary>
         public IContext Context { private set; get; }
+
+        public PluginInfo PluginInfo { internal set; get; }
 
         public void Test<T, U>()
             where T : Control, new()
