@@ -41,12 +41,12 @@ namespace Luciol.Plugin.Context
         public IReadOnlyCollection<Annotation> GetAnnotations();
 
         /// <summary>
-        /// Get a value on the triangle
+        /// Create an annotation
         /// </summary>
         /// <param name="x">X position</param>
         /// <param name="y">Y position</param>
         /// <param name="layer">Layer to search on</param>
-        public Task<float> GetValueAsync(int x, int y, int layer);
+        public Task<Annotation> CreateAnnotationAsync(int x, int y, int layer, AnnotationType type);
 
         /// <summary>
         /// Get data about a snip
