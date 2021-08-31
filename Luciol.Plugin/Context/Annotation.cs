@@ -2,8 +2,8 @@
 {
     public class Annotation
     {
-        public Annotation(int snp1, int snp2, int layer, float value)
-            => (Snp1, Snp2, Layer, Value) = (snp1, snp2, layer, value);
+        public Annotation(int snp1, int snp2, int layer, float value, AnnotationType type)
+            => (Snp1, Snp2, Layer, Value, Type) = (snp1, snp2, layer, value, type);
 
         /// <summary>
         /// Layer the annotation was placed on
@@ -21,6 +21,10 @@
         /// Value of the annotation
         /// </summary>
         public float Value { get; }
+        /// <summary>
+        /// Type of the annotation
+        /// </summary>
+        public AnnotationType Type { get; }
 
         public static bool operator ==(Annotation a, Annotation b)
             => a.Layer == b.Layer && a.Snp1 == b.Snp1 && a.Snp2 == b.Snp2;
