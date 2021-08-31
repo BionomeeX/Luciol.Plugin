@@ -41,6 +41,14 @@ namespace Luciol.Plugin.Context
         public IReadOnlyCollection<Annotation> GetAnnotations();
 
         /// <summary>
+        /// Get a value on the triangle
+        /// </summary>
+        /// <param name="x">X position</param>
+        /// <param name="y">Y position</param>
+        /// <param name="layer">Layer to search on</param>
+        public Task<float> GetValueAsync(int x, int y, int layer);
+
+        /// <summary>
         /// Get data about a snip
         /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
         /// </summary>
