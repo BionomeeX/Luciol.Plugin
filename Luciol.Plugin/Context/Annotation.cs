@@ -35,10 +35,24 @@ namespace Luciol.Plugin.Context
         public AnnotationType Type { init; get; }
 
         public static bool operator ==(Annotation a, Annotation b)
-            => a.Layer == b.Layer && a.Snp1 == b.Snp1 && a.Snp2 == b.Snp2;
+        {
+            if (a is null)
+            {
+                if (b is null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if (b is null)
+            {
+                return false;
+            }
+            return a.Layer == b.Layer && a.Snp1 == b.Snp1 && a.Snp2 == b.Snp2; ;
+        }
 
         public static bool operator !=(Annotation a, Annotation b)
-            => a.Layer != b.Layer || a.Snp1 != b.Snp1 || a.Snp2 != b.Snp2;
+            => !(a == b);
 
         public override bool Equals(object obj)
         {
