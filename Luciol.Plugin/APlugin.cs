@@ -67,7 +67,7 @@ namespace Luciol.Plugin
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
 
-        internal object CustomDataInit;
+        internal object CustomDataInit { set; private get; }
         private ICustomData _customData;
         public ICustomData CustomData
         {

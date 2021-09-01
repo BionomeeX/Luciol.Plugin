@@ -38,29 +38,21 @@ namespace Luciol.Plugin.Context
         {
             if (a is null)
             {
-                if (b is null)
-                {
-                    return true;
-                }
-                return false;
+                return b is null; // True if a and b are null, else false
             }
-            if (b is null)
-            {
-                return false;
-            }
-            return a.Layer == b.Layer && a.Snp1 == b.Snp1 && a.Snp2 == b.Snp2; ;
+            return a.Equals(b);
         }
 
         public static bool operator !=(Annotation a, Annotation b)
             => !(a == b);
 
         public override bool Equals(object obj)
-        {
-            var ann = obj as Annotation;
-            return ann != null && ann == this;
-        }
+            => Equals(obj as Annotation);
 
         public override int GetHashCode()
             => (Layer, Snp1, Snp2).GetHashCode();
+
+        private bool Equals(Annotation other)
+            => other != null && Layer == other.Layer && Snp1 == other.Snp1 && Snp2 == other.Snp2;
     }
 }
