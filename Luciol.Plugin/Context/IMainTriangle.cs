@@ -26,7 +26,7 @@ namespace Luciol.Plugin.Context
         /// <param name="posY">Y position to check</param>
         /// <param name="layer">Layer to check</param>
         /// <returns></returns>
-        public bool DoesContainsAnnotation(int posX, int posY, int layer);
+        public bool DoesContainsAnnotation(int posX, int posY, int layer, AnnotationType type);
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>
