@@ -55,12 +55,12 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<float[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SNPData[]> GetSNPDataAsync(int pos, int layer);
 
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<float> GetDiagonal();
+        public IReadOnlyCollection<SNPData> GetDiagonal();
 
         /// <summary>
         /// Called before data are load
