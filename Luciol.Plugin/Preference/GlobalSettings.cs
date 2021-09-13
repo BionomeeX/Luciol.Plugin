@@ -21,7 +21,7 @@ namespace Luciol.Plugin.Models.Preference
         {
             new ColorPreference("mainColor", "Main Graph Color", Color.Black),
             new ColorPalettePreference("manhattanColors", "Colors used for Manhattan graph",
-                new[] { Color.Red, Color.Blue, Color.Green, Color.Magenta, Color.Cyan, Color.Yellow })
+                new[] { Color.Red, Color.Blue, Color.Green })
         });
     }
 }

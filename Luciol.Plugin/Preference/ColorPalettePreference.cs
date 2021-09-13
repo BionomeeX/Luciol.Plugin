@@ -13,7 +13,7 @@ namespace Luciol.Plugin.Preference
 
         protected override Color[] ComponentValue
         {
-            get => new[] { Color.Red, Color.Blue, Color.Green, Color.Magenta, Color.Cyan, Color.Yellow };
+            get => _value;
             set { }
         }
 
