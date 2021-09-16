@@ -3,6 +3,6 @@
     public record SNPData
     {
         public float Value { init; get; }
-        public int Chromosome { init; get; }
+        public uint Chromosome { init; get; }
     }
 }
