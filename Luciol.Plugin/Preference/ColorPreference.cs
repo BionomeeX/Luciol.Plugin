@@ -8,7 +8,7 @@ namespace Luciol.Plugin.Preference
     /// <summary>
     /// Color preference, store RGB values
     /// </summary>
-    public class ColorPreference : APreference<Button, Color>
+    public class ColorPreference : APreference<RenderView, Color>
     {
         public ColorPreference(string key, string name, Color defaultValue) : base(key, name, defaultValue)
         { }
