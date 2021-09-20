@@ -24,7 +24,7 @@ namespace Luciol.Plugin.Preference
             set
             {
                 var rangeValue = Enumerable.Range(0, _width)
-                    .Select(x => GradientPicker.GetColorFromPosition(value, x / _width).ToArgb()).ToArray();
+                    .Select(x => GradientPicker.GetColorFromPosition(value, (double)x / _width).ToArgb()).ToArray();
 
                 int[][] data = new int[_height][];
                 for (int y = 0; y < _height; y++)
