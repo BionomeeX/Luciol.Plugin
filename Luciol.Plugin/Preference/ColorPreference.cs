@@ -40,8 +40,9 @@ namespace Luciol.Plugin.Preference
             {
                 ColorPicker.Show(window, (color) =>
                 {
-                    ComponentValue = _value;
-                    PropertyChanged(Color.FromRgb(color.R, color.G, color.B));
+                    var avaColor = Color.FromRgb(color.R, color.G, color.B);
+                    ComponentValue = avaColor;
+                    PropertyChanged(avaColor);
                 }, _value);
             };
             return c;
