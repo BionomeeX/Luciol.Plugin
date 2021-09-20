@@ -2,6 +2,7 @@
 using ExtendedAvalonia;
 using Luciol.Plugin.Context;
 using System;
+using System.Linq;
 
 namespace Luciol.Plugin.Preference
 {
@@ -21,15 +22,20 @@ namespace Luciol.Plugin.Preference
             }
             set
             {
-                _component.Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.FromRgb(value.R, value.G, value.B));
+                int[][] data = new int[_height][];
+                for (int y = 0; y < data.Length; y++)
+                {
+                    data[y] = Enumerable.Repeat(System.Drawing.Color.FromArgb(255, value.R, value.G, value.B).ToArgb(), _width).ToArray();
+                }
+                _component.RenderData = data;
             }
         }
 
         public override IControl GetComponent(Window window, IContext context)
         {
             var c = base.GetComponent(window, context); // We need to call that before because it init _component
-            _component.Width = 50;
-            _component.Height = 15;
+            _component.Width = _width;
+            _component.Height = _height;
             _component.Click += (sender, e) =>
             {
                 ColorPicker.Show(window, (color) =>
@@ -40,5 +46,8 @@ namespace Luciol.Plugin.Preference
             };
             return c;
         }
+
+        private const int _height = 15;
+        private const int _width = 50;
     }
 }
