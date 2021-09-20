@@ -1,4 +1,5 @@
-﻿using Luciol.Plugin.Preference;
+﻿using ExtendedAvalonia.Slider;
+using Luciol.Plugin.Preference;
 
 namespace Luciol.Plugin.Models.Preference
 {
@@ -12,9 +13,14 @@ namespace Luciol.Plugin.Models.Preference
 
         });
 
-        public Settings Triangle { get; } = new(new[]
+        public Settings Triangle { get; } = new(new IPreferenceExport[]
         {
-            new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f)
+            new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
+            new GradientPreference("triangleColors", "Triangle Colors", new PositionColor[]
+            {
+                new() { Position = 0.0, Color = Color.Black },
+                new() { Position = 1.0, Color = Color.Blue }
+            })
         });
 
         public Settings Graph { get; } = new(new IPreferenceExport[]

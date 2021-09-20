@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls;
+using ExtendedAvalonia;
+using ExtendedAvalonia.Slider;
+using Luciol.Plugin.Models.Preference;
 using System;
-using System.Drawing;
 
 namespace Luciol.Plugin
 {
@@ -22,7 +24,10 @@ namespace Luciol.Plugin
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public virtual Color ValueTransformation(float value, float maxValue)
-            => Color.FromArgb(0, 0, (int)(Math.Abs(value) * 255 / maxValue));
+        public virtual System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        {
+            var color = GradientPicker.GetColorFromPosition((PositionColor[])settings.Triangle.Preferences["triangleColors"].Value, value / maxValue);
+            return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
     }
 }
