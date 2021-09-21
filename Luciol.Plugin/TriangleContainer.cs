@@ -2,7 +2,9 @@
 using ExtendedAvalonia;
 using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Models.Preference;
+using Luciol.Plugin.Preference;
 using System;
+using System.Collections.Generic;
 
 namespace Luciol.Plugin
 {
@@ -26,8 +28,31 @@ namespace Luciol.Plugin
         /// <returns>Color to display</returns>
         public virtual System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
         {
+            if (_colors == null)
+            {
+                _colors = new();
+                ((GradientPreference)settings.Triangle.Preferences["triangleColors"]).OnChange += (e, sender) =>
+                {
+                    _colors.Clear();
+                };
+            }
+            var hash = value.GetHashCode();
+            if (_colors.TryGetValue(hash, out System.Drawing.Color v))
+            {
+                return v;
+            }
             var color = GradientPicker.GetColorFromPosition((PositionColor[])settings.Triangle.Preferences["triangleColors"].Value, value / maxValue);
-            return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+            var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+            lock(_colors)
+            {
+                if (!_colors.ContainsKey(hash)) // We make sure a second time inside the lock, because of threads
+                {
+                    _colors.Add(hash, sysColor);
+                }
+            }
+            return sysColor;
         }
+
+        private Dictionary<int, System.Drawing.Color> _colors;
     }
 }
