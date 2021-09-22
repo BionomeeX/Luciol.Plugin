@@ -63,6 +63,12 @@ namespace Luciol.Plugin.Preference
 
         private IContext _context;
 
+        public void UpdateValue(Type value)
+        {
+            _value = value;
+            GetComponent(null, null);
+        }
+
         protected void PropertyChanged(Type value)
         {
             _value = value; // Set internal value to its current value
@@ -73,8 +79,6 @@ namespace Luciol.Plugin.Preference
         /// <inheritdoc/>
         public virtual IControl GetComponent(Window window, IContext context)
         {
-            _context = context; // TODO: Move that to ctor
-
             // Create a new instance of the component and set its value to our current value saved
             _component = new();
             ComponentValue = _value;
@@ -87,6 +91,12 @@ namespace Luciol.Plugin.Preference
                     PropertyChanged(ComponentValue);
                 }
             };
+
+            if (context == null)
+            {
+                return null;
+            }
+            _context = context; // TODO: Move that to ctor
 
             // Stack panel containing our component and the explanation label
             var parent = new StackPanel

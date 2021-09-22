@@ -20,6 +20,14 @@ namespace Luciol.Plugin
             }
         }
 
+        public void Init(GlobalSettings settings)
+        {
+            ((GradientPreference)settings.Triangle.Preferences["triangleColors"]).OnChange += (e, sender) =>
+            {
+                _colors.Clear();
+            };
+        }
+
         /// <summary>
         /// Apply a transformation on triangle data
         /// </summary>
@@ -28,14 +36,6 @@ namespace Luciol.Plugin
         /// <returns>Color to display</returns>
         public virtual System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
         {
-            if (_colors == null)
-            {
-                _colors = new();
-                ((GradientPreference)settings.Triangle.Preferences["triangleColors"]).OnChange += (e, sender) =>
-                {
-                    _colors.Clear();
-                };
-            }
             var hash = value.GetHashCode();
             if (_colors.TryGetValue(hash, out System.Drawing.Color v))
             {
@@ -53,6 +53,6 @@ namespace Luciol.Plugin
             return sysColor;
         }
 
-        private Dictionary<int, System.Drawing.Color> _colors;
+        private readonly Dictionary<int, System.Drawing.Color> _colors = new();
     }
 }
