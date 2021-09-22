@@ -10,12 +10,12 @@ namespace Luciol.Plugin.Preference
     /// <summary>
     /// Gradient
     /// </summary>
-    public class GradientPreference : APreference<RenderView, PositionColor[]>
+    public class GradientPreference : APreference<RenderView, Gradient>
     {
-        public GradientPreference(string key, string name, PositionColor[] defaultValue) : base(key, name, defaultValue)
+        public GradientPreference(string key, string name, Gradient defaultValue) : base(key, name, defaultValue)
         { }
 
-        protected override PositionColor[] ComponentValue
+        protected override Gradient ComponentValue
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Luciol.Plugin.Preference
             set
             {
                 var rangeValue = Enumerable.Range(0, _width)
-                    .Select(x => GradientPicker.GetColorFromPosition(value, (double)x / _width).ToArgb()).ToArray();
+                    .Select(x => GradientPicker.GetColorFromPosition(new() { PositionColors = value.PositionColors }, (double)x / _width).ToArgb()).ToArray();
 
                 int[][] data = new int[_height][];
                 for (int y = 0; y < _height; y++)
@@ -45,8 +45,7 @@ namespace Luciol.Plugin.Preference
                 var picker = GradientPicker.Show(window, _value);
                 picker.OnCompletion += (sender, gradient) =>
                 {
-                    ComponentValue = gradient.Data;
-                    PropertyChanged(gradient.Data);
+                    this.UpdateValue(context, gradient.Data);
                 };
             };
             return c;

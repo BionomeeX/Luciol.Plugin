@@ -8,7 +8,7 @@ namespace Luciol.Plugin.Preference
     /// </summary>
     /// <typeparam name="Type">The kind of number stored (int, float...)</typeparam>
     public class NumberInputTextPreference<Type> : APreference<TextBox, Type>
-        where Type : IConvertible
+        where Type : IComparable<Type>, IEquatable<Type>
     {
         public NumberInputTextPreference(string key, string name, Type defaultValue) : base(key, name, defaultValue)
         { }

@@ -41,9 +41,7 @@ namespace Luciol.Plugin.Preference
                 var picker = ColorPicker.Show(window, _value);
                 picker.OnCompletion += (sender, color) =>
                 {
-                    var avaColor = Color.FromRgb(color.Data.R, color.Data.G, color.Data.B);
-                    ComponentValue = avaColor;
-                    PropertyChanged(avaColor);
+                    UpdateValue(context, Color.FromRgb(color.Data.R, color.Data.G, color.Data.B));
                 };
             };
             return c;

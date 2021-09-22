@@ -6,12 +6,12 @@ namespace Luciol.Plugin.Preference
     /// <summary>
     /// Color palette preference, represents an array of color
     /// </summary>
-    public class ColorPalettePreference : APreference<TextBlock, Color[]>
+    public class ColorPalettePreference : APreference<TextBlock, ColorPalette>
     {
-        public ColorPalettePreference(string key, string name, Color[] defaultValue) : base(key, name, defaultValue)
+        public ColorPalettePreference(string key, string name, ColorPalette defaultValue) : base(key, name, defaultValue)
         { }
 
-        protected override Color[] ComponentValue
+        protected override ColorPalette ComponentValue
         {
             get => _value;
             set { }
