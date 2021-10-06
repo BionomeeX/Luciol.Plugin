@@ -2,7 +2,7 @@
 {
     public enum AnnotationType
     {
-        Manual, // Annotation placed manually by the user
-        AGI // Annotation selected from a graph
+        UserTriangle, // Annotation placed manually by the user
+        UserGraph // Annotation selected from a graph
     }
 }
