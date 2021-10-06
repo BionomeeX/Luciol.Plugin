@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
+using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Context;
 using System;
 using System.Linq;
@@ -7,14 +8,14 @@ using System.Linq;
 namespace Luciol.Plugin.Preference
 {
     /// <summary>
-    /// Color preference, store RGB values
+    /// Gradient
     /// </summary>
-    public class ColorPreference : APreference<RenderView, Color>
+    public class GradientPreference : APreference<RenderView, Gradient>
     {
-        public ColorPreference(string key, string name, Color defaultValue) : base(key, name, defaultValue)
+        public GradientPreference(string key, string name, Gradient defaultValue) : base(key, name, defaultValue)
         { }
 
-        protected override Color ComponentValue
+        protected override Gradient ComponentValue
         {
             get
             {
@@ -22,10 +23,13 @@ namespace Luciol.Plugin.Preference
             }
             set
             {
+                var rangeValue = Enumerable.Range(0, _width)
+                    .Select(x => GradientPicker.GetColorFromPosition(new() { PositionColors = value.PositionColors }, (double)x / _width).ToArgb()).ToArray();
+
                 int[][] data = new int[_height][];
-                for (int y = 0; y < data.Length; y++)
+                for (int y = 0; y < _height; y++)
                 {
-                    data[y] = Enumerable.Repeat(System.Drawing.Color.FromArgb(255, value.R, value.G, value.B).ToArgb(), _width).ToArray();
+                    data[y] = rangeValue;
                 }
                 _component.RenderData = data;
             }
@@ -38,10 +42,10 @@ namespace Luciol.Plugin.Preference
             _component.Height = _height;
             _component.Click += (sender, e) =>
             {
-                var picker = ColorPicker.Show(window, _value);
-                picker.OnCompletion += (sender, color) =>
+                var picker = GradientPicker.Show(window, _value);
+                picker.OnCompletion += (sender, gradient) =>
                 {
-                    UpdateValue(context, Color.FromRgb(color.Data.R, color.Data.G, color.Data.B));
+                    this.UpdateValue(context, gradient.Data);
                 };
             };
             return c;

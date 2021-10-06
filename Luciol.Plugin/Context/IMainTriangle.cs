@@ -26,7 +26,7 @@ namespace Luciol.Plugin.Context
         /// <param name="posY">Y position to check</param>
         /// <param name="layer">Layer to check</param>
         /// <returns></returns>
-        public bool DoesContainsAnnotation(int posX, int posY, int layer);
+        public bool DoesContainsAnnotation(int posX, int posY, int layer, AnnotationType type);
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>
@@ -41,18 +41,26 @@ namespace Luciol.Plugin.Context
         public IReadOnlyCollection<Annotation> GetAnnotations();
 
         /// <summary>
+        /// Create an annotation
+        /// </summary>
+        /// <param name="x">X position</param>
+        /// <param name="y">Y position</param>
+        /// <param name="layer">Layer to search on</param>
+        public Task<Annotation> CreateAnnotationAsync(int x, int y, int layer, AnnotationType type);
+
+        /// <summary>
         /// Get data about a snip
         /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<float[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SNPData[]> GetSNPDataAsync(int pos, int layer);
 
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<float> GetDiagonal();
+        public IReadOnlyCollection<SNPData> GetDiagonal();
 
         /// <summary>
         /// Called before data are load

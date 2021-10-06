@@ -1,7 +1,9 @@
-﻿namespace Luciol.Plugin.Preference
+﻿using System;
+
+namespace Luciol.Plugin.Preference
 {
     // Because somehow (de)serialization doesn't work properly for Color from System and Avalonia
-    public class Color
+    public class Color : IEquatable<Color>
     {
         public byte R { set; get; }
         public byte G { set; get; }
@@ -28,6 +30,15 @@
                 G = g,
                 B = b
             };
+
+        public bool Equals(Color other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+            return R == other.R && B == other.B && G == other.G;
+        }
 
         public static implicit operator System.Drawing.Color(Color color) => System.Drawing.Color.FromArgb(255, color.R, color.G, color.B);
         public static explicit operator Color(System.Drawing.Color color) => FromRgb(color.R, color.G, color.B);

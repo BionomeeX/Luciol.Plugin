@@ -9,6 +9,7 @@ namespace Luciol.Plugin.Preference
 {
     public abstract class APreference<Component, Type> : IPreferenceExport
         where Component : IControl, new()
+        where Type : IEquatable<Type>
     {
         /// <summary>
         /// Event called when the preference is changed
@@ -59,9 +60,19 @@ namespace Luciol.Plugin.Preference
         /// <summary>
         /// Control used to store your preference
         /// </summary>
-        protected Component _component;
+        protected Component _component = new();
 
         private IContext _context;
+
+        public void UpdateValue(IContext context, Type value)
+        {
+            _context = context;
+            if (!value.Equals(_value))
+            {
+                ComponentValue = value;
+                PropertyChanged(value);
+            }
+        }
 
         protected void PropertyChanged(Type value)
         {
