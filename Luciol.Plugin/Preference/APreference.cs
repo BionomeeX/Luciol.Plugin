@@ -77,8 +77,11 @@ namespace Luciol.Plugin.Preference
         protected void PropertyChanged(Type value)
         {
             _value = value; // Set internal value to its current value
-            OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
             _context.SavedData.Save(); // Save change in file
+            _context.SavedData.OnSaved += (sender, e) => // We call "OnChange" only when data are actually saved
+            {
+                OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
+            };
         }
 
         /// <inheritdoc/>
