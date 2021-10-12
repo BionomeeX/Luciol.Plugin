@@ -48,6 +48,11 @@ namespace Luciol.Plugin.Preference
             }
         }
 
+        public void Reset(object sender, IContext context)
+        {
+            UpdateValue(sender, context, _defaultValue);
+        }
+
         /// <summary>
         /// Constructor for APreference
         /// </summary>
@@ -64,23 +69,23 @@ namespace Luciol.Plugin.Preference
 
         private IContext _context;
 
-        public void UpdateValue(IContext context, Type value)
+        public void UpdateValue(object sender, IContext context, Type value)
         {
             _context = context;
             if (!value.Equals(_value))
             {
                 ComponentValue = value;
-                PropertyChanged(value);
+                PropertyChanged(sender, value);
             }
         }
 
-        protected void PropertyChanged(Type value)
+        protected void PropertyChanged(object sender, Type value)
         {
             _value = value; // Set internal value to its current value
             _context.SavedData.Save(); // Save change in file
-            _context.SavedData.OnSaved += (sender, e) => // We call "OnChange" only when data are actually saved
+            _context.SavedData.OnSaved += (s, e) => // We call "OnChange" only when data are actually saved
             {
-                OnChange?.Invoke(this, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
+                OnChange?.Invoke(sender, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
             };
         }
 
@@ -98,7 +103,7 @@ namespace Luciol.Plugin.Preference
             {
                 if (e.Property.Name == "Text")
                 {
-                    PropertyChanged(ComponentValue);
+                    PropertyChanged(sender, ComponentValue);
                 }
             };
 

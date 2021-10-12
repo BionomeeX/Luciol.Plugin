@@ -43,9 +43,9 @@ namespace Luciol.Plugin.Preference
             _component.Click += (sender, e) =>
             {
                 var picker = GradientPicker.Show(window, _value);
-                picker.OnCompletion += (sender, gradient) =>
+                picker.OnCompletion += (pickerSender, gradient) =>
                 {
-                    this.UpdateValue(context, gradient.Data);
+                    this.UpdateValue(pickerSender, context, gradient.Data);
                 };
             };
             return c;
