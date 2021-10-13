@@ -38,10 +38,10 @@ namespace Luciol.Plugin.Preference
             _component.Height = _height;
             _component.Click += (sender, e) =>
             {
-                var picker = ColorPicker.Show(window, _value);
-                picker.OnCompletion += (sender, color) =>
+                var picker = ColorPicker.Show(window, Value);
+                picker.OnCompletion += (pickerSender, color) =>
                 {
-                    UpdateValue(context, Color.FromRgb(color.Data.R, color.Data.G, color.Data.B));
+                    UpdateValue(pickerSender, context, Color.FromRgb(color.Data.R, color.Data.G, color.Data.B));
                 };
             };
             return c;

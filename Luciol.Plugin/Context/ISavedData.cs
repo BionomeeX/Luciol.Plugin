@@ -1,4 +1,6 @@
-﻿namespace Luciol.Plugin.Context
+﻿using System;
+
+namespace Luciol.Plugin.Context
 {
     public interface ISavedData
     {
@@ -9,5 +11,7 @@
         /// You won't need to call that manually except if you manually do modification to the save files
         /// </remarks>
         public void Save();
+
+        public event EventHandler OnSaved;
     }
 }
