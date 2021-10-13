@@ -27,7 +27,7 @@ namespace Luciol.Plugin.Preference
                 }
                 catch (FormatException)
                 {
-                    return _value;
+                    return Value;
                 }
             }
             set

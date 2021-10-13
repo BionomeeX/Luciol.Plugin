@@ -1,9 +1,9 @@
-﻿using Luciol.Plugin.Preference;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
-namespace Luciol.Plugin.Models.Preference
+namespace Luciol.Plugin.Preference.Global
 {
     public class Settings
     {
@@ -14,6 +14,7 @@ namespace Luciol.Plugin.Models.Preference
             );
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)] // Attribut used for JSON serialization
         public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
     }
 }
