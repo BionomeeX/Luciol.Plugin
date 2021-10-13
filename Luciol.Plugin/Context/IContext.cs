@@ -1,4 +1,4 @@
-﻿using Luciol.Plugin.Models.Preference;
+﻿using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context

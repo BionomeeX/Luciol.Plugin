@@ -1,32 +1,15 @@
-﻿using ExtendedAvalonia;
-using ExtendedAvalonia.Slider;
-using Luciol.Plugin.Preference;
+﻿using System;
 
-namespace Luciol.Plugin.Models.Preference
+namespace Luciol.Plugin.Preference.Global
 {
     public class GlobalSettings
     {
         internal GlobalSettings()
         { }
 
-        public Settings General { get; } = new(new IPreferenceExport[]
-        {
+        public Settings General { get; } = new(Array.Empty<IPreferenceExport>());
 
-        });
-
-        public Settings Triangle { get; } = new(new IPreferenceExport[]
-        {
-            new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
-            new GradientPreference("triangleColors", "Triangle Colors",
-                new Gradient()
-                {
-                    PositionColors = new PositionColor[]
-                    {
-                        new() { Position = 0.0, Color = Color.Black },
-                        new() { Position = 1.0, Color = Color.Blue }
-                    }
-                })
-        });
+        public TriangleSettings Triangle { get; } = new();
 
         public Settings Graph { get; } = new(new IPreferenceExport[]
         {

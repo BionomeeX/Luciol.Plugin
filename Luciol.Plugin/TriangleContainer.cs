@@ -1,8 +1,7 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
-using ExtendedAvalonia.Slider;
-using Luciol.Plugin.Models.Preference;
 using Luciol.Plugin.Preference;
+using Luciol.Plugin.Preference.Global;
 using System;
 using System.Collections.Generic;
 
@@ -22,7 +21,7 @@ namespace Luciol.Plugin
 
         public void Init(GlobalSettings settings)
         {
-            ((GradientPreference)settings.Triangle.Preferences["triangleColors"]).OnChange += (e, sender) =>
+            settings.Triangle.TriangleColors.OnChange += (e, sender) =>
             {
                 _colors.Clear();
             };
@@ -41,7 +40,7 @@ namespace Luciol.Plugin
             {
                 return v;
             }
-            var color = GradientPicker.GetColorFromPosition((Gradient)settings.Triangle.Preferences["triangleColors"].Value, value / maxValue);
+            var color = GradientPicker.GetColorFromPosition((Gradient)settings.Triangle.TriangleColors.Value, value / maxValue);
             var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
             lock(_colors)
             {
