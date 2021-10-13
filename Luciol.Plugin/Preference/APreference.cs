@@ -24,7 +24,7 @@ namespace Luciol.Plugin.Preference
         /// Internal value stored for the component value
         /// Since component may reset if we close and reopen preference tab, we need to store it here
         /// </summary>
-        protected Type _value { private set; get; }
+        public Type Value { private set; get; }
         /// <summary>
         /// Default value of the preference
         /// </summary>
@@ -36,15 +36,15 @@ namespace Luciol.Plugin.Preference
         public string Name { init; get; }
 
         /// <inheritdoc/>
-        public object Value
+        public object ObjValue
         {
             set
             {
-                _value = JsonSerializer.Deserialize<Type>(((JsonElement)value).GetRawText());
+                Value = JsonSerializer.Deserialize<Type>(((JsonElement)value).GetRawText());
             }
             get
             {
-                return _value;
+                return Value;
             }
         }
 
@@ -60,7 +60,7 @@ namespace Luciol.Plugin.Preference
         /// <param name="name">Text displayed on the preference label</param>
         /// <param name="defaultValue">Default value used for the preference</param>
         protected APreference(string key, string name, Type defaultValue)
-            => (Key, Name, _defaultValue, _value) = (key, name, defaultValue, defaultValue);
+            => (Key, Name, _defaultValue, Value) = (key, name, defaultValue, defaultValue);
 
         /// <summary>
         /// Control used to store your preference
@@ -72,7 +72,7 @@ namespace Luciol.Plugin.Preference
         public void UpdateValue(object sender, IContext context, Type value)
         {
             _context = context;
-            if (!value.Equals(_value))
+            if (!value.Equals(Value))
             {
                 ComponentValue = value;
                 PropertyChanged(sender, value);
@@ -81,11 +81,11 @@ namespace Luciol.Plugin.Preference
 
         protected void PropertyChanged(object sender, Type value)
         {
-            _value = value; // Set internal value to its current value
+            Value = value; // Set internal value to its current value
             _context.SavedData.Save(); // Save change in file
             _context.SavedData.OnSaved += (s, e) => // We call "OnChange" only when data are actually saved
             {
-                OnChange?.Invoke(sender, new PreferenceEventArgs<Type>(_value)); // Call event if someone registered to it
+                OnChange?.Invoke(sender, new PreferenceEventArgs<Type>(Value)); // Call event if someone registered to it
             };
         }
 
@@ -96,7 +96,7 @@ namespace Luciol.Plugin.Preference
 
             // Create a new instance of the component and set its value to our current value saved
             _component = new();
-            ComponentValue = _value;
+            ComponentValue = Value;
 
             // When property is changed...
             _component.PropertyChanged += (sender, e) =>

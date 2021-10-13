@@ -13,7 +13,7 @@ namespace Luciol.Plugin.Preference
 
         protected override ColorPalette ComponentValue
         {
-            get => _value;
+            get => Value;
             set { }
         }
 

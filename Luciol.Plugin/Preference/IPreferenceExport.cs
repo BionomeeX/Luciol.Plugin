@@ -21,6 +21,6 @@ namespace Luciol.Plugin.Preference
         /// <summary>
         /// Current value assignated to the preference
         /// </summary>
-        public object Value { set; get; }
+        public object ObjValue { set; get; }
     }
 }

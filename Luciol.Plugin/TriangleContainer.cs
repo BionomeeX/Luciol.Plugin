@@ -40,7 +40,7 @@ namespace Luciol.Plugin
             {
                 return v;
             }
-            var color = GradientPicker.GetColorFromPosition((Gradient)settings.Triangle.TriangleColors.Value, value / maxValue);
+            var color = GradientPicker.GetColorFromPosition((Gradient)settings.Triangle.TriangleColors.ObjValue, value / maxValue);
             var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
             lock(_colors)
             {

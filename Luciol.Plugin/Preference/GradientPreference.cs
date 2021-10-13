@@ -42,7 +42,7 @@ namespace Luciol.Plugin.Preference
             _component.Height = _height;
             _component.Click += (sender, e) =>
             {
-                var picker = GradientPicker.Show(window, _value);
+                var picker = GradientPicker.Show(window, Value);
                 picker.OnCompletion += (pickerSender, gradient) =>
                 {
                     this.UpdateValue(pickerSender, context, gradient.Data);
