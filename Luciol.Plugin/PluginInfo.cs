@@ -6,12 +6,13 @@ namespace Luciol.Plugin
 {
     public class PluginInfo
     {
-        public PluginInfo(Assembly assembly, Type plugin)
+        public PluginInfo(Assembly assembly, Type plugin, PluginType pluginType)
         {
             if (assembly == null)
             {
                 throw new ArgumentNullException(nameof(assembly), "Assembly cannot be null");
             }
+            PluginType = pluginType;
             var version = assembly.GetName().Version;
             _name = assembly.GetName().Name;
             _author = assembly.GetCustomAttribute<AssemblyAuthorAttribute>()?.Author ?? "Unkown";
@@ -24,6 +25,7 @@ namespace Luciol.Plugin
         private readonly string _author;
         public string Description { private init; get; }
         public string Version { private init; get; }
+        public PluginType PluginType { private init; get; }
         private readonly Type _plugin;
 
         internal ADisplayPlugin Instanciate()
