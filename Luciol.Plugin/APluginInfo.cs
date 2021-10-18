@@ -1,6 +1,4 @@
-﻿using Luciol.Plugin.AssemblyAttribute;
-using System;
-using System.Reflection;
+﻿using System;
 
 namespace Luciol.Plugin
 {
@@ -31,6 +29,40 @@ namespace Luciol.Plugin
             {
                 return $"{PluginType}_{Author}_{Name}";
             }
+        }
+
+        public static bool operator ==(APluginInfo a, APluginInfo b)
+        {
+            if (a is null)
+            {
+                return b is null;
+            }
+            return a.Key == b.Key;
+        }
+
+        public static bool operator !=(APluginInfo a, APluginInfo b)
+        {
+            return !(a == b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj is null)
+            {
+                return false;
+            }
+
+            return this == (APluginInfo)obj;
+        }
+
+        public override int GetHashCode()
+        {
+            return Key.GetHashCode();
         }
     }
 }
