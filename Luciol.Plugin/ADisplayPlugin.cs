@@ -12,9 +12,9 @@ using System.Linq;
 
 namespace Luciol.Plugin
 {
-    public abstract class APlugin
+    public abstract class ADisplayPlugin : IPlugin
     {
-        protected APlugin()
+        protected ADisplayPlugin()
         {
              Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
                 GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
@@ -33,7 +33,7 @@ namespace Luciol.Plugin
         /// Internal initialization, set context and call Init for child class
         /// </summary>
         /// <param name="context">General context of the application</param>
-        internal void Init(IContext context)
+        public void Init(IContext context)
         {
             Context = context;
             _viewModelInstance.Init(this);

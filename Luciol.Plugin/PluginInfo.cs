@@ -26,9 +26,9 @@ namespace Luciol.Plugin
         public string Version { private init; get; }
         private readonly Type _plugin;
 
-        internal APlugin Instanciate()
+        internal ADisplayPlugin Instanciate()
         {
-            var plugin = (APlugin)Activator.CreateInstance(_plugin);
+            var plugin = (ADisplayPlugin)Activator.CreateInstance(_plugin);
             plugin.PluginInfo = this;
             return plugin;
         }

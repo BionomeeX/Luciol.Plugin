@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context
         /// <param name="path">Path where the file must be saved</param>
         /// <param name="dataFolderName">Name of the folder containing triangle data</param>
         /// <param name="plugins">List of plugins to use</param>
-        public void Create(string path, string dataFolderName, IReadOnlyCollection<APlugin> plugins);
+        public void Create(string path, string dataFolderName, IReadOnlyCollection<ADisplayPlugin> plugins);
 
         /// <summary>
         /// Create a context from an existing save file
@@ -27,7 +27,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
-        public IReadOnlyCollection<APlugin> Plugins { get; }
+        public IReadOnlyCollection<ADisplayPlugin> Plugins { get; }
         /// <summary>
         /// Used to access the save file
         /// </summary>
