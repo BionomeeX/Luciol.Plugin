@@ -20,6 +20,6 @@ namespace Luciol.Plugin
         /// </summary>
         public IContext Context { private set; get; }
 
-        public PluginInfo PluginInfo { internal set; get; }
+        public APluginInfo PluginInfo { internal set; get; }
     }
 }

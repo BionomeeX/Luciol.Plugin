@@ -8,6 +8,6 @@ namespace Luciol.Plugin
 
         public IContext Context { get; }
 
-        public PluginInfo PluginInfo { get; }
+        public APluginInfo PluginInfo { get; }
     }
 }
