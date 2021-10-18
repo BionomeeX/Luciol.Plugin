@@ -67,8 +67,9 @@ namespace Luciol.Plugin
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
 
-        internal object CustomDataInit { set; private get; }
-        private ICustomData _customData;
+        /// <summary>
+        /// A plugin can save whatever it wants using this
+        /// </summary>
         public ICustomData CustomData
         {
             set
@@ -81,7 +82,12 @@ namespace Luciol.Plugin
                 return _customData;
             }
         }
+        internal object CustomDataInit { set; private get; }
+        private ICustomData _customData;
 
+        /// <summary>
+        /// Plugin preferences
+        /// </summary>
         public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
 
         /// <summary>
@@ -89,7 +95,12 @@ namespace Luciol.Plugin
         /// </summary>
         public IContext Context { private set; get; }
 
+        /// <summary>
+        /// Metadata about the plugin
+        /// </summary>
         public APluginInfo PluginInfo { internal set; get; }
+
+        // Data for XAML and starting the view
 
         public void Test<T, U>()
             where T : Control, new()
