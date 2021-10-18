@@ -44,7 +44,7 @@ namespace Luciol.Plugin
         {
             get
             {
-                return _author + "_" + _name;
+                return $"{PluginType}_{_author}_{_name}";
             }
         }
     }
