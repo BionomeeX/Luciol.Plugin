@@ -60,6 +60,10 @@ namespace Luciol.Plugin
             {
                 return b is null;
             }
+            if (b is null)
+            {
+                return false;
+            }
             return a.Key == b.Key;
         }
 
