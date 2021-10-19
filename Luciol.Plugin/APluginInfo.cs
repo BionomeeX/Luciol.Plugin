@@ -49,12 +49,9 @@ namespace Luciol.Plugin
         public override string ToString()
             => $"{Name} by {Author} ({Version})";
 
-        public string ToShortString()
-            => $"{Author}/{Name}";
-
         public string Key
         {
-            get => $"{PluginType}_{Author}_{Name}";
+            get => $"{Author}/{PluginType}/{Name}";
         }
 
         public static bool operator ==(APluginInfo a, APluginInfo b)
