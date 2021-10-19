@@ -33,6 +33,7 @@ namespace Luciol.Plugin
         /// <summary>
         /// If your plugin depends of others plugins to work properly
         /// </summary>
+        /// <remarks>Your Types must be inheriting APluginInfo!</remarks>
         public virtual Type[] Dependencies
         {
             get => Array.Empty<Type>();
@@ -46,16 +47,14 @@ namespace Luciol.Plugin
         }
 
         public override string ToString()
-        {
-            return $"{Name} by {Author} ({Version})";
-        }
+            => $"{Name} by {Author} ({Version})";
+
+        public string ToShortString()
+            => $"{Author}/{Name}";
 
         public string Key
         {
-            get
-            {
-                return $"{PluginType}_{Author}_{Name}";
-            }
+            get => $"{PluginType}_{Author}_{Name}";
         }
 
         public static bool operator ==(APluginInfo a, APluginInfo b)
