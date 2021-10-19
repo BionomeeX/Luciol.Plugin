@@ -10,9 +10,10 @@ namespace Luciol.Plugin
         protected virtual void Init()
         { }
 
-        void IPlugin.Init(IContext context)
+        void IPlugin.Init(IContext context, IPlugin[] dependencies)
         {
-            throw new System.NotImplementedException();
+            Context = context;
+            Dependencies = dependencies;
         }
 
         /// <summary>
@@ -21,5 +22,7 @@ namespace Luciol.Plugin
         public IContext Context { private set; get; }
 
         public APluginInfo PluginInfo { internal set; get; }
+
+        public IPlugin[] Dependencies { private set; get; }
     }
 }

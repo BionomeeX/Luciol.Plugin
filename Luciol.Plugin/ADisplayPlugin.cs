@@ -33,9 +33,10 @@ namespace Luciol.Plugin
         /// Internal initialization, set context and call Init for child class
         /// </summary>
         /// <param name="context">General context of the application</param>
-        public void Init(IContext context)
+        public void Init(IContext context, IPlugin[] dependencies)
         {
             Context = context;
+            Dependencies = dependencies;
             _viewModelInstance.Init(this);
             Init();
         }
@@ -99,6 +100,8 @@ namespace Luciol.Plugin
         /// Metadata about the plugin
         /// </summary>
         public APluginInfo PluginInfo { internal set; get; }
+
+        public IPlugin[] Dependencies { private set; get; }
 
         // Data for XAML and starting the view
 
