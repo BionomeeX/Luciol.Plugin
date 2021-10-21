@@ -1,12 +1,22 @@
 ﻿using Luciol.Plugin.Context;
 using Luciol.Plugin.Preference;
 using Luciol.Plugin.SaveLoad;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Luciol.Plugin
 {
     public abstract class APlugin
     {
+        protected APlugin()
+        {
+            Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
+               GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
+            );
+        }
+
         internal virtual void Init(IContext context, APlugin[] dependencies)
         {
             Context = context;
@@ -55,5 +65,12 @@ namespace Luciol.Plugin
         }
         internal object CustomDataInit { set; private get; }
         private ICustomData _customData;
+
+        /// <summary>
+        /// Get the preference (settings)
+        /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
+        /// </summary>
+        protected virtual IEnumerable<IPreferenceExport> GetPreferences()
+            => Array.Empty<IPreferenceExport>();
     }
 }

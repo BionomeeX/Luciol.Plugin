@@ -3,22 +3,14 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
-using Luciol.Plugin.SaveLoad;
-using Luciol.Plugin.Preference;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Luciol.Plugin
 {
     public abstract class ADisplayPlugin : APlugin
     {
-        protected ADisplayPlugin()
+        protected ADisplayPlugin() : base()
         {
-             Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
-                GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
-             );
             _viewModelInstance = GetViewModel();
         }
 
@@ -28,8 +20,8 @@ namespace Luciol.Plugin
         /// <param name="context">General context of the application</param>
         internal override void Init(IContext context, APlugin[] dependencies)
         {
-            _viewModelInstance.Init(this);
             base.Init(context, dependencies);
+            _viewModelInstance.Init(this);
         }
 
         /// <summary>
@@ -53,11 +45,6 @@ namespace Luciol.Plugin
         /// </summary>
         protected abstract APluginViewModel GetViewModel();
         private readonly APluginViewModel _viewModelInstance;
-        /// <summary>
-        /// Get the preference (settings)
-        /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
-        /// </summary>
-        protected abstract IEnumerable<IPreferenceExport> GetPreferences();
 
         // Data for XAML and starting the view
 
