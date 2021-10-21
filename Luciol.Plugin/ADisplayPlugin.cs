@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace Luciol.Plugin
 {
-    public abstract class ADisplayPlugin : IPlugin
+    public abstract class ADisplayPlugin : APlugin
     {
         protected ADisplayPlugin()
         {
@@ -23,22 +23,13 @@ namespace Luciol.Plugin
         }
 
         /// <summary>
-        /// Plugins need to do their initialization here instead of the ctor
-        /// The reason is that Context is garenteed to be not null in the Init function
-        /// </summary>
-        protected virtual void Init()
-        { }
-
-        /// <summary>
         /// Internal initialization, set context and call Init for child class
         /// </summary>
         /// <param name="context">General context of the application</param>
-        public void Init(IContext context, IPlugin[] dependencies)
+        internal override void Init(IContext context, APlugin[] dependencies)
         {
-            Context = context;
-            Dependencies = dependencies;
             _viewModelInstance.Init(this);
-            Init();
+            base.Init(context, dependencies);
         }
 
         /// <summary>
@@ -67,41 +58,6 @@ namespace Luciol.Plugin
         /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
         /// </summary>
         protected abstract IEnumerable<IPreferenceExport> GetPreferences();
-
-        /// <summary>
-        /// A plugin can save whatever it wants using this
-        /// </summary>
-        public ICustomData CustomData
-        {
-            set
-            {
-                _customData = value;
-                _customData.Init(CustomDataInit);
-            }
-            get
-            {
-                return _customData;
-            }
-        }
-        internal object CustomDataInit { set; private get; }
-        private ICustomData _customData;
-
-        /// <summary>
-        /// Plugin preferences
-        /// </summary>
-        public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
-
-        /// <summary>
-        /// Global context, contains various information about the current program
-        /// </summary>
-        public IContext Context { private set; get; }
-
-        /// <summary>
-        /// Metadata about the plugin
-        /// </summary>
-        public APluginInfo PluginInfo { internal set; get; }
-
-        public IPlugin[] Dependencies { private set; get; }
 
         // Data for XAML and starting the view
 

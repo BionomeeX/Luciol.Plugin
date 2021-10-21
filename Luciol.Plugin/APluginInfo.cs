@@ -39,9 +39,9 @@ namespace Luciol.Plugin
             get => Array.Empty<Type>();
         }
 
-        internal ADisplayPlugin Instanciate()
+        internal APlugin Instanciate()
         {
-            var plugin = (ADisplayPlugin)Activator.CreateInstance(Plugin);
+            var plugin = (APlugin)Activator.CreateInstance(Plugin);
             plugin.PluginInfo = this;
             return plugin;
         }
