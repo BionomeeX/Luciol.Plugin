@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context
         /// Add an annotation to the triangle
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
-        public void AddAnnotation(Annotation annotation);
+        public Task AddAnnotationAsync(int posX, int posY, int layer, AnnotationType type);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>
@@ -39,14 +39,6 @@ namespace Luciol.Plugin.Context
         /// Get all annotations already placed
         /// </summary>
         public IReadOnlyCollection<Annotation> GetAnnotations();
-
-        /// <summary>
-        /// Create an annotation
-        /// </summary>
-        /// <param name="x">X position</param>
-        /// <param name="y">Y position</param>
-        /// <param name="layer">Layer to search on</param>
-        public Task<Annotation> CreateAnnotationAsync(int x, int y, int layer, AnnotationType type);
 
         /// <summary>
         /// Get data about a snip
