@@ -1,32 +1,24 @@
-﻿using Luciol.Plugin.Event;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Luciol.Plugin.Context
 {
-    public interface IMainTriangle
+    public interface IMainTriangle<T>
     {
         /// <summary>
-        /// Add an annotation to the triangle
+        /// Get data about a snip
+        /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
         /// </summary>
-        /// <param name="annotation">Annotation to add</param>
-        public Task AddAnnotationAsync(int posX, int posY, int layer, AnnotationType type);
+        /// <param name="pos"></param>
+        /// <param name="layer"></param>
+        /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
+        public Task<T[]> GetSNPDataAsync(int pos, int layer);
+
         /// <summary>
-        /// Remove an annotation from the triangle
+        /// Get all values on the diagonal
         /// </summary>
-        /// <param name="posX">X position of the annotation</param>
-        /// <param name="posY">Y position of the annotation</param>
-        /// <param name="layer">Layer the annotation is in</param>
-        public void RemoveAnnotation(int posX, int posY, int layer);
-        /// <summary>
-        /// Check is an annotation is at the given position
-        /// </summary>
-        /// <param name="posX">X position to check</param>
-        /// <param name="posY">Y position to check</param>
-        /// <param name="layer">Layer to check</param>
-        /// <returns></returns>
-        public bool DoesContainsAnnotation(int posX, int posY, int layer, AnnotationType type);
+        public IReadOnlyCollection<T> GetDiagonal();
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>
@@ -35,24 +27,6 @@ namespace Luciol.Plugin.Context
         /// <param name="layer">Layer to check</param>
         /// <returns>true if in the triangle, false otherwise</returns>
         public bool IsPositionValid(int posX, int posY, int layer);
-        /// <summary>
-        /// Get all annotations already placed
-        /// </summary>
-        public IReadOnlyCollection<Annotation> GetAnnotations();
-
-        /// <summary>
-        /// Get data about a snip
-        /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="layer"></param>
-        /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<SNPData[]> GetSNPDataAsync(int pos, int layer);
-
-        /// <summary>
-        /// Get all values on the diagonal
-        /// </summary>
-        public IReadOnlyCollection<SNPData> GetDiagonal();
 
         /// <summary>
         /// Called before data are load
@@ -68,13 +42,5 @@ namespace Luciol.Plugin.Context
         /// </summary>
         /// <remarks>This is not called from the main thread</remarks>
         public event EventHandler<EventArgs> OnDataCleaned;
-        /// <summary>
-        /// Called when an annotation is added
-        /// </summary>
-        public event EventHandler<AnnotationEventArgs> OnAnnotationAdd;
-        /// <summary>
-        /// Called when an annotation is removed
-        /// </summary>
-        public event EventHandler<AnnotationEventArgs> OnAnnotationRemove;
     }
 }
