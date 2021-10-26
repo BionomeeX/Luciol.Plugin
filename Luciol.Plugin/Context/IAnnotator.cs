@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context
         /// Add an annotation to the triangle
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
-        public Task AddAnnotationAsync(int posX, int posY, int layer, AnnotationType type);
+        public void AddAnnotation(int posX, int posY, int layer, AnnotationType type);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>

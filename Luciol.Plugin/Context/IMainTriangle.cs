@@ -23,6 +23,9 @@ namespace Luciol.Plugin.Context
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
         public Task<SNPData<TIn>[]> GetSNPDataAsync(int pos, int layer);
 
+        public Task<TIn> GetValueAsync(int layer, int x, int y);
+        public Task<TIn> GetValueAsync(Annotation a);
+
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
