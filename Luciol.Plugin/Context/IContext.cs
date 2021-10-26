@@ -24,6 +24,7 @@ namespace Luciol.Plugin.Context
         /// Data about the main triangle
         /// </summary>
         public IMainTriangle<float> SNPTriangle { get; }
+        public IMainTriangle<uint> PositionTriangle { get; }
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
