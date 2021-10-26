@@ -4,8 +4,16 @@ using System.Threading.Tasks;
 
 namespace Luciol.Plugin.Context
 {
-    public interface IMainTriangle<T>
+    /// <summary>
+    /// Triangle that display interaction between the SNP
+    /// </summary>
+    /// <typeparam name="TIn">Data taken in input</typeparam>
+    public interface IMainTriangle<TIn>
     {
+        public void LoadData(string infoPath, string layersPath,
+            IReadOnlyCollection<SNPData<TIn>> diagonal,
+            Func<string, TIn[]> loader);
+
         /// <summary>
         /// Get data about a snip
         /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
@@ -13,12 +21,12 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<T[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SNPData<TIn>[]> GetSNPDataAsync(int pos, int layer);
 
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<T> GetDiagonal();
+        public IReadOnlyCollection<SNPData<TIn>> GetDiagonal();
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>

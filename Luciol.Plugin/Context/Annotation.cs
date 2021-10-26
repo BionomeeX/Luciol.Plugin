@@ -5,8 +5,8 @@ namespace Luciol.Plugin.Context
 {
     public class Annotation
     {
-        internal Annotation(int snp1, int snp2, int layer, float value, AnnotationType type)
-            => (Snp1, Snp2, Layer, Value, Type) = (snp1, snp2, layer, value, type);
+        internal Annotation(int snp1, int snp2, int layer, AnnotationType type)
+            => (Snp1, Snp2, Layer, Type) = (snp1, snp2, layer, type);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Obsolete("Default ctor is for JSON serialization only", error: true)]
@@ -25,10 +25,6 @@ namespace Luciol.Plugin.Context
         /// Second snip of the annotation (also equals to Y position)
         /// </summary>
         public int Snp2 { init; get; }
-        /// <summary>
-        /// Value of the annotation
-        /// </summary>
-        public float Value { init; get; }
         /// <summary>
         /// Type of the annotation
         /// </summary>

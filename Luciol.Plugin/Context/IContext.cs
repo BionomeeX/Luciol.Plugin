@@ -34,6 +34,11 @@ namespace Luciol.Plugin.Context
         /// </summary>
         public ISavedData SavedData { get; }
 
+        /// <summary>
+        /// Manage the annotations
+        /// </summary>
+        public IAnnotator Annotator { get; }
+
         public GlobalSettings GlobalSettings { get; }
     }
 }
