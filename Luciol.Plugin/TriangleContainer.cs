@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
-using Luciol.Plugin.Preference;
 using Luciol.Plugin.Preference.Global;
 using System;
 using System.Collections.Generic;
@@ -51,6 +50,13 @@ namespace Luciol.Plugin
             }
             return sysColor;
         }
+
+        public void Invalidate()
+        {
+            InvalidateInternal();
+        }
+
+        internal Action InvalidateInternal { set; private get; }
 
         private readonly Dictionary<int, System.Drawing.Color> _colors = new();
     }
