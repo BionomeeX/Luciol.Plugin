@@ -1,10 +1,6 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.ReactiveUI;
-using Luciol.Plugin.Context;
-using Luciol.Plugin.SaveLoad;
+﻿using Luciol.Plugin.Context;
 using Luciol.Plugin.Preference;
+using Luciol.Plugin.SaveLoad;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,10 +12,16 @@ namespace Luciol.Plugin
     {
         protected APlugin()
         {
-             Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
-                GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
-             );
-            _viewModelInstance = GetViewModel();
+            Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
+               GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
+            );
+        }
+
+        internal virtual void Init(IContext context, APlugin[] dependencies)
+        {
+            Context = context;
+            Dependencies = dependencies;
+            Init();
         }
 
         /// <summary>
@@ -30,45 +32,25 @@ namespace Luciol.Plugin
         { }
 
         /// <summary>
-        /// Internal initialization, set context and call Init for child class
+        /// Global context, contains various information about the current program
         /// </summary>
-        /// <param name="context">General context of the application</param>
-        internal void Init(IContext context)
-        {
-            Context = context;
-            _viewModelInstance.Init(this);
-            Init();
-        }
+        public IContext Context { protected set; get; }
 
         /// <summary>
-        /// Create a new instance of the plugin view
+        /// Metadata about the plugin
         /// </summary>
-        public Control CreateViewInstance()
-        {
-            var view = GetView();
-            view.DataContext = _viewModelInstance;
-            return view;
-        }
+        public APluginInfo PluginInfo { internal set; get; }
+
+        public APlugin[] Dependencies { protected set; get; }
 
         /// <summary>
-        /// Returns the view of the plugin window
+        /// Plugin preferences
         /// </summary>
-        protected abstract Control GetView();
-        /// <summary>
-        /// Returns the view model of the plugin window
-        /// The goal is to separate the code that display stuffs (in the view) and the code that don't (in the view model)
-        /// See MVVM model for more information
-        /// </summary>
-        protected abstract APluginViewModel GetViewModel();
-        private readonly APluginViewModel _viewModelInstance;
-        /// <summary>
-        /// Get the preference (settings)
-        /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
-        /// </summary>
-        protected abstract IEnumerable<IPreferenceExport> GetPreferences();
+        public ReadOnlyDictionary<string, IPreferenceExport> Preferences { protected set; get; }
 
-        internal object CustomDataInit { set; private get; }
-        private ICustomData _customData;
+        /// <summary>
+        /// A plugin can save whatever it wants using this
+        /// </summary>
         public ICustomData CustomData
         {
             set
@@ -81,45 +63,14 @@ namespace Luciol.Plugin
                 return _customData;
             }
         }
-
-        public ReadOnlyDictionary<string, IPreferenceExport> Preferences { private set; get; }
+        internal object CustomDataInit { set; private get; }
+        private ICustomData _customData;
 
         /// <summary>
-        /// Global context, contains various information about the current program
+        /// Get the preference (settings)
+        /// You can create your preferences with the child classes of APreference (APreference already implement IPreferenceExport)
         /// </summary>
-        public IContext Context { private set; get; }
-
-        public PluginInfo PluginInfo { internal set; get; }
-
-        public void Test<T, U>()
-            where T : Control, new()
-            where U : new()
-        {
-            BuildAvaloniaApp<T, U>()
-                .StartWithClassicDesktopLifetime(Array.Empty<string>());
-        }
-
-        public static AppBuilder BuildAvaloniaApp<T, U>()
-            where T : Control, new()
-            where U : new()
-            => AppBuilder.Configure<App>()
-                .UsePlatformDetect()
-                .LogToTrace()
-                .UseReactiveUI()
-                .AfterSetup(a => {
-                    ((App)a.Instance).OnFrameworkInitializationCompletedCallback = (app) =>
-                    {
-                        if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                        {
-                            desktop.MainWindow = new MainWindow
-                            {
-                                Content = new T
-                                {
-                                    DataContext = new U()
-                                }
-                            };
-                        }
-                    };
-                });
+        protected virtual IEnumerable<IPreferenceExport> GetPreferences()
+            => Array.Empty<IPreferenceExport>();
     }
 }
