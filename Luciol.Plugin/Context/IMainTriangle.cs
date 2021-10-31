@@ -1,52 +1,18 @@
-﻿using Luciol.Plugin.Event;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Luciol.Plugin.Context
 {
-    public interface IMainTriangle
+    /// <summary>
+    /// Triangle that display interaction between the SNP
+    /// </summary>
+    /// <typeparam name="TIn">Data taken in input</typeparam>
+    public interface IMainTriangle<TIn>
     {
-        /// <summary>
-        /// Add an annotation to the triangle
-        /// </summary>
-        /// <param name="annotation">Annotation to add</param>
-        public void AddAnnotation(Annotation annotation);
-        /// <summary>
-        /// Remove an annotation from the triangle
-        /// </summary>
-        /// <param name="posX">X position of the annotation</param>
-        /// <param name="posY">Y position of the annotation</param>
-        /// <param name="layer">Layer the annotation is in</param>
-        public void RemoveAnnotation(int posX, int posY, int layer);
-        /// <summary>
-        /// Check is an annotation is at the given position
-        /// </summary>
-        /// <param name="posX">X position to check</param>
-        /// <param name="posY">Y position to check</param>
-        /// <param name="layer">Layer to check</param>
-        /// <returns></returns>
-        public bool DoesContainsAnnotation(int posX, int posY, int layer, AnnotationType type);
-        /// <summary>
-        /// Check if the given position is in the triangle
-        /// </summary>
-        /// <param name="posX">X position to check</param>
-        /// <param name="posY">Y position to check</param>
-        /// <param name="layer">Layer to check</param>
-        /// <returns>true if in the triangle, false otherwise</returns>
-        public bool IsPositionValid(int posX, int posY, int layer);
-        /// <summary>
-        /// Get all annotations already placed
-        /// </summary>
-        public IReadOnlyCollection<Annotation> GetAnnotations();
-
-        /// <summary>
-        /// Create an annotation
-        /// </summary>
-        /// <param name="x">X position</param>
-        /// <param name="y">Y position</param>
-        /// <param name="layer">Layer to search on</param>
-        public Task<Annotation> CreateAnnotationAsync(int x, int y, int layer, AnnotationType type);
+        public void LoadData(string infoPath, string layersPath,
+            IReadOnlyCollection<SNPData<TIn>> diagonal,
+            Func<string, TIn[]> loader);
 
         /// <summary>
         /// Get data about a snip
@@ -55,12 +21,23 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<SNPData[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SNPData<TIn>[]> GetSNPDataAsync(int pos, int layer);
+
+        public Task<TIn> GetValueAsync(int layer, int x, int y);
+        public Task<TIn> GetValueAsync(Annotation a);
 
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<SNPData> GetDiagonal();
+        public IReadOnlyCollection<SNPData<TIn>> GetDiagonal();
+        /// <summary>
+        /// Check if the given position is in the triangle
+        /// </summary>
+        /// <param name="posX">X position to check</param>
+        /// <param name="posY">Y position to check</param>
+        /// <param name="layer">Layer to check</param>
+        /// <returns>true if in the triangle, false otherwise</returns>
+        public bool IsPositionValid(int posX, int posY, int layer);
 
         /// <summary>
         /// Called before data are load
@@ -76,13 +53,5 @@ namespace Luciol.Plugin.Context
         /// </summary>
         /// <remarks>This is not called from the main thread</remarks>
         public event EventHandler<EventArgs> OnDataCleaned;
-        /// <summary>
-        /// Called when an annotation is added
-        /// </summary>
-        public event EventHandler<AnnotationEventArgs> OnAnnotationAdd;
-        /// <summary>
-        /// Called when an annotation is removed
-        /// </summary>
-        public event EventHandler<AnnotationEventArgs> OnAnnotationRemove;
     }
 }
