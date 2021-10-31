@@ -23,7 +23,8 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Data about the main triangle
         /// </summary>
-        public IMainTriangle MainTriangle { get; }
+        public IMainTriangle<float> SNPTriangle { get; }
+        public IMainTriangle<uint> PositionTriangle { get; }
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
@@ -33,6 +34,19 @@ namespace Luciol.Plugin.Context
         /// </summary>
         public ISavedData SavedData { get; }
 
+        /// <summary>
+        /// Manage the annotations
+        /// </summary>
+        public IAnnotator Annotator { get; }
+
+        /// <summary>
+        /// Global settings of the application
+        /// </summary>
         public GlobalSettings GlobalSettings { get; }
+
+        /// <summary>
+        /// Information shared between all triangles
+        /// </summary>
+        public ITriangleInstance TInfo { get; }
     }
 }
