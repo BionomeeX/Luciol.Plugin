@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context
     public interface IMainTriangle<TIn>
     {
         public void LoadData(string infoPath, string layersPath,
-            IReadOnlyCollection<SNPData<TIn>> diagonal,
+            IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
             Func<string, TIn[]> loader);
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<SNPData<TIn>[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SemiInteractionData<TIn>[]> GetInteractionDataAsync(int pos, int layer);
 
         public Task<TIn> GetValueAsync(int layer, int x, int y);
         public Task<TIn> GetValueAsync(Annotation a);
@@ -29,7 +29,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<SNPData<TIn>> GetDiagonal();
+        public IReadOnlyCollection<SemiInteractionData<TIn>> GetDiagonal();
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>
