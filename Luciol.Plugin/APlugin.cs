@@ -72,5 +72,11 @@ namespace Luciol.Plugin
         /// </summary>
         protected virtual IEnumerable<IPreferenceExport> GetPreferences()
             => Array.Empty<IPreferenceExport>();
+
+        /// <summary>
+        /// Preferences to be modified when creating a new project
+        /// </summary>
+        protected virtual IEnumerable<IPreferenceExport> GetStartingPreferences()
+            => Array.Empty<IPreferenceExport>();
     }
 }
