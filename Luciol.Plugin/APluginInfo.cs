@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Luciol.Plugin.Preference;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Luciol.Plugin
 {
@@ -30,6 +33,9 @@ namespace Luciol.Plugin
         /// </summary>
         public abstract PluginType PluginType { get; }
 
+        public virtual IEnumerable<IPreferenceExport> GetStartingPreferences()
+            => Array.Empty<IPreferenceExport>();
+
         /// <summary>
         /// If your plugin depends of others plugins to work properly
         /// </summary>
@@ -39,10 +45,14 @@ namespace Luciol.Plugin
             get => Array.Empty<Type>();
         }
 
-        internal APlugin Instanciate()
+        internal APlugin Instanciate(IPreferenceExport[] defaultPrefs)
         {
             var plugin = (APlugin)Activator.CreateInstance(Plugin);
             plugin.PluginInfo = this;
+            foreach (var p in defaultPrefs)
+            {
+                plugin.Preferences.FirstOrDefault(x => x.Value == p).Value.ObjValue = p.ObjValue;
+            }
             return plugin;
         }
 
