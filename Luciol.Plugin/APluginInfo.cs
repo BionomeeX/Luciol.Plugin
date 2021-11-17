@@ -51,7 +51,7 @@ namespace Luciol.Plugin
             plugin.PluginInfo = this;
             foreach (var p in defaultPrefs)
             {
-                plugin.Preferences.FirstOrDefault(x => x.Value == p).Value.ObjValue = p.ObjValue;
+                plugin.Preferences.FirstOrDefault(x => x.Value.Key == p.Key).Value.ObjValue = p.ObjValue;
             }
             return plugin;
         }
