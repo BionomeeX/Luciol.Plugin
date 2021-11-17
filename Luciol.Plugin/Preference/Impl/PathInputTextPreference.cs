@@ -15,11 +15,15 @@ namespace Luciol.Plugin.Preference
         {
             get
             {
-                if (_component.Text == null || !File.Exists(_component.Text))
+                if (_component.Text == null)
                 {
                     return default;
                 }
-                return Value;
+                if (!File.Exists(_component.Text))
+                {
+                    return Value;
+                }
+                return _component.Text;
             }
             set
             {
