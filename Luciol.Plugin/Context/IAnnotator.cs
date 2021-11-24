@@ -18,7 +18,7 @@ namespace Luciol.Plugin.Context
         /// <param name="posX">X position of the annotation</param>
         /// <param name="posY">Y position of the annotation</param>
         /// <param name="layer">Layer the annotation is in</param>
-        public void RemoveAnnotation(int posX, int posY, int layer);
+        public void RemoveAnnotation(int posX, int posY, int layer, AnnotationType type);
         /// <summary>
         /// Check is an annotation is at the given position
         /// </summary>
