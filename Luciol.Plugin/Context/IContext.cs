@@ -1,4 +1,5 @@
-﻿using Luciol.Plugin.Preference.Global;
+﻿using Luciol.Plugin.Context.Annotation;
+using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context

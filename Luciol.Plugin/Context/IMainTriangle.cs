@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luciol.Plugin.Context.Annotation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace Luciol.Plugin.Context
         public Task<SemiInteractionData<TIn>[]> GetInteractionDataAsync(int pos, int layer);
 
         public Task<TIn> GetValueAsync(int layer, int x, int y);
-        public Task<TIn> GetValueAsync(Annotation a);
+        public Task<TIn> GetValueAsync(CrossAnnotation a);
 
         /// <summary>
         /// Get all values on the diagonal

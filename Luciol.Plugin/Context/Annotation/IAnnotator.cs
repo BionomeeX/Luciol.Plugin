@@ -1,9 +1,8 @@
 ﻿using Luciol.Plugin.Event;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Luciol.Plugin.Context
+namespace Luciol.Plugin.Context.Annotation
 {
     public interface IAnnotator
     {
@@ -11,26 +10,19 @@ namespace Luciol.Plugin.Context
         /// Add an annotation to the triangle
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
-        public void AddAnnotation(int posX, int posY, int layer, AnnotationType type);
+        /// <returns>The newly created annotation, or the current one if already exists</returns>
+        public CrossAnnotation AddAnnotation(int posX, int posY, int layer, IAnnotationFactory factory);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>
         /// <param name="posX">X position of the annotation</param>
         /// <param name="posY">Y position of the annotation</param>
         /// <param name="layer">Layer the annotation is in</param>
-        public void RemoveAnnotation(int posX, int posY, int layer, AnnotationType type);
-        /// <summary>
-        /// Check is an annotation is at the given position
-        /// </summary>
-        /// <param name="posX">X position to check</param>
-        /// <param name="posY">Y position to check</param>
-        /// <param name="layer">Layer to check</param>
-        /// <returns></returns>
-        public bool DoesContainsAnnotation(int posX, int posY, int layer, AnnotationType type);
+        public void RemoveAnnotation(CrossAnnotation annotation);
         /// <summary>
         /// Get all annotations already placed
         /// </summary>
-        public IReadOnlyCollection<Annotation> GetAnnotations();
+        public IReadOnlyCollection<CrossAnnotation> GetAnnotations();
         /// <summary>
         /// Called when an annotation is added
         /// </summary>
