@@ -7,9 +7,9 @@ namespace Luciol.Plugin.Context.Annotation
 {
     public class CrossAnnotation
     {
-        public CrossAnnotation(int snp1, int snp2, int layer, [NotNull]APluginInfo pInfo, DrawType drawType, Color color, string type)
-            => (Snp1, Snp2, Layer, Type, Sender, DrawType, Color)
-            = (snp1, snp2, layer, pInfo.Key + type, pInfo.Key, drawType, color);
+        public CrossAnnotation(int snp1, int snp2, int layer, [NotNull]APluginInfo pInfo, DrawType drawType, Color color, string type, Priority priority = Priority.Normal)
+            => (Snp1, Snp2, Layer, Type, Sender, DrawType, Color, Priority)
+            = (snp1, snp2, layer, pInfo.Key + type, pInfo.Key, drawType, color, priority);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Obsolete("Default ctor is for JSON serialization only", error: true)]
@@ -41,6 +41,7 @@ namespace Luciol.Plugin.Context.Annotation
         /// </summary>
         public DrawType DrawType { init; get; }
         public Color Color { init; get; }
+        public Priority Priority { init; get; }
 
         public static bool operator ==(CrossAnnotation a, CrossAnnotation b)
         {
