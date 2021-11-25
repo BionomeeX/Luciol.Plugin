@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Luciol.Plugin.Preference;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 
 namespace Luciol.Plugin.Context.Annotation
 {
