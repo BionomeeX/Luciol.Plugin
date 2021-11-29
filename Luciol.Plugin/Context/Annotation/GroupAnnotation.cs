@@ -45,6 +45,8 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { init; get; }
         public Priority Priority { init; get; }
 
+        public bool IsGroupAnnotation => true;
+
         public static bool operator ==(GroupAnnotation a, GroupAnnotation b)
         {
             if (a is null)
