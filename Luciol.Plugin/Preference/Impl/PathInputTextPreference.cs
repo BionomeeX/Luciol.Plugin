@@ -1,4 +1,8 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Layout;
+using Avalonia.Threading;
+using Luciol.Plugin.Context;
+using System;
 using System.IO;
 
 namespace Luciol.Plugin.Preference
@@ -32,6 +36,44 @@ namespace Luciol.Plugin.Preference
                     _component.Text = value.ToString();
                 }
             }
+        }
+
+        public override IControl GetComponent(Window window, IContext context)
+        {
+            var textfield = base.GetComponent(window, context);
+            StackPanel stack = new()
+            {
+                Orientation = Orientation.Horizontal
+            };
+            var button =
+                new Button()
+                {
+                    Content = "Browse"
+                };
+            button.Click += (sender, e) =>
+            {
+                var dialog = new OpenFileDialog
+                {
+                    Directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                };
+                dialog.ShowAsync(window).ContinueWith(async (s) =>
+                {
+                    var files = await s.ConfigureAwait(false);
+                    if (files.Length > 0)
+                    {
+                        Dispatcher.UIThread.Post(() =>
+                        {
+                            UpdateValue(this, context, files[0]);
+                        });
+                    }
+                });
+            };
+            stack.Children.AddRange(new IControl[]
+            {
+                textfield,
+                button
+            });
+            return stack;
         }
     }
 }
