@@ -5,15 +5,15 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Luciol.Plugin.Context.Annotation
 {
-    public class CrossAnnotation : IAnnotation
+    public class GroupAnnotation : IAnnotation
     {
-        public CrossAnnotation(int snp1, int snp2, int layer, [NotNull]APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
-            => (Snp1, Snp2, Layer, Name, Sender, DrawType, Color, Priority)
-            = (snp1, snp2, layer, name, pInfo.Key, drawType, color, priority);
+        public GroupAnnotation(int snp1Start, int snp1Stop, int snp2Start, int snp2Stop, int layer, [NotNull] APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
+            => (Snp1Start, Snp1Stop, Snp2Start, Snp2Stop, Layer, Name, Sender, DrawType, Color, Priority)
+            = (snp1Start, snp1Stop, snp2Start, snp2Stop, layer, name, pInfo.Key, drawType, color, priority);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Obsolete("Default ctor is for JSON serialization only", error: true)]
-        public CrossAnnotation()
+        public GroupAnnotation()
         { }
 
         /// <summary>
@@ -23,11 +23,13 @@ namespace Luciol.Plugin.Context.Annotation
         /// <summary>
         /// First snip of the annotation (also equals to X position)
         /// </summary>
-        public int Snp1 { init; get; }
+        public int Snp1Start { init; get; }
+        public int Snp1Stop { init; get; }
         /// <summary>
         /// Second snip of the annotation (also equals to Y position)
         /// </summary>
-        public int Snp2 { init; get; }
+        public int Snp2Start { init; get; }
+        public int Snp2Stop { init; get; }
         /// <summary>
         /// Type of the annotation
         /// </summary>
@@ -43,7 +45,7 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { init; get; }
         public Priority Priority { init; get; }
 
-        public static bool operator ==(CrossAnnotation a, CrossAnnotation b)
+        public static bool operator ==(GroupAnnotation a, GroupAnnotation b)
         {
             if (a is null)
             {
@@ -54,16 +56,18 @@ namespace Luciol.Plugin.Context.Annotation
 
         private string Key => $"{Sender}/{Name}";
 
-        public static bool operator !=(CrossAnnotation a, CrossAnnotation b)
+        public static bool operator !=(GroupAnnotation a, GroupAnnotation b)
             => !(a == b);
 
         public override bool Equals(object obj)
-            => Equals(obj as CrossAnnotation);
+            => Equals(obj as GroupAnnotation);
 
         public override int GetHashCode()
-            => (Layer, Snp1, Snp2).GetHashCode();
+            => (Layer, Snp1Start, Snp1Stop, Snp2Start, Snp2Stop).GetHashCode();
 
-        private bool Equals(CrossAnnotation other)
-            => other != null && Layer == other.Layer && Snp1 == other.Snp1 && Snp2 == other.Snp2 && Key == other.Key;
+        private bool Equals(GroupAnnotation other)
+            => other != null && Layer == other.Layer &&
+            Snp1Start == other.Snp1Start && Snp1Stop == other.Snp1Stop &&
+            Snp2Start == other.Snp2Start && Snp2Stop == other.Snp2Stop && Key == other.Key;
     }
 }

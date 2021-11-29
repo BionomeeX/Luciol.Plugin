@@ -8,9 +8,9 @@ namespace Luciol.Plugin.Event
     /// </summary>
     public sealed class AnnotationEventArgs : EventArgs
     {
-        public AnnotationEventArgs(CrossAnnotation annotation)
+        public AnnotationEventArgs(IAnnotation annotation)
             => Annotation = annotation;
 
-        public CrossAnnotation Annotation { get; }
+        public IAnnotation Annotation { get; }
     }
 }
