@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace Luciol.Plugin.Context.Annotation
 {
@@ -7,6 +8,6 @@ namespace Luciol.Plugin.Context.Annotation
         public IEnumerable<string> GetOptions();
         public void Enable(string key);
         public void Disable(string key);
-        public void GetValue(float value, float maxValue);
+        public Color GetValue(float value, float maxValue);
     }
 }
