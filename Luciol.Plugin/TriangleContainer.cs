@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Luciol.Plugin.Context.Annotation;
 using System;
 
 namespace Luciol.Plugin
@@ -6,7 +7,7 @@ namespace Luciol.Plugin
     public class TriangleContainer : DockPanel
     {
         internal static Func<TriangleContainer, UserControl> ImplControlConstruction { set; private get; }
-        public ATrianglePlugin Plugin { set; internal get; }
+        public IAnnotationFactory AnnotationFactory { set; internal get; }
 
         public override sealed void EndInit()
         {

@@ -20,8 +20,6 @@ namespace Luciol.Plugin
             };
         }
 
-        public abstract IAnnotationFactory AnnotationFactory { get; }
-
         /// <summary>
         /// Apply a transformation on triangle data
         /// </summary>
