@@ -49,5 +49,6 @@ namespace Luciol.Plugin.Context
         /// Information shared between all triangles
         /// </summary>
         public ITriangleInstance TInfo { get; }
+        public ITriangleContext TriangleContext { get; }
     }
 }
