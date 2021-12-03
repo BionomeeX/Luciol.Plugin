@@ -31,15 +31,15 @@ namespace Luciol.Plugin
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        public Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
         {
             var hash = value.GetHashCode();
-            if (_colors.TryGetValue(hash, out System.Drawing.Color v))
+            if (_colors.TryGetValue(hash, out Color v))
             {
                 return v;
             }
             var color = GradientPicker.GetColorFromPosition((Gradient)Context.GlobalSettings.Triangle.TriangleColors.ObjValue, value / maxValue);
-            var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+            var sysColor = Color.FromArgb(color.A, color.R, color.G, color.B);
             lock (_colors)
             {
                 if (!_colors.ContainsKey(hash)) // We make sure a second time inside the lock, because of threads
@@ -49,6 +49,6 @@ namespace Luciol.Plugin
             }
             return sysColor;
         }
-        private readonly Dictionary<int, System.Drawing.Color> _colors = new();
+        private readonly Dictionary<int, Color> _colors = new();
     }
 }
