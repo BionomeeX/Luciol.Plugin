@@ -1,4 +1,5 @@
 ﻿using Luciol.Plugin.Context.Annotation;
+using Luciol.Plugin.Context.Triangle;
 using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 

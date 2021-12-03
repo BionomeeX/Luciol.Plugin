@@ -1,6 +1,5 @@
 ﻿using ExtendedAvalonia;
 using Luciol.Plugin.Context;
-using Luciol.Plugin.Context.Annotation;
 using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 

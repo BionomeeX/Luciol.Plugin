@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace Luciol.Plugin.Context.Annotation
+namespace Luciol.Plugin.Context.Triangle
 {
     public interface ITriangleContext
     {

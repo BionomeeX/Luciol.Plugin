@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Luciol.Plugin.Context
+namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Triangle that display interaction between the SNP
