@@ -9,7 +9,7 @@ namespace Luciol.Plugin.Context.Triangle
     /// Triangle that display interaction between the SNP
     /// </summary>
     /// <typeparam name="TIn">Data taken in input</typeparam>
-    public interface IMainTriangle<TIn>
+    public interface IMainTriangle<TIn> : ITriangleDataLoader
     {
         public void LoadData(string infoPath, string layersPath,
             IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
@@ -39,6 +39,9 @@ namespace Luciol.Plugin.Context.Triangle
         /// <param name="layer">Layer to check</param>
         /// <returns>true if in the triangle, false otherwise</returns>
         public bool IsPositionValid(int posX, int posY, int layer);
+
+        public float MaxValue { get; }
+        public float MaxValueDiag { get; }
 
         /// <summary>
         /// Called before data are load

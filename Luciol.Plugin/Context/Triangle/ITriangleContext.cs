@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Luciol.Plugin.Context.Triangle
 {
@@ -8,6 +9,6 @@ namespace Luciol.Plugin.Context.Triangle
         public IEnumerable<string> GetOptions();
         public void Enable(string key);
         public void Disable(string key);
-        public Color GetValue(float value, float maxValue);
+        public Task<int[][]> GetScreenBufferAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset, int pixelSize);
     }
 }

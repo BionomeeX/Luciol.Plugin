@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin.Context
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     public record SemiInteractionData<T>
     {

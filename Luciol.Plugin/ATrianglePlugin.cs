@@ -1,7 +1,9 @@
 ﻿using ExtendedAvalonia;
 using Luciol.Plugin.Context;
+using Luciol.Plugin.Context.Triangle;
 using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Luciol.Plugin
 {
@@ -19,13 +21,17 @@ namespace Luciol.Plugin
             };
         }
 
+        public abstract ITriangleDataLoader GetDataLoader(string dataPath, uint[] dataDiagonalPositions);
+
+        public abstract Color GetValue((int X, int Y) pos, float value);
+
         /// <summary>
         /// Apply a transformation on triangle data
         /// </summary>
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public virtual System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        public System.Drawing.Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
         {
             var hash = value.GetHashCode();
             if (_colors.TryGetValue(hash, out System.Drawing.Color v))
