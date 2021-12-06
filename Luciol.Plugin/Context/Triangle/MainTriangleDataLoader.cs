@@ -17,7 +17,7 @@ namespace Luciol.Plugin.Context.Triangle
 
         public IMainTriangle<float> MainTriangle { set; get; }
 
-        public Task<Color[][]> LoadDataAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset, int pixelSize, Func<(int X, int Y), float, Color> processCallback)
+        public Task<int[][]> LoadDataAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset, int pixelSize, Func<(int X, int Y), float, int> processCallback)
             => MainTriangle.LoadDataAsync(layer, screenWidth, screenHeight, xOffset, yOffset, pixelSize, processCallback);
     }
 }

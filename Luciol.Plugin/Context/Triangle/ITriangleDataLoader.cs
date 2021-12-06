@@ -23,6 +23,6 @@ namespace Luciol.Plugin.Context.Triangle
         ///  - Max possible point value
         /// </param>
         /// <returns>Buffer to render on screen</returns>
-        public Task<Color[][]> LoadDataAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset, int pixelSize, Func<(int X, int Y), float, Color> processCallback);
+        public Task<int[][]> LoadDataAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset, int pixelSize, Func<(int X, int Y), float, int> processCallback);
     }
 }

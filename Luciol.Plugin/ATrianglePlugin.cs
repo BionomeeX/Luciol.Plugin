@@ -23,7 +23,7 @@ namespace Luciol.Plugin
 
         public abstract ITriangleDataLoader GetDataLoader(string dataPath, uint[] dataDiagonalPositions);
 
-        public abstract Color GetValue((int X, int Y) pos, float value);
+        public abstract int GetValue((int X, int Y) pos, float value);
 
         /// <summary>
         /// Apply a transformation on triangle data
@@ -31,12 +31,12 @@ namespace Luciol.Plugin
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public Color ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        public int ValueTransformation(float value, float maxValue, GlobalSettings settings)
         {
             var hash = value.GetHashCode();
             if (_colors.TryGetValue(hash, out Color v))
             {
-                return v;
+                return v.ToArgb();
             }
             var color = GradientPicker.GetColorFromPosition((Gradient)Context.GlobalSettings.Triangle.TriangleColors.ObjValue, value / maxValue);
             var sysColor = Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -47,7 +47,7 @@ namespace Luciol.Plugin
                     _colors.Add(hash, sysColor);
                 }
             }
-            return sysColor;
+            return sysColor.ToArgb();
         }
         private readonly Dictionary<int, Color> _colors = new();
     }
