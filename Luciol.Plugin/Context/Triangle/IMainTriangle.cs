@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Luciol.Plugin.Context.Annotation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Luciol.Plugin.Context
+namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Triangle that display interaction between the SNP
     /// </summary>
     /// <typeparam name="TIn">Data taken in input</typeparam>
-    public interface IMainTriangle<TIn>
+    public interface IMainTriangle<TIn> : ITriangleDataLoader
     {
         public void LoadData(string infoPath, string layersPath,
-            IReadOnlyCollection<SNPData<TIn>> diagonal,
+            IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
             Func<string, TIn[]> loader);
 
         /// <summary>
@@ -21,15 +22,15 @@ namespace Luciol.Plugin.Context
         /// <param name="pos"></param>
         /// <param name="layer"></param>
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<SNPData<TIn>[]> GetSNPDataAsync(int pos, int layer);
+        public Task<SemiInteractionData<TIn>[]> GetInteractionDataAsync(int pos, int layer);
 
         public Task<TIn> GetValueAsync(int layer, int x, int y);
-        public Task<TIn> GetValueAsync(Annotation a);
+        public Task<TIn> GetValueAsync(CrossAnnotation a);
 
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
-        public IReadOnlyCollection<SNPData<TIn>> GetDiagonal();
+        public IReadOnlyCollection<SemiInteractionData<TIn>> GetDiagonal();
         /// <summary>
         /// Check if the given position is in the triangle
         /// </summary>
@@ -38,6 +39,9 @@ namespace Luciol.Plugin.Context
         /// <param name="layer">Layer to check</param>
         /// <returns>true if in the triangle, false otherwise</returns>
         public bool IsPositionValid(int posX, int posY, int layer);
+
+        public float MaxValue { get; }
+        public float MaxValueDiag { get; }
 
         /// <summary>
         /// Called before data are load

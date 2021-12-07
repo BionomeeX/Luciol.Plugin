@@ -36,11 +36,24 @@ namespace Luciol.Plugin.Preference
         public string Name { init; get; }
 
         /// <inheritdoc/>
-        public object ObjValue
+        public object JsonValue
         {
             set
             {
                 Value = JsonSerializer.Deserialize<Type>(((JsonElement)value).GetRawText());
+            }
+            get
+            {
+                return Value;
+            }
+        }
+
+        /// <inheritdoc/>
+        public object ObjValue
+        {
+            set
+            {
+                Value = (Type)value;
             }
             get
             {

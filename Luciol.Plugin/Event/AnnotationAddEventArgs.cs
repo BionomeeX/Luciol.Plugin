@@ -1,4 +1,4 @@
-﻿using Luciol.Plugin.Context;
+﻿using Luciol.Plugin.Context.Annotation;
 using System;
 
 namespace Luciol.Plugin.Event
@@ -8,9 +8,9 @@ namespace Luciol.Plugin.Event
     /// </summary>
     public sealed class AnnotationEventArgs : EventArgs
     {
-        public AnnotationEventArgs(Annotation annotation)
+        public AnnotationEventArgs(IAnnotation annotation)
             => Annotation = annotation;
 
-        public Annotation Annotation { get; }
+        public IAnnotation Annotation { get; }
     }
 }

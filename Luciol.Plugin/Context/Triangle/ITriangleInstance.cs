@@ -1,7 +1,4 @@
-﻿using Avalonia;
-using System.Threading.Tasks;
-
-namespace Luciol.Plugin.Context
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     public interface ITriangleInstance
     {

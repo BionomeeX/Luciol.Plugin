@@ -1,4 +1,6 @@
-﻿using Luciol.Plugin.Preference.Global;
+﻿using Luciol.Plugin.Context.Annotation;
+using Luciol.Plugin.Context.Triangle;
+using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context
@@ -23,8 +25,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Data about the main triangle
         /// </summary>
-        public IMainTriangle<float> SNPTriangle { get; }
-        public IMainTriangle<uint> PositionTriangle { get; }
+        public IMainTriangle<(uint, uint)> PositionTriangle { get; }
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
@@ -48,5 +49,6 @@ namespace Luciol.Plugin.Context
         /// Information shared between all triangles
         /// </summary>
         public ITriangleInstance TInfo { get; }
+        public ITriangleContext TriangleContext { get; }
     }
 }

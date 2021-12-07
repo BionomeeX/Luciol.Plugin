@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Luciol.Plugin.Context;
+using System.Text.Json.Serialization;
 
 namespace Luciol.Plugin.Preference
 {
@@ -19,8 +20,13 @@ namespace Luciol.Plugin.Preference
         /// </summary>
         public string Key { get; }
         /// <summary>
-        /// Current value assignated to the preference
+        /// Access to the value, used by the JSON deserialisation
         /// </summary>
+        public object JsonValue { set; get; }
+        /// <summary>
+        /// Value in form of an object
+        /// </summary>
+        [JsonIgnore]
         public object ObjValue { set; get; }
     }
 }
