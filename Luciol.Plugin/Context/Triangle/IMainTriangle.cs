@@ -24,8 +24,8 @@ namespace Luciol.Plugin.Context.Triangle
         /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
         public Task<SemiInteractionData<TIn>[]> GetInteractionDataAsync(int pos, int layer);
 
-        public Task<TIn> GetValueAsync(int layer, int x, int y);
-        public Task<TIn> GetValueAsync(CrossAnnotation a);
+        public new TIn GetValue(int layer, int x, int y);
+        public TIn GetValue(CrossAnnotation a);
 
         /// <summary>
         /// Get all values on the diagonal
