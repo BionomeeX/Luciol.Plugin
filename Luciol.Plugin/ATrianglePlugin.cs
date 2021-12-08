@@ -31,7 +31,7 @@ namespace Luciol.Plugin
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public int ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        public int ValueTransformation(float value, float maxValue)
         {
             var hash = value.GetHashCode();
             if (_colors.TryGetValue(hash, out Color v))

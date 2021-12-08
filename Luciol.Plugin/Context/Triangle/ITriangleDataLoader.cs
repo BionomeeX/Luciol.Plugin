@@ -23,6 +23,6 @@ namespace Luciol.Plugin.Context.Triangle
         ///  - Max possible point value
         /// </param>
         /// <returns>Buffer to render on screen</returns>
-        public int LoadData(int layer, int x, int y);
+        public float LoadData(int layer, int x, int y);
     }
 }

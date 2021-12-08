@@ -15,7 +15,7 @@ namespace Luciol.Plugin.Context.Triangle
 
         public IMainTriangle<float> MainTriangle { set; get; }
 
-        public int LoadData(int layer, int x, int y)
+        public float LoadData(int layer, int x, int y)
             => MainTriangle.LoadData(layer, x, y);
     }
 }
