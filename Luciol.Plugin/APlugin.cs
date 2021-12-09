@@ -11,11 +11,7 @@ namespace Luciol.Plugin
     public abstract class APlugin
     {
         protected APlugin()
-        {
-            Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
-               GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
-            );
-        }
+        { }
 
         internal virtual void Init(IContext context, APlugin[] dependencies)
         {
@@ -46,7 +42,21 @@ namespace Luciol.Plugin
         /// <summary>
         /// Plugin preferences
         /// </summary>
-        public ReadOnlyDictionary<string, IPreferenceExport> Preferences { protected set; get; }
+        private ReadOnlyDictionary<string, IPreferenceExport> _preferences;
+        public ReadOnlyDictionary<string, IPreferenceExport> Preferences
+        {
+            protected set => _preferences = value;
+            get
+            {
+                if (_preferences == null)
+                {
+                    _preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
+                        GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
+                    );
+                }
+                return _preferences;
+            }
+        }
 
         /// <summary>
         /// A plugin can save whatever it wants using this
