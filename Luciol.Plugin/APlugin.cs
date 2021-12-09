@@ -4,6 +4,7 @@ using Luciol.Plugin.SaveLoad;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace Luciol.Plugin
@@ -82,5 +83,10 @@ namespace Luciol.Plugin
         /// </summary>
         protected virtual IEnumerable<IPreferenceExport> GetPreferences()
             => Array.Empty<IPreferenceExport>();
+
+        protected virtual void Log(string message, LogLevel level)
+        {
+            File.AppendAllText("error.log", $"{DateTime.Now} - {level}: {message}\n");
+        }
     }
 }
