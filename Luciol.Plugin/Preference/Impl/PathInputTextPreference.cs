@@ -59,7 +59,7 @@ namespace Luciol.Plugin.Preference
                 dialog.ShowAsync(window).ContinueWith(async (s) =>
                 {
                     var files = await s.ConfigureAwait(false);
-                    if (files.Length > 0)
+                    if (files != null && files.Length > 0)
                     {
                         Dispatcher.UIThread.Post(() =>
                         {
