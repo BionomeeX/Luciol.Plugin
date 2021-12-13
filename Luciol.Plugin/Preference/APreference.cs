@@ -102,6 +102,11 @@ namespace Luciol.Plugin.Preference
             };
         }
 
+        /// <summary>
+        /// Default property to watch over
+        /// </summary>
+        protected virtual string PropertyWatchOver() => "Text";
+
         /// <inheritdoc/>
         public virtual IControl GetComponent(Window window, IContext context)
         {
@@ -114,7 +119,7 @@ namespace Luciol.Plugin.Preference
             // When property is changed...
             _component.PropertyChanged += (sender, e) =>
             {
-                if (e.Property.Name == "Text")
+                if (e.Property.Name == PropertyWatchOver())
                 {
                     PropertyChanged(sender, ComponentValue);
                 }
