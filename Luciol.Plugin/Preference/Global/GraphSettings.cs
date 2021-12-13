@@ -7,12 +7,18 @@ namespace Luciol.Plugin.Preference.Global
         internal GraphSettings() : base(_export)
         { }
 
+        /// <summary>
+        /// Main color used for linear graphs
+        /// </summary>
         [JsonIgnore]
         public ColorPreference MainColor
         {
             get => (ColorPreference)_export[0];
         }
 
+        /// <summary>
+        /// Set of colors used for Manhattan graphs
+        /// </summary>
         [JsonIgnore]
         public ColorPalettePreference ManhattanColors
         {

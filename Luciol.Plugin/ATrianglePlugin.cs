@@ -1,7 +1,6 @@
 ﻿using ExtendedAvalonia;
 using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Triangle;
-using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 using System.Drawing;
 
