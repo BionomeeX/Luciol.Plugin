@@ -22,7 +22,6 @@ namespace Luciol.Plugin.Context.Annotation
         public DrawType DrawType { get; }
         public Color Color { get; }
         public Priority Priority { get; }
-
-        public bool IsGroupAnnotation { get; }
+        public AnnotationType Type { get; }
     }
 }

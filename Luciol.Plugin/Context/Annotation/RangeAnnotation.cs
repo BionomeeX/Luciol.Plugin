@@ -37,7 +37,7 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { init; get; }
         public Priority Priority { init; get; }
 
-        public bool IsGroupAnnotation => false;
+        public AnnotationType Type => AnnotationType.Range;
 
         public static bool operator ==(RangeAnnotation a, RangeAnnotation b)
         {
