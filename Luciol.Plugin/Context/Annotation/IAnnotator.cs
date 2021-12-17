@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context.Annotation
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
         /// <returns>The newly created annotation, or the current one if already exists</returns>
-        public IAnnotation AddAnnotation(int posX, int posY, int layer, IAnnotationFactory factory);
+        public IAnnotation AddAnnotation(IAnnotation annotation);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>
