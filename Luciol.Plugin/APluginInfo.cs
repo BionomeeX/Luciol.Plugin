@@ -40,9 +40,9 @@ namespace Luciol.Plugin
         /// If your plugin depends of others plugins to work properly
         /// </summary>
         /// <remarks>Your Types must be inheriting APluginInfo!</remarks>
-        public virtual Type[] Dependencies
+        public virtual Dependency[] Dependencies
         {
-            get => Array.Empty<Type>();
+            get => Array.Empty<Dependency>();
         }
 
         internal APlugin Instanciate(IPreferenceExport[] defaultPrefs)

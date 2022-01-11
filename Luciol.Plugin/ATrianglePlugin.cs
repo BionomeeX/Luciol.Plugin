@@ -11,7 +11,7 @@ namespace Luciol.Plugin
         protected ATrianglePlugin() : base()
         { }
 
-        internal override void Init(IContext context, APlugin[] dependencies)
+        internal override void Init(IContext context, Dependency[] dependencies)
         {
             base.Init(context, dependencies);
             context.GlobalSettings.Triangle.TriangleColors.OnChange += (e, sender) =>

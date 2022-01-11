@@ -14,7 +14,7 @@ namespace Luciol.Plugin
         protected APlugin()
         { }
 
-        internal virtual void Init(IContext context, APlugin[] dependencies)
+        internal virtual void Init(IContext context, Dependency[] dependencies)
         {
             Context = context;
             Dependencies = dependencies;
@@ -38,7 +38,7 @@ namespace Luciol.Plugin
         /// </summary>
         public APluginInfo PluginInfo { internal set; get; }
 
-        public APlugin[] Dependencies { protected set; get; }
+        public Dependency[] Dependencies { protected set; get; }
 
         /// <summary>
         /// Plugin preferences
