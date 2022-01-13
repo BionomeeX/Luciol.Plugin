@@ -35,6 +35,16 @@ namespace Luciol.Plugin
         }
 
         /// <summary>
+        /// Move the view on the tab of this plugin
+        /// </summary>
+        public void Focus()
+        {
+            OnFocusRequested?.Invoke(this, new());
+        }
+
+        internal event EventHandler OnFocusRequested;
+
+        /// <summary>
         /// Returns the view of the plugin window
         /// </summary>
         protected abstract Control GetView();

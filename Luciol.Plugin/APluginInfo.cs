@@ -10,11 +10,11 @@ namespace Luciol.Plugin
         /// <summary>
         /// Name of the plugin
         /// </summary>
-        protected abstract string Name { get; }
+        public abstract string Name { get; }
         /// <summary>
         /// Name of the author/company who made the plugin
         /// </summary>
-        protected abstract string Author { get; }
+        public abstract string Author { get; }
         /// <summary>
         /// Reference to the type of your plugin
         /// Probably typeof(YourPlugin)
