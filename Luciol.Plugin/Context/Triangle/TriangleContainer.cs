@@ -24,7 +24,7 @@ namespace Luciol.Plugin.Context.Triangle
 
         public void Invalidate()
         {
-            InvalidateInternal();
+            InvalidateInternal?.Invoke();
         }
 
         internal Action InvalidateInternal { set; private get; }
