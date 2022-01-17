@@ -16,6 +16,7 @@ namespace Luciol.Plugin.Template
         {
             AvaloniaXamlLoader.Load(this);
             var list = this.FindControl<StackPanel>("AnnotationList");
+            var selected = annotator.GetSelected();
             list.Children.AddRange(
                 annotator.GetAnnotations().Select(x =>
                 {
@@ -24,7 +25,17 @@ namespace Luciol.Plugin.Template
                         Text = x.Name
                     };
                     var checkbox = new CheckBox
-                    { };
+                    {
+                        IsChecked = selected.Contains(x)
+                    };
+                    checkbox.Checked += (sender, e) =>
+                    {
+                        annotator.Select(x);
+                    };
+                    checkbox.Unchecked += (sender, e) =>
+                    {
+                        annotator.Unselect(x);
+                    };
                     var content = new StackPanel();
                     content.Children.AddRange(new IControl[] { label, checkbox });
                     return content;
