@@ -22,7 +22,7 @@ namespace Luciol.Plugin.Template
                 {
                     var label = new TextBlock
                     {
-                        Text = x.Name
+                        Text = $"{x}"
                     };
                     var checkbox = new CheckBox
                     {

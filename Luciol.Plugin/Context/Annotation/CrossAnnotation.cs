@@ -45,6 +45,11 @@ namespace Luciol.Plugin.Context.Annotation
 
         public AnnotationType Type => AnnotationType.Cross;
 
+        public override string ToString()
+        {
+            return $"{Name} ({Snp1};{Snp2})";
+        }
+
         public static bool operator ==(CrossAnnotation a, CrossAnnotation b)
         {
             if (a is null)

@@ -39,6 +39,11 @@ namespace Luciol.Plugin.Context.Annotation
 
         public AnnotationType Type => AnnotationType.Range;
 
+        public override string ToString()
+        {
+            return $"{Name} {Min} to {Max}";
+        }
+
         public static bool operator ==(RangeAnnotation a, RangeAnnotation b)
         {
             if (a is null)

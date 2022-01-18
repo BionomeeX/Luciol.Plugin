@@ -30,8 +30,10 @@ namespace Luciol.Plugin
         public Control CreateViewInstance()
         {
             var view = GetView();
-            view.DataContext = _viewModelInstance;
-            return view;
+            var viewControl = (Control)view;
+            viewControl.DataContext = _viewModelInstance;
+            view.Init(this);
+            return viewControl;
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Luciol.Plugin
         /// <summary>
         /// Returns the view of the plugin window
         /// </summary>
-        protected abstract Control GetView();
+        protected abstract IPluginView GetView();
         /// <summary>
         /// Returns the view model of the plugin window
         /// The goal is to separate the code that display stuffs (in the view) and the code that don't (in the view model)
