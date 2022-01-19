@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
-using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Context;
 using System;
 using System.Linq;

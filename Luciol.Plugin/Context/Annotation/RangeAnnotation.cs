@@ -5,29 +5,23 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Luciol.Plugin.Context.Annotation
 {
-    public class CrossAnnotation : IAnnotation
+    public class RangeAnnotation : IAnnotation
     {
-        public CrossAnnotation(int snp1, int snp2, int layer, [NotNull]APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
-            => (Snp1, Snp2, Layer, Name, Sender, DrawType, Color, Priority)
-            = (snp1, snp2, layer, name, pInfo.Key, drawType, color, priority);
+        public RangeAnnotation(int min, int max, int layer, [NotNull] APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
+            => (Min, Max, Layer, Name, Sender, DrawType, Color, Priority)
+            = (min, max, layer, name, pInfo.Key, drawType, color, priority);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Obsolete("Default ctor is for JSON serialization only", error: true)]
-        public CrossAnnotation()
+        public RangeAnnotation()
         { }
 
         /// <summary>
         /// Layer the annotation was placed on
         /// </summary>
         public int Layer { init; get; }
-        /// <summary>
-        /// First snip of the annotation (also equals to X position)
-        /// </summary>
-        public int Snp1 { init; get; }
-        /// <summary>
-        /// Second snip of the annotation (also equals to Y position)
-        /// </summary>
-        public int Snp2 { init; get; }
+        public int Min { init; get; }
+        public int Max { init; get; }
         /// <summary>
         /// Type of the annotation
         /// </summary>
@@ -43,14 +37,14 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { init; get; }
         public Priority Priority { init; get; }
 
-        public AnnotationType Type => AnnotationType.Cross;
+        public AnnotationType Type => AnnotationType.Range;
 
         public override string ToString()
         {
-            return $"{Name} ({Snp1};{Snp2})";
+            return $"{Name} {Min} to {Max}";
         }
 
-        public static bool operator ==(CrossAnnotation a, CrossAnnotation b)
+        public static bool operator ==(RangeAnnotation a, RangeAnnotation b)
         {
             if (a is null)
             {
@@ -61,16 +55,16 @@ namespace Luciol.Plugin.Context.Annotation
 
         private string Key => $"{Sender}/{Name}";
 
-        public static bool operator !=(CrossAnnotation a, CrossAnnotation b)
+        public static bool operator !=(RangeAnnotation a, RangeAnnotation b)
             => !(a == b);
 
         public override bool Equals(object obj)
-            => Equals(obj as CrossAnnotation);
+            => Equals(obj as RangeAnnotation);
 
         public override int GetHashCode()
-            => (Layer, Snp1, Snp2).GetHashCode();
+            => (Layer, Min, Max).GetHashCode();
 
-        private bool Equals(CrossAnnotation other)
-            => other != null && Layer == other.Layer && Snp1 == other.Snp1 && Snp2 == other.Snp2 && Key == other.Key;
+        private bool Equals(RangeAnnotation other)
+            => other != null && Layer == other.Layer && Min == other.Min && Max == other.Max && Key == other.Key;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using ExtendedAvalonia;
 using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Triangle;
-using Luciol.Plugin.Preference.Global;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -12,7 +11,7 @@ namespace Luciol.Plugin
         protected ATrianglePlugin() : base()
         { }
 
-        internal override void Init(IContext context, APlugin[] dependencies)
+        internal override void Init(IContext context, Dependency[] dependencies)
         {
             base.Init(context, dependencies);
             context.GlobalSettings.Triangle.TriangleColors.OnChange += (e, sender) =>
@@ -31,7 +30,7 @@ namespace Luciol.Plugin
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public int ValueTransformation(float value, float maxValue, GlobalSettings settings)
+        public int ValueTransformation(float value, float maxValue)
         {
             var hash = value.GetHashCode();
             if (_colors.TryGetValue(hash, out Color v))

@@ -9,12 +9,18 @@ namespace Luciol.Plugin.Preference.Global
         internal TriangleSettings() : base(_export)
         { }
 
+        /// <summary>
+        /// Sensitivity used when doing drag & drop operation with the mouse
+        /// </summary>
         [JsonIgnore]
         public NumberInputTextPreference<float> DragAndDropSensitivity
         {
             get => (NumberInputTextPreference<float>)_export[0];
         }
 
+        /// <summary>
+        /// Gradient used for managing the colors of the triangle
+        /// </summary>
         [JsonIgnore]
         public GradientPreference TriangleColors
         {

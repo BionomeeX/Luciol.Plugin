@@ -1,13 +1,18 @@
 ﻿using Avalonia.Controls;
-using Luciol.Plugin.Context.Annotation;
+using Luciol.Plugin.Event;
 using System;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Context.Triangle
 {
     public class TriangleContainer : DockPanel
     {
         internal static Func<TriangleContainer, UserControl> ImplControlConstruction { set; private get; }
-        public IAnnotationFactory AnnotationFactory { set; internal get; }
+        public event EventHandler<TrianglePositionEventArgs> TriangleOnClick;
+
+        internal void CallTriangleEvent(TrianglePositionEventArgs args)
+        {
+            TriangleOnClick?.Invoke(this, args);
+        }
 
         public override sealed void EndInit()
         {
@@ -19,7 +24,7 @@ namespace Luciol.Plugin
 
         public void Invalidate()
         {
-            InvalidateInternal();
+            InvalidateInternal?.Invoke();
         }
 
         internal Action InvalidateInternal { set; private get; }

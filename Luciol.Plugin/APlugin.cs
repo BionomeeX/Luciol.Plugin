@@ -4,6 +4,7 @@ using Luciol.Plugin.SaveLoad;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace Luciol.Plugin
@@ -11,13 +12,9 @@ namespace Luciol.Plugin
     public abstract class APlugin
     {
         protected APlugin()
-        {
-            Preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
-               GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
-            );
-        }
+        { }
 
-        internal virtual void Init(IContext context, APlugin[] dependencies)
+        internal virtual void Init(IContext context, Dependency[] dependencies)
         {
             Context = context;
             Dependencies = dependencies;
@@ -41,12 +38,26 @@ namespace Luciol.Plugin
         /// </summary>
         public APluginInfo PluginInfo { internal set; get; }
 
-        public APlugin[] Dependencies { protected set; get; }
+        public Dependency[] Dependencies { protected set; get; }
 
         /// <summary>
         /// Plugin preferences
         /// </summary>
-        public ReadOnlyDictionary<string, IPreferenceExport> Preferences { protected set; get; }
+        private ReadOnlyDictionary<string, IPreferenceExport> _preferences;
+        public ReadOnlyDictionary<string, IPreferenceExport> Preferences
+        {
+            protected set => _preferences = value;
+            get
+            {
+                if (_preferences == null)
+                {
+                    _preferences = new ReadOnlyDictionary<string, IPreferenceExport>(
+                        GetPreferences().Select(x => new KeyValuePair<string, IPreferenceExport>(x.Key, x)).ToDictionary(x => x.Key, x => x.Value)
+                    );
+                }
+                return _preferences;
+            }
+        }
 
         /// <summary>
         /// A plugin can save whatever it wants using this
@@ -72,5 +83,10 @@ namespace Luciol.Plugin
         /// </summary>
         protected virtual IEnumerable<IPreferenceExport> GetPreferences()
             => Array.Empty<IPreferenceExport>();
+
+        protected virtual void Log(string message, LogLevel level)
+        {
+            File.AppendAllText("error.log", $"{DateTime.Now} - {level}: {message}\n");
+        }
     }
 }

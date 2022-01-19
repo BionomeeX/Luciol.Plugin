@@ -15,5 +15,8 @@ namespace Luciol.Plugin.Preference
             get => _component.IsChecked == true;
             set => _component.IsChecked = value;
         }
+
+        protected override string PropertyWatchOver()
+            => "IsChecked";
     }
 }

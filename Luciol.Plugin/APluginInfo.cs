@@ -10,11 +10,11 @@ namespace Luciol.Plugin
         /// <summary>
         /// Name of the plugin
         /// </summary>
-        protected abstract string Name { get; }
+        public abstract string Name { get; }
         /// <summary>
         /// Name of the author/company who made the plugin
         /// </summary>
-        protected abstract string Author { get; }
+        public abstract string Author { get; }
         /// <summary>
         /// Reference to the type of your plugin
         /// Probably typeof(YourPlugin)
@@ -40,9 +40,9 @@ namespace Luciol.Plugin
         /// If your plugin depends of others plugins to work properly
         /// </summary>
         /// <remarks>Your Types must be inheriting APluginInfo!</remarks>
-        public virtual Type[] Dependencies
+        public virtual Dependency[] Dependencies
         {
-            get => Array.Empty<Type>();
+            get => Array.Empty<Dependency>();
         }
 
         internal APlugin Instanciate(IPreferenceExport[] defaultPrefs)

@@ -11,7 +11,7 @@ namespace Luciol.Plugin.Context.Annotation
         /// </summary>
         /// <param name="annotation">Annotation to add</param>
         /// <returns>The newly created annotation, or the current one if already exists</returns>
-        public IAnnotation AddAnnotation(int posX, int posY, int layer, IAnnotationFactory factory);
+        public IAnnotation AddAnnotation(IAnnotation annotation);
         /// <summary>
         /// Remove an annotation from the triangle
         /// </summary>
@@ -23,6 +23,9 @@ namespace Luciol.Plugin.Context.Annotation
         /// Get all annotations already placed
         /// </summary>
         public IReadOnlyCollection<IAnnotation> GetAnnotations();
+        public void Select(IAnnotation annotation);
+        public void Unselect(IAnnotation annotation);
+        public IReadOnlyCollection<IAnnotation> GetSelected();
         /// <summary>
         /// Called when an annotation is added
         /// </summary>
@@ -31,5 +34,7 @@ namespace Luciol.Plugin.Context.Annotation
         /// Called when an annotation is removed
         /// </summary>
         public event EventHandler<AnnotationEventArgs> OnAnnotationRemove;
+        public event EventHandler<AnnotationEventArgs> OnAnnotationSelect;
+        public event EventHandler<AnnotationEventArgs> OnAnnotationUnselect;
     }
 }

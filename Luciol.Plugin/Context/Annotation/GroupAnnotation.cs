@@ -45,7 +45,12 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { init; get; }
         public Priority Priority { init; get; }
 
-        public bool IsGroupAnnotation => true;
+        public AnnotationType Type => AnnotationType.Group;
+
+        public override string ToString()
+        {
+            return $"{Name} ({Snp1Start};{Snp2Start}) ({Snp1Stop};{Snp2Stop})";
+        }
 
         public static bool operator ==(GroupAnnotation a, GroupAnnotation b)
         {
