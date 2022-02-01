@@ -18,7 +18,7 @@ namespace Luciol.Plugin.Preference.Global
 
         private static readonly IPreferenceExport[] _export = new IPreferenceExport[]
         {
-            new CheckBoxPreference("alwaysDisplayAnnotations", "Always display annotations", false)
+            new CheckBoxPreference("alwaysDisplayAnnotations", "Always display annotations", true)
         };
     }
 }
