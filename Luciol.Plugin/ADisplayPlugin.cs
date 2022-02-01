@@ -32,6 +32,7 @@ namespace Luciol.Plugin
             var view = GetView();
             var viewControl = (Control)view;
             viewControl.DataContext = _viewModelInstance;
+            view.Plugin = this;
             view.Init(this);
             return viewControl;
         }
