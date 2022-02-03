@@ -15,8 +15,22 @@ namespace Luciol.Plugin.Template
         public void Init(IAnnotator annotator)
         {
             AvaloniaXamlLoader.Load(this);
+            UpdateDisplay(annotator);
+            annotator.OnAnnotationAdd += (sender, e) =>
+            {
+                UpdateDisplay(annotator);
+            };
+            annotator.OnAnnotationRemove += (sender, e) =>
+            {
+                UpdateDisplay(annotator);
+            };
+        }
+
+        private void UpdateDisplay(IAnnotator annotator)
+        {
             var list = this.FindControl<StackPanel>("AnnotationList");
             var selected = annotator.GetSelected();
+            list.Children.Clear();
             list.Children.AddRange(
                 annotator.GetAnnotations().Select(x =>
                 {
