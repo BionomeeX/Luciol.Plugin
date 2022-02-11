@@ -23,5 +23,6 @@ namespace Luciol.Plugin.Context.Annotation
         public Color Color { get; }
         public Priority Priority { get; }
         public AnnotationType Type { get; }
+        public bool IsActive { set; get; }
     }
 }

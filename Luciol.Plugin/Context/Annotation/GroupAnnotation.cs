@@ -44,6 +44,7 @@ namespace Luciol.Plugin.Context.Annotation
         public DrawType DrawType { init; get; }
         public Color Color { init; get; }
         public Priority Priority { init; get; }
+        public bool IsActive { set; get; } = true;
 
         public AnnotationType Type => AnnotationType.Group;
 
