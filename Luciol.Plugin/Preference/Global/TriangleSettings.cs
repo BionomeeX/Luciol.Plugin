@@ -40,23 +40,25 @@ namespace Luciol.Plugin.Preference.Global
         {
             new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
             new GradientPreference("triangleMainColors", "Triangle Main Colors",
-                new Gradient()
-                {
-                    PositionColors = new PositionColor[]
+                new Gradient(
+                    new PositionColor[]
                     {
                         new() { Position = 0.0, Color = Color.Black },
                         new() { Position = 1.0, Color = Color.Blue }
-                    }
-                }),
+                    },
+                    0.0,
+                    0.0
+                )),
             new GradientPreference("triangleDiagonalColors", "Triangle Diagonal Colors",
-                new Gradient()
-                {
-                    PositionColors = new PositionColor[]
+                new Gradient(
+                    new PositionColor[]
                     {
                         new() { Position = 0.0, Color = Color.Black },
                         new() { Position = 1.0, Color = Color.Blue }
-                    }
-                })
+                    },
+                    0.0,
+                    0.0
+                ))
         };
     }
 }
