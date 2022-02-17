@@ -27,6 +27,8 @@ namespace Luciol.Plugin.Context.Triangle
         public new TIn GetValue(int layer, int x, int y);
         public TIn GetValue(CrossAnnotation a);
 
+        public int GetSize(int layer);
+
         /// <summary>
         /// Get all values on the diagonal
         /// </summary>
