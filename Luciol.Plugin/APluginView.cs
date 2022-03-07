@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using Avalonia.ReactiveUI;
-using System;
 
 namespace Luciol.Plugin
 {

@@ -1,11 +1,7 @@
 ﻿using Luciol.Plugin.Context;
 using Luciol.Plugin.Preference;
 using Luciol.Plugin.SaveLoad;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 
 namespace Luciol.Plugin
 {

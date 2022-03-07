@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using Luciol.Plugin.Event;
-using System;
 
 namespace Luciol.Plugin.Context.Triangle
 {

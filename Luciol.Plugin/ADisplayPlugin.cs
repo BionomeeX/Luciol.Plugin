@@ -3,7 +3,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
-using System;
 
 namespace Luciol.Plugin
 {

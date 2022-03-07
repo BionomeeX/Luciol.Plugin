@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Luciol.Plugin.Event
+﻿namespace Luciol.Plugin.Event
 {
     /// <summary>
     /// Represent a setting event

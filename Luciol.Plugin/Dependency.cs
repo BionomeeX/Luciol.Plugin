@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Luciol.Plugin
+﻿namespace Luciol.Plugin
 {
     public record Dependency
     {

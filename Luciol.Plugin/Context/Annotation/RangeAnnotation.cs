@@ -1,5 +1,4 @@
 ﻿using Luciol.Plugin.Preference;
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 

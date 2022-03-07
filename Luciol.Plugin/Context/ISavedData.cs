@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Luciol.Plugin.Context
+﻿namespace Luciol.Plugin.Context
 {
     public interface ISavedData
     {

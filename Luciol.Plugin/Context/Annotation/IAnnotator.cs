@@ -1,6 +1,4 @@
 ﻿using Luciol.Plugin.Event;
-using System;
-using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context.Annotation
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Luciol.Plugin.Context.Triangle
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     public interface ITriangleContext
     {

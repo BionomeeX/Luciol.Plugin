@@ -1,8 +1,6 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
 using Luciol.Plugin.Context;
-using System;
-using System.Linq;
 
 namespace Luciol.Plugin.Preference
 {

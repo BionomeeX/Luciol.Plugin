@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Luciol.Plugin.AssemblyAttribute
+﻿namespace Luciol.Plugin.AssemblyAttribute
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class AssemblyAuthorAttribute : Attribute

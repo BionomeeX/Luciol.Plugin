@@ -1,7 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Luciol.Plugin.Context.Annotation;
-using System.Linq;
 
 namespace Luciol.Plugin.Template
 {
