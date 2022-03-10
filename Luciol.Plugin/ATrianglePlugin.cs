@@ -15,11 +15,17 @@ namespace Luciol.Plugin
             base.Init(context, dependencies);
             context.GlobalSettings.Triangle.TriangleDiagonalColors.OnChange += (e, sender) =>
             {
-                _diagonalColors.Clear();
+                lock (_diagonalColors)
+                {
+                    _diagonalColors.Clear();
+                }
             };
             context.GlobalSettings.Triangle.TriangleMainColors.OnChange += (e, sender) =>
             {
-                _mainColors.Clear();
+                lock (_mainColors)
+                {
+                    _mainColors.Clear();
+                }
             };
         }
 
