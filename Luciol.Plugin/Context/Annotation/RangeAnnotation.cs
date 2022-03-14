@@ -4,6 +4,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Luciol.Plugin.Context.Annotation
 {
+    /// <summary>
+    /// Annotation used to represent a range of SNP
+    /// </summary>
     public class RangeAnnotation : IAnnotation
     {
         public RangeAnnotation(int min, int max, int layer, [NotNull] APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
@@ -15,28 +18,30 @@ namespace Luciol.Plugin.Context.Annotation
         public RangeAnnotation()
         { }
 
-        /// <summary>
-        /// Layer the annotation was placed on
-        /// </summary>
+        /// <inheritdoc/>
         public int Layer { init; get; }
+        /// <summary>
+        /// First SNP
+        /// </summary>
         public int Min { init; get; }
+        /// <summary>
+        /// Last SNP
+        /// </summary>
         public int Max { init; get; }
-        /// <summary>
-        /// Type of the annotation
-        /// </summary>
+        /// <inheritdoc/>
         public string Name { init; get; }
-        /// <summary>
-        /// Plugin that annotation is from
-        /// </summary>
+        /// <inheritdoc/>
         public string Sender { init; get; }
-        /// <summary>
-        /// How the annotation will be drawn on the main triangle
-        /// </summary>
+        /// <inheritdoc/>
         public DrawType DrawType { init; get; }
+        /// <inheritdoc/>
         public Color Color { init; get; }
+        /// <inheritdoc/>
         public Priority Priority { init; get; }
+        /// <inheritdoc/>
         public bool IsActive { set; get; } = true;
 
+        /// <inheritdoc/>
         public AnnotationType Type => AnnotationType.Range;
 
         public override string ToString()

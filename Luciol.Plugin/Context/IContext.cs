@@ -4,13 +4,16 @@ using Luciol.Plugin.Preference.Global;
 
 namespace Luciol.Plugin.Context
 {
+    /// <summary>
+    /// Contains instances about everything needed to interact with Luciol
+    /// </summary>
     public interface IContext
     {
         /// <summary>
         /// Create a new instance of the context
         /// </summary>
-        /// <param name="path">Path where the file must be saved</param>
-        /// <param name="dataFolderName">Name of the folder containing triangle data</param>
+        /// <param name="path">Path where the save file will be written</param>
+        /// <param name="dataFolderName">Folder containing triangle data</param>
         /// <param name="plugins">List of plugins to use</param>
         public void Create(string path, string dataFolderName, IReadOnlyCollection<APlugin> plugins);
 
@@ -22,7 +25,7 @@ namespace Luciol.Plugin.Context
         public void Load(string path);
 
         /// <summary>
-        /// Data about the main triangle
+        /// Data about thetriangle containing the positions
         /// </summary>
         public IMainTriangle<(uint, uint)> PositionTriangle { get; }
         /// <summary>
@@ -48,6 +51,9 @@ namespace Luciol.Plugin.Context
         /// Information shared between all triangles
         /// </summary>
         public ITriangleInstance TInfo { get; }
+        /// <summary>
+        /// Informations about all triangle
+        /// </summary>
         public ITriangleContext TriangleContext { get; }
     }
 }
