@@ -6,11 +6,11 @@
     public class MainTriangleDataLoader : ITriangleDataLoader
     {
         /// <param name="infoPath">Main folder containing all triangle data</param>
-        /// <param name="layersPath">Folder containing all layers</param>
+        /// <param name="layerName">Name of the folder containing all layers</param>
         /// <param name="diagonal">Diagonal data associating values and positions</param>
         /// <param name="loader">Method used to load a file, return a set of data given a path</param>
-        public MainTriangleDataLoader(string infoPath, string layersPath, IReadOnlyCollection<SemiInteractionData<float>> diagonal, Func<string, float[]> loader)
-            => (InfoPath, LayersPath, Diagonal, Loader) = (infoPath, layersPath, diagonal, loader);
+        public MainTriangleDataLoader(string infoPath, string layerName, IReadOnlyCollection<SemiInteractionData<float>> diagonal, Func<string, float[]> loader)
+            => (InfoPath, LayerName, Diagonal, Loader) = (infoPath, layerName, diagonal, loader);
 
         /// <summary>
         /// Main folder containing all triangle data
@@ -19,7 +19,7 @@
         /// <summary>
         /// Folder containing all layers
         /// </summary>
-        public string LayersPath { init; get; }
+        public string LayerName { init; get; }
         /// <summary>
         /// Diagonal data associating values and positions
         /// </summary>

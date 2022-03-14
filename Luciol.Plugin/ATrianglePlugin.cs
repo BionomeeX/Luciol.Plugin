@@ -33,6 +33,8 @@ namespace Luciol.Plugin
 
         public abstract int GetValue((int X, int Y) pos, float value);
 
+        public abstract bool HaveDiagonal { get; }
+
         /// <summary>
         /// Apply a transformation on triangle data
         /// </summary>

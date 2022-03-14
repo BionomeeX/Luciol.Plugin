@@ -12,10 +12,10 @@ namespace Luciol.Plugin.Context.Triangle
         /// Initialize the triangle
         /// </summary>
         /// <param name="infoPath">Main folder containing all triangle data</param>
-        /// <param name="layersPath">Folder containing all layers</param>
+        /// <param name="layerName">Name of the folder containing all layers</param>
         /// <param name="diagonal">Diagonal data associating values and positions</param>
         /// <param name="loader">Method used to load a file, return a set of data given a path</param>
-        public void LoadData(string infoPath, string layersPath,
+        public void LoadData(string infoPath, string layerName,
             IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
             Func<string, TIn[]> loader);
 
@@ -58,12 +58,14 @@ namespace Luciol.Plugin.Context.Triangle
 
         /// <summary>
         /// Maximum value in the triangle, doesn't include the diagonal
+        /// Null on position triangle
         /// </summary>
-        public float MaxValue { get; }
+        public float? MaxValue { get; }
         /// <summary>
         /// Maximum value in the diagonal
+        /// Null on position triangle or if the triangle doesn't have a diagonal
         /// </summary>
-        public float MaxValueDiag { get; }
+        public float? MaxValueDiag { get; }
 
         /// <summary>
         /// Called before data are loaded
