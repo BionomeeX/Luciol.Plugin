@@ -68,6 +68,11 @@ namespace Luciol.Plugin.Context.Triangle
         public float? MaxValueDiag { get; }
 
         /// <summary>
+        /// Clear all cache from the resource manager
+        /// </summary>
+        public void ClearCache();
+
+        /// <summary>
         /// Called before data are loaded
         /// </summary>
         public event EventHandler<EventArgs> OnDataLoading;
