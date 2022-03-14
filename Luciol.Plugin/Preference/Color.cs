@@ -1,4 +1,6 @@
-﻿namespace Luciol.Plugin.Preference
+﻿using SkiaSharp;
+
+namespace Luciol.Plugin.Preference
 {
     // Because somehow (de)serialization doesn't work properly for Color from System and Avalonia
     public class Color : IEquatable<Color>
@@ -13,6 +15,11 @@
         public System.Drawing.Color ToSystemColor()
         {
             return System.Drawing.Color.FromArgb(R, G, B);
+        }
+
+        public SKColor ToSkiaColor()
+        {
+            return new SKColor(R, G, B);
         }
 
         /// <summary>
