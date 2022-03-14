@@ -36,6 +36,10 @@ namespace Luciol.Plugin
 
         public Dependency[] Dependencies { protected set; get; }
 
+        public T? GetDependency<T>()
+            where T : APlugin
+            => (T?)PluginInfo.Dependencies.FirstOrDefault(x => x.Plugin is T)?.Plugin;
+
         /// <summary>
         /// Plugin preferences
         /// </summary>
