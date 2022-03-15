@@ -11,6 +11,6 @@
         /// <param name="layer">Layer to search on</param>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
-        public float LoadData(int layer, int x, int y);
+        public float LoadData(int layer, int x, int y); // TODO: Change method name
     }
 }
