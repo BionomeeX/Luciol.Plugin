@@ -60,6 +60,13 @@ namespace Luciol.Plugin
             }
             return sysColor.ToArgb();
         }
+
+        public void ClearTriangleColorCache()
+        {
+            _mainColors.Clear();
+            _diagonalColors.Clear();
+        }
+
         private readonly Dictionary<int, Color> _mainColors = new();
         private readonly Dictionary<int, Color> _diagonalColors = new();
     }
