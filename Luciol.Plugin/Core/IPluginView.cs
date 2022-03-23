@@ -6,7 +6,7 @@ namespace Luciol.Plugin.Core
     {
         public void Init(ADisplayPlugin plugin);
 
-        internal Window Copy();
+        internal Control Copy();
 
         internal object? ViewModel { set; get; }
         internal ADisplayPlugin Plugin { set; }

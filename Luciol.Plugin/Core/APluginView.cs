@@ -12,17 +12,13 @@ namespace Luciol.Plugin.Core
         public virtual void Init(ADisplayPlugin plugin)
         { }
 
-        Window IPluginView.Copy()
+        Control IPluginView.Copy()
         {
             var newContent = (IPluginView)Activator.CreateInstance(GetType());
             newContent.ViewModel = ViewModel;
-            var newWindow = new Window
-            {
-                Content = newContent
-            };
             newContent.Plugin = _plugin;
             newContent.Init(_plugin);
-            return newWindow;
+            return (Control)newContent;
         }
 
         private ADisplayPlugin _plugin;
