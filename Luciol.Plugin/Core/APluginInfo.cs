@@ -1,6 +1,6 @@
 ﻿using Luciol.Plugin.Preference;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class APluginInfo
     {

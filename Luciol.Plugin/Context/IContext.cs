@@ -1,5 +1,6 @@
 ﻿using Luciol.Plugin.Context.Annotation;
 using Luciol.Plugin.Context.Triangle;
+using Luciol.Plugin.Core;
 using Luciol.Plugin.Preference.Global;
 
 namespace Luciol.Plugin.Context

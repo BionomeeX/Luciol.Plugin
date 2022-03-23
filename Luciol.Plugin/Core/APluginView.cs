@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public class APluginView<T> : ReactiveUserControl<T>, IPluginView
         where T : APluginViewModel

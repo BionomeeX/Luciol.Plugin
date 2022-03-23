@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public interface IPluginView
     {

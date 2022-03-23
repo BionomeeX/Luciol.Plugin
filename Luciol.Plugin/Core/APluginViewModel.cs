@@ -1,7 +1,7 @@
 ﻿using ReactiveUI;
 using System.Reactive;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class APluginViewModel : ReactiveObject
     {

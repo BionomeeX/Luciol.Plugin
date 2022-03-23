@@ -3,7 +3,7 @@ using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Triangle;
 using System.Drawing;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class ATrianglePlugin : APlugin
     {

@@ -3,7 +3,7 @@ using Luciol.Plugin.Preference;
 using Luciol.Plugin.SaveLoad;
 using System.Collections.ObjectModel;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class APlugin
     {

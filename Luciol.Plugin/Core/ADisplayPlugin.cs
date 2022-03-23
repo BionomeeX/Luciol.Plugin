@@ -4,7 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class ADisplayPlugin : APlugin
     {
