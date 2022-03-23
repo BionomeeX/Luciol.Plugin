@@ -58,6 +58,14 @@ namespace Luciol.Plugin.Core
         protected abstract APluginViewModel GetViewModel();
         private readonly APluginViewModel _viewModelInstance;
 
+        internal void SetErrorCallback(Action<ADisplayPlugin> errorCallback)
+        {
+            _viewModelInstance.ErrorState += (sender, e) =>
+            {
+                errorCallback(this);
+            };
+        }
+
         // Data for XAML and starting the view
 
         public void Test<T, U>()
