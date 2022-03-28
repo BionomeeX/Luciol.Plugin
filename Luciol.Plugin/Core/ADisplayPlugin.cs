@@ -26,7 +26,7 @@ namespace Luciol.Plugin.Core
         /// <summary>
         /// Create a new instance of the plugin view
         /// </summary>
-        public Control CreateViewInstance()
+        internal Control CreateViewInstance()
         {
             var view = GetView();
             var viewControl = (Control)view;
@@ -56,6 +56,9 @@ namespace Luciol.Plugin.Core
         /// See MVVM model for more information
         /// </summary>
         protected abstract APluginViewModel GetViewModel();
+
+        public virtual UserControl GetHelpView() => null;
+
         private readonly APluginViewModel _viewModelInstance;
 
         // Data for XAML and starting the view
