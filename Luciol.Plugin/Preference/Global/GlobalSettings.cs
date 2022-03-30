@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Luciol.Plugin.Preference.Global
+﻿namespace Luciol.Plugin.Preference.Global
 {
     public class GlobalSettings
     {

@@ -1,13 +1,16 @@
 ﻿namespace Luciol.Plugin.Context.Annotation
 {
+    /// <summary>
+    /// How the annotation is displayed on the triangles
+    /// </summary>
     public enum DrawType
     {
         /// <summary>
-        /// Small X at annotation positions
+        /// Small mark at the annotation position
         /// </summary>
         Normal,
         /// <summary>
-        /// Annotation position marked at its full width/height
+        /// Additionnally to the small mark, add lines over the width and heigh of the position to mark the annotation through the full triangle
         /// </summary>
         Cross,
     }

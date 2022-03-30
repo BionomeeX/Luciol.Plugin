@@ -1,8 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.ReactiveUI;
-using System;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public class APluginView<T> : ReactiveUserControl<T>, IPluginView
         where T : APluginViewModel
@@ -13,17 +12,13 @@ namespace Luciol.Plugin
         public virtual void Init(ADisplayPlugin plugin)
         { }
 
-        Window IPluginView.Copy()
+        Control IPluginView.Copy()
         {
             var newContent = (IPluginView)Activator.CreateInstance(GetType());
             newContent.ViewModel = ViewModel;
-            var newWindow = new Window
-            {
-                Content = newContent
-            };
             newContent.Plugin = _plugin;
             newContent.Init(_plugin);
-            return newWindow;
+            return (Control)newContent;
         }
 
         private ADisplayPlugin _plugin;

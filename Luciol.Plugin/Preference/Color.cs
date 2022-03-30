@@ -1,4 +1,4 @@
-﻿using System;
+﻿using SkiaSharp;
 
 namespace Luciol.Plugin.Preference
 {
@@ -15,6 +15,11 @@ namespace Luciol.Plugin.Preference
         public System.Drawing.Color ToSystemColor()
         {
             return System.Drawing.Color.FromArgb(R, G, B);
+        }
+
+        public SKColor ToSkiaColor()
+        {
+            return new SKColor(R, G, B);
         }
 
         /// <summary>

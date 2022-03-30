@@ -1,31 +1,48 @@
 ﻿using Luciol.Plugin.Context.Annotation;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Triangle that display interaction between the SNP
     /// </summary>
-    /// <typeparam name="TIn">Data taken in input</typeparam>
+    /// <typeparam name="TIn">Type of the data displayed</typeparam>
     public interface IMainTriangle<TIn> : ITriangleDataLoader
     {
-        public void LoadData(string infoPath, string layersPath,
+        /// <summary>
+        /// Initialize the triangle
+        /// </summary>
+        /// <param name="infoPath">Main folder containing all triangle data</param>
+        /// <param name="layerName">Name of the folder containing all layers</param>
+        /// <param name="diagonal">Diagonal data associating values and positions</param>
+        /// <param name="loader">Method used to load a file, return a set of data given a path</param>
+        public void LoadData(string infoPath, string layerName,
             IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
             Func<string, TIn[]> loader);
 
         /// <summary>
-        /// Get data about a snip
-        /// For a point in the diagonal, a SNP is the vertical line followed by the horizontal line
+        /// Get data about a SNP
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="layer"></param>
-        /// <exception cref="ArgumentOutOfRangeException">Layer must be between 0 (inclusive) and max layer (exclusive)</exception>
-        public Task<SemiInteractionData<TIn>[]> GetInteractionDataAsync(int pos, int layer);
+        public Task<SemiInteractionData<TIn>[]> GetSNPAsync(int pos, int layer);
 
+        /// <summary>
+        /// Get the value at the given point
+        /// </summary>
+        /// <param name="layer">Layer we search on</param>
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
         public new TIn GetValue(int layer, int x, int y);
+        /// <summary>
+        /// Get the value of an annotation
+        /// </summary>
+        /// <param name="a">Annotation we want the value of</param>
         public TIn GetValue(CrossAnnotation a);
+        /// <summary>
+        /// Get the size of the triangle
+        /// </summary>
+        /// <param name="layer">Layer we want the size of</param>
+        public int GetSize(int layer);
 
         /// <summary>
         /// Get all values on the diagonal
@@ -37,15 +54,21 @@ namespace Luciol.Plugin.Context.Triangle
         /// <param name="posX">X position to check</param>
         /// <param name="posY">Y position to check</param>
         /// <param name="layer">Layer to check</param>
-        /// <returns>true if in the triangle, false otherwise</returns>
         public bool IsPositionValid(int posX, int posY, int layer);
 
-        public float MaxValue { get; }
-        public float MaxValueDiag { get; }
+        /// <summary>
+        /// Maximum value in the triangle, doesn't include the diagonal
+        /// Null on position triangle
+        /// </summary>
+        public float? MaxValue { get; }
+        /// <summary>
+        /// Maximum value in the diagonal
+        /// Null on position triangle or if the triangle doesn't have a diagonal
+        /// </summary>
+        public float? MaxValueDiag { get; }
 
         /// <summary>
-        /// Called before data are load
-        /// This happens when the user move the triangle view
+        /// Called before data are loaded
         /// </summary>
         public event EventHandler<EventArgs> OnDataLoading;
         /// <summary>
@@ -53,9 +76,8 @@ namespace Luciol.Plugin.Context.Triangle
         /// </summary>
         public event EventHandler<EventArgs> OnDataLoaded;
         /// <summary>
-        /// Called right after the resource manager clean removed old data
+        /// Called right after the resource manager clean old data
         /// </summary>
-        /// <remarks>This is not called from the main thread</remarks>
         public event EventHandler<EventArgs> OnDataCleaned;
     }
 }

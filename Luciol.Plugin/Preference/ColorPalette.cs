@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Luciol.Plugin.Preference
+﻿namespace Luciol.Plugin.Preference
 {
     public class ColorPalette : IEquatable<ColorPalette>
     {

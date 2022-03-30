@@ -1,9 +1,10 @@
 ﻿using Luciol.Plugin.Event;
-using System;
-using System.Collections.Generic;
 
 namespace Luciol.Plugin.Context.Annotation
 {
+    /// <summary>
+    /// Tool used to manage the annotations
+    /// </summary>
     public interface IAnnotator
     {
         /// <summary>
@@ -14,18 +15,15 @@ namespace Luciol.Plugin.Context.Annotation
         public IAnnotation AddAnnotation(IAnnotation annotation);
         /// <summary>
         /// Remove an annotation from the triangle
+        /// If it doesn't exist, nothing happen
         /// </summary>
-        /// <param name="posX">X position of the annotation</param>
-        /// <param name="posY">Y position of the annotation</param>
+        /// <param name="annotation">Annotation to remove</param>
         /// <param name="layer">Layer the annotation is in</param>
         public void RemoveAnnotation(IAnnotation annotation);
         /// <summary>
         /// Get all annotations already placed
         /// </summary>
         public IReadOnlyCollection<IAnnotation> GetAnnotations();
-        public void Select(IAnnotation annotation);
-        public void Unselect(IAnnotation annotation);
-        public IReadOnlyCollection<IAnnotation> GetSelected();
         /// <summary>
         /// Called when an annotation is added
         /// </summary>
@@ -34,7 +32,5 @@ namespace Luciol.Plugin.Context.Annotation
         /// Called when an annotation is removed
         /// </summary>
         public event EventHandler<AnnotationEventArgs> OnAnnotationRemove;
-        public event EventHandler<AnnotationEventArgs> OnAnnotationSelect;
-        public event EventHandler<AnnotationEventArgs> OnAnnotationUnselect;
     }
 }

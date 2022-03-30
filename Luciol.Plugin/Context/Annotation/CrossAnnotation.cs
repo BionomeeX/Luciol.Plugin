@@ -1,10 +1,13 @@
-﻿using Luciol.Plugin.Preference;
-using System;
+﻿using Luciol.Plugin.Core;
+using Luciol.Plugin.Preference;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Luciol.Plugin.Context.Annotation
 {
+    /// <summary>
+    /// Annotation used to represent one interaction on the triangle
+    /// </summary>
     public class CrossAnnotation : IAnnotation
     {
         public CrossAnnotation(int snp1, int snp2, int layer, [NotNull]APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
@@ -16,33 +19,30 @@ namespace Luciol.Plugin.Context.Annotation
         public CrossAnnotation()
         { }
 
-        /// <summary>
-        /// Layer the annotation was placed on
-        /// </summary>
+        /// <inheritdoc/>
         public int Layer { init; get; }
         /// <summary>
-        /// First snip of the annotation (also equals to X position)
+        /// First SNP of the annotation (also equals to X position)
         /// </summary>
         public int Snp1 { init; get; }
         /// <summary>
-        /// Second snip of the annotation (also equals to Y position)
+        /// Second SNP of the annotation (also equals to Y position)
         /// </summary>
         public int Snp2 { init; get; }
-        /// <summary>
-        /// Type of the annotation
-        /// </summary>
+        /// <inheritdoc/>
         public string Name { init; get; }
-        /// <summary>
-        /// Plugin that annotation is from
-        /// </summary>
+        /// <inheritdoc/>
         public string Sender { init; get; }
-        /// <summary>
-        /// How the annotation will be drawn on the main triangle
-        /// </summary>
+        /// <inheritdoc/>
         public DrawType DrawType { init; get; }
+        /// <inheritdoc/>
         public Color Color { init; get; }
+        /// <inheritdoc/>
         public Priority Priority { init; get; }
+        /// <inheritdoc/>
+        public bool IsActive { set; get; } = true;
 
+        /// <inheritdoc/>
         public AnnotationType Type => AnnotationType.Cross;
 
         public override string ToString()

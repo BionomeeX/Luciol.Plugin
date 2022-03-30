@@ -2,7 +2,6 @@
 using Avalonia.Layout;
 using Luciol.Plugin.Context;
 using Luciol.Plugin.Event;
-using System;
 using System.Text.Json;
 
 namespace Luciol.Plugin.Preference

@@ -1,13 +1,9 @@
 ﻿using Luciol.Plugin.Context;
 using Luciol.Plugin.Preference;
 using Luciol.Plugin.SaveLoad;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class APlugin
     {
@@ -39,6 +35,10 @@ namespace Luciol.Plugin
         public APluginInfo PluginInfo { internal set; get; }
 
         public Dependency[] Dependencies { protected set; get; }
+
+        public T? GetDependency<T>()
+            where T : APlugin
+            => (T?)Dependencies.FirstOrDefault(x => x.Plugin is T)?.Plugin;
 
         /// <summary>
         /// Plugin preferences

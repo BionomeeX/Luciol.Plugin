@@ -1,5 +1,4 @@
 ﻿using Luciol.Plugin.Context.Annotation;
-using System;
 
 namespace Luciol.Plugin.Event
 {

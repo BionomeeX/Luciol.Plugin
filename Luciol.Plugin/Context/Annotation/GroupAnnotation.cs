@@ -1,10 +1,13 @@
-﻿using Luciol.Plugin.Preference;
-using System;
+﻿using Luciol.Plugin.Core;
+using Luciol.Plugin.Preference;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Luciol.Plugin.Context.Annotation
 {
+    /// <summary>
+    /// Annotation used to represent a block of interactions on the triangle
+    /// </summary>
     public class GroupAnnotation : IAnnotation
     {
         public GroupAnnotation(int snp1Start, int snp1Stop, int snp2Start, int snp2Stop, int layer, [NotNull] APluginInfo pInfo, DrawType drawType, Color color, string name, Priority priority = Priority.Normal)
@@ -16,35 +19,38 @@ namespace Luciol.Plugin.Context.Annotation
         public GroupAnnotation()
         { }
 
-        /// <summary>
-        /// Layer the annotation was placed on
-        /// </summary>
+        /// <inheritdoc/>
         public int Layer { init; get; }
         /// <summary>
-        /// First snip of the annotation (also equals to X position)
+        /// First SNP on the X position
         /// </summary>
         public int Snp1Start { init; get; }
+        /// <summary>
+        /// Last SNP on the X position
+        /// </summary>
         public int Snp1Stop { init; get; }
         /// <summary>
-        /// Second snip of the annotation (also equals to Y position)
+        /// First SNP on the Y position
         /// </summary>
         public int Snp2Start { init; get; }
+        /// <summary>
+        /// Last SNP on the Y position
+        /// </summary>
         public int Snp2Stop { init; get; }
-        /// <summary>
-        /// Type of the annotation
-        /// </summary>
+        /// <inheritdoc/>
         public string Name { init; get; }
-        /// <summary>
-        /// Plugin that annotation is from
-        /// </summary>
+        /// <inheritdoc/>
         public string Sender { init; get; }
-        /// <summary>
-        /// How the annotation will be drawn on the main triangle
-        /// </summary>
+        /// <inheritdoc/>
         public DrawType DrawType { init; get; }
+        /// <inheritdoc/>
         public Color Color { init; get; }
+        /// <inheritdoc/>
         public Priority Priority { init; get; }
+        /// <inheritdoc/>
+        public bool IsActive { set; get; } = true;
 
+        /// <inheritdoc/>
         public AnnotationType Type => AnnotationType.Group;
 
         public override string ToString()

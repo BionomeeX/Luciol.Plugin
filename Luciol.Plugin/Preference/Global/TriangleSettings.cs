@@ -19,26 +19,46 @@ namespace Luciol.Plugin.Preference.Global
         }
 
         /// <summary>
-        /// Gradient used for managing the colors of the triangle
+        /// Gradient used for managing the main colors of the triangle
         /// </summary>
         [JsonIgnore]
-        public GradientPreference TriangleColors
+        public GradientPreference TriangleMainColors
         {
             get => (GradientPreference)_export[1];
+        }
+
+        /// <summary>
+        /// Gradient used for managing the diagonal colors of the triangle
+        /// </summary>
+        [JsonIgnore]
+        public GradientPreference TriangleDiagonalColors
+        {
+            get => (GradientPreference)_export[2];
         }
 
         private static readonly IPreferenceExport[] _export = new IPreferenceExport[]
         {
             new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
-            new GradientPreference("triangleColors", "Triangle Colors",
-                new Gradient()
-                {
-                    PositionColors = new PositionColor[]
+            new GradientPreference("triangleMainColors", "Triangle Main Colors",
+                new Gradient(
+                    new PositionColor[]
                     {
                         new() { Position = 0.0, Color = Color.Black },
                         new() { Position = 1.0, Color = Color.Blue }
-                    }
-                })
+                    },
+                    0.0,
+                    0.0
+                )),
+            new GradientPreference("triangleDiagonalColors", "Triangle Diagonal Colors",
+                new Gradient(
+                    new PositionColor[]
+                    {
+                        new() { Position = 0.0, Color = Color.Black },
+                        new() { Position = 1.0, Color = Color.Blue }
+                    },
+                    0.0,
+                    0.0
+                ))
         };
     }
 }

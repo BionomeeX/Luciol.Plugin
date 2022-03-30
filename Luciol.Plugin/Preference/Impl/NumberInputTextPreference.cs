@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using System;
 
 namespace Luciol.Plugin.Preference
 {

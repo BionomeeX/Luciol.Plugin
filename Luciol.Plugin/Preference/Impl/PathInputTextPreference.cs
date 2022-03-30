@@ -2,8 +2,6 @@
 using Avalonia.Layout;
 using Avalonia.Threading;
 using Luciol.Plugin.Context;
-using System;
-using System.IO;
 
 namespace Luciol.Plugin.Preference
 {

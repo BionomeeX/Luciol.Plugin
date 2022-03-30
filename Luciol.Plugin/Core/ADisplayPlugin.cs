@@ -3,9 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
-using System;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class ADisplayPlugin : APlugin
     {
@@ -27,7 +26,7 @@ namespace Luciol.Plugin
         /// <summary>
         /// Create a new instance of the plugin view
         /// </summary>
-        public Control CreateViewInstance()
+        internal Control CreateViewInstance()
         {
             var view = GetView();
             var viewControl = (Control)view;
@@ -57,6 +56,9 @@ namespace Luciol.Plugin
         /// See MVVM model for more information
         /// </summary>
         protected abstract APluginViewModel GetViewModel();
+
+        public virtual UserControl GetHelpView() => null;
+
         private readonly APluginViewModel _viewModelInstance;
 
         // Data for XAML and starting the view

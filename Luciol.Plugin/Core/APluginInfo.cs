@@ -1,9 +1,6 @@
 ﻿using Luciol.Plugin.Preference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Luciol.Plugin
+namespace Luciol.Plugin.Core
 {
     public abstract class APluginInfo
     {

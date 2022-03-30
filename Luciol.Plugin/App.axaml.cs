@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Markup.Xaml;
-using System;
 
 namespace Luciol.Plugin
 {

@@ -1,8 +1,6 @@
 ﻿using Avalonia.Controls;
 using ExtendedAvalonia;
 using Luciol.Plugin.Context;
-using System;
-using System.Linq;
 
 namespace Luciol.Plugin.Preference
 {
@@ -23,7 +21,7 @@ namespace Luciol.Plugin.Preference
             set
             {
                 var rangeValue = Enumerable.Range(0, _width)
-                    .Select(x => GradientPicker.GetColorFromPosition(new() { PositionColors = value.PositionColors }, (double)x / _width).ToArgb()).ToArray();
+                    .Select(x => GradientPicker.GetColorFromPosition(new(value.PositionColors, value.Start, value.End), (double)x / _width).ToArgb()).ToArray();
 
                 int[][] data = new int[_height][];
                 for (int y = 0; y < _height; y++)
