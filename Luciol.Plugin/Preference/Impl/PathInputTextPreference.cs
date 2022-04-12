@@ -8,7 +8,7 @@ namespace Luciol.Plugin.Preference
     /// <summary>
     /// Input text preference representing a path on the computer
     /// </summary>
-    public class PathInputTextPreference : APreference<TextBox, string>
+    public class PathInputTextPreference : InputTextPreference
     {
         public PathInputTextPreference(string key, string name, string defaultValue) : base(key, name, defaultValue)
         { }

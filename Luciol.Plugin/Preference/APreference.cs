@@ -27,7 +27,7 @@ namespace Luciol.Plugin.Preference
         /// <summary>
         /// Default value of the preference
         /// </summary>
-        private readonly Type _defaultValue;
+        internal Type DefaultValue { get; private set; }
 
         /// <inheritdoc/>
         public string Key { init; get; }
@@ -62,7 +62,7 @@ namespace Luciol.Plugin.Preference
 
         public void Reset(object sender, IContext context)
         {
-            UpdateValue(sender, context, _defaultValue);
+            UpdateValue(sender, context, DefaultValue);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Luciol.Plugin.Preference
         /// <param name="name">Text displayed on the preference label</param>
         /// <param name="defaultValue">Default value used for the preference</param>
         protected APreference(string key, string name, Type defaultValue)
-            => (Key, Name, _defaultValue, Value) = (key, name, defaultValue, defaultValue);
+            => (Key, Name, DefaultValue, Value) = (key, name, defaultValue, defaultValue);
 
         /// <summary>
         /// Control used to store your preference
