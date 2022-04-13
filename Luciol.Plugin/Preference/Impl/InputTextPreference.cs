@@ -17,7 +17,7 @@ namespace Luciol.Plugin.Preference
             set => _component.Text = value;
         }
 
-        public string HintText { set; private get; }
+        public string HintText { set; get; }
 
         public override IControl GetComponent(Window window, IContext context)
         {
