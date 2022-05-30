@@ -29,7 +29,7 @@ namespace Luciol.Plugin.Core
             };
         }
 
-        public abstract ITriangleDataLoader GetDataLoader(string dataPath, uint[] dataDiagonalPositions);
+        public abstract ITriangleDataLoader GetDataLoader(string dataPath, long[] dataDiagonalPositions);
 
         public abstract int GetValue((int X, int Y) pos, float value);
 

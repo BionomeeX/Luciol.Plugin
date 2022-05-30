@@ -28,7 +28,7 @@ namespace Luciol.Plugin.Context
         /// <summary>
         /// Data about thetriangle containing the positions
         /// </summary>
-        public IMainTriangle<(uint, uint)> PositionTriangle { get; }
+        public IMainTriangle<(long, long)> PositionTriangle { get; }
         /// <summary>
         /// Information about all the plugins currently loaded
         /// </summary>
