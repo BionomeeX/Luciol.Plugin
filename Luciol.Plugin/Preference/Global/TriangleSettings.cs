@@ -36,6 +36,12 @@ namespace Luciol.Plugin.Preference.Global
             get => (GradientPreference)_export[2];
         }
 
+        [JsonIgnore]
+        public NumberInputTextPreference<int> MinimalPixelSize
+        {
+            get => (NumberInputTextPreference<int>) _export[3];
+        }
+
         private static readonly IPreferenceExport[] _export = new IPreferenceExport[]
         {
             new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
@@ -55,7 +61,8 @@ namespace Luciol.Plugin.Preference.Global
                         new() { Position = 0.0, Color = Color.Black },
                         new() { Position = 1.0, Color = Color.Blue }
                     }
-                ))
+                )),
+            new NumberInputTextPreference<int>("minPixelSize", "Minimal pixel size", 3)
         };
     }
 }
