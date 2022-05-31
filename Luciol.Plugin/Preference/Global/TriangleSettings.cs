@@ -50,8 +50,8 @@ namespace Luciol.Plugin.Preference.Global
                     new PositionColor[]
                     {
                         new() { Position = 0.4, Color = Color.Black },
-                        new() { Position = 0.75, Color = Color.FromRgb(255, 233, 0) },
-                        new() { Position = 1.0, Color = Color.FromRgb(107, 3, 79) }
+                        new() { Position = 0.75, Color = Color.FromRgb(107, 3, 79) },
+                        new() { Position = 1.0, Color = Color.FromRgb(255, 233, 0) }
                     }
                 )),
             new GradientPreference("triangleDiagonalColors", "Triangle Diagonal Colors",
