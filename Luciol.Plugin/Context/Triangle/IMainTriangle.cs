@@ -1,9 +1,9 @@
 ﻿using Luciol.Plugin.Context.Annotation;
 
-namespace Luciol.Plugin.Context.Triangle
+namespace Luciol.Plugin.Context.EpistaticMap
 {
     /// <summary>
-    /// Triangle that display interaction between the SNP
+    /// EpistaticMap that display interaction between the SNP
     /// </summary>
     /// <typeparam name="TIn">Type of the data displayed</typeparam>
     public interface IMainTriangle<TIn> : ITriangleDataLoader
