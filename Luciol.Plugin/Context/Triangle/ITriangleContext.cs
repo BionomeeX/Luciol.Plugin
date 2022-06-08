@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin.Context.EpistaticMap
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Data about all the triangles
@@ -22,7 +22,7 @@
         /// <summary>
         /// Is a triangle displayed
         /// </summary>
-        /// <param name="key">EpistaticMap to check</param>
+        /// <param name="key">Triangle to check</param>
         public bool IsEnabled(string key);
         /// <summary>
         /// Get the raw triangle display
@@ -32,7 +32,7 @@
         /// <param name="screenHeight">Height of the display</param>
         /// <param name="xOffset">X offset to apply</param>
         /// <param name="yOffset">Y offset to apply</param>
-        /// <returns>EpistaticMap colors</returns>
+        /// <returns>Triangle colors</returns>
         public Task<int[][]> GetScreenBufferAsync(int layer, int screenWidth, int screenHeight, int xOffset, int yOffset);
     }
 }

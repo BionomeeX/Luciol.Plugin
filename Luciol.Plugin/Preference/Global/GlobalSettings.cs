@@ -7,7 +7,7 @@
 
         public Settings General { get; } = new(Array.Empty<IPreferenceExport>());
 
-        public TriangleSettings EpistaticMap { get; } = new();
+        public TriangleSettings Triangle { get; } = new();
 
         public GraphSettings Graph { get; } = new();
 

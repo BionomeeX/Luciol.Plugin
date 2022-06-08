@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin.Context.EpistaticMap
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Interface used by triangle, allow to access data

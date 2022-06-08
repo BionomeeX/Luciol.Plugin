@@ -1,6 +1,6 @@
 ﻿using ExtendedAvalonia;
 using Luciol.Plugin.Context;
-using Luciol.Plugin.Context.EpistaticMap;
+using Luciol.Plugin.Context.Triangle;
 using System.Drawing;
 
 namespace Luciol.Plugin.Core
@@ -13,14 +13,14 @@ namespace Luciol.Plugin.Core
         internal override void Init(IContext context, Dependency[] dependencies)
         {
             base.Init(context, dependencies);
-            context.GlobalSettings.EpistaticMap.TriangleDiagonalColors.OnChange += (e, sender) =>
+            context.GlobalSettings.Triangle.TriangleDiagonalColors.OnChange += (e, sender) =>
             {
                 lock (_diagonalColors)
                 {
                     _diagonalColors.Clear();
                 }
             };
-            context.GlobalSettings.EpistaticMap.TriangleMainColors.OnChange += (e, sender) =>
+            context.GlobalSettings.Triangle.TriangleMainColors.OnChange += (e, sender) =>
             {
                 lock (_mainColors)
                 {
@@ -49,7 +49,7 @@ namespace Luciol.Plugin.Core
             {
                 return v.ToArgb();
             }
-            var color = GradientPicker.GetColorFromPosition((Gradient)(onDiagonal ? Context.GlobalSettings.EpistaticMap.TriangleDiagonalColors.ObjValue : Context.GlobalSettings.EpistaticMap.TriangleMainColors.ObjValue), value / maxValue);
+            var color = GradientPicker.GetColorFromPosition((Gradient)(onDiagonal ? Context.GlobalSettings.Triangle.TriangleDiagonalColors.ObjValue : Context.GlobalSettings.Triangle.TriangleMainColors.ObjValue), value / maxValue);
             var sysColor = Color.FromArgb(color.A, color.R, color.G, color.B);
             lock (colors)
             {

@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin.Context.EpistaticMap
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Data loader for triangle made in layers

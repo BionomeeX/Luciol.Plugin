@@ -1,4 +1,4 @@
-﻿namespace Luciol.Plugin.Context.EpistaticMap
+﻿namespace Luciol.Plugin.Context.Triangle
 {
     // TODO: Explain difference with InteractionData
     public record SemiInteractionData<T>

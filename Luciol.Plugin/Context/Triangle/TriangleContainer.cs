@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Luciol.Plugin.Event;
 
-namespace Luciol.Plugin.Context.EpistaticMap
+namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// View of the triangle

@@ -3,6 +3,6 @@
     public enum PluginType
     {
         Display,
-        EpistaticMap
+        Triangle
     }
 }

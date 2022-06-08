@@ -45,7 +45,7 @@ namespace Luciol.Plugin.Preference.Global
         private static readonly IPreferenceExport[] _export = new IPreferenceExport[]
         {
             new NumberInputTextPreference<float>("dragAndDropSensitivity", "Drag and Drop Sensitivity", 1f),
-            new GradientPreference("triangleMainColors", "EpistaticMap Main Colors",
+            new GradientPreference("triangleMainColors", "Triangle Main Colors",
                 new Gradient(
                     new PositionColor[]
                     {
@@ -54,7 +54,7 @@ namespace Luciol.Plugin.Preference.Global
                         new() { Position = 1.0, Color = Color.FromRgb(255, 233, 0) }
                     }
                 )),
-            new GradientPreference("triangleDiagonalColors", "EpistaticMap Diagonal Colors",
+            new GradientPreference("triangleDiagonalColors", "Triangle Diagonal Colors",
                 new Gradient(
                     new PositionColor[]
                     {
