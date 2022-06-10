@@ -1,6 +1,8 @@
 ﻿using ExtendedAvalonia;
+using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Triangle;
+using Luciol.Plugin.Preference;
 using System.Drawing;
 
 namespace Luciol.Plugin.Core
@@ -13,20 +15,44 @@ namespace Luciol.Plugin.Core
         internal override void Init(IContext context, Dependency[] dependencies)
         {
             base.Init(context, dependencies);
-            context.GlobalSettings.Triangle.TriangleDiagonalColors.OnChange += (e, sender) =>
+            MainGradientPreference =
+                new GradientPreference("triangleMainColors", "Triangle Main Colors",
+                new Gradient(
+                    new PositionColor[]
+                    {
+                        new() { Position = 0.4, Color = Preference.Color.Black },
+                        new() { Position = 0.75, Color = Preference.Color.FromRgb(107, 3, 79) },
+                        new() { Position = 1.0, Color = Preference.Color.FromRgb(255, 233, 0) }
+                    }
+                ));
+            DiagonalGradientPreference =
+                new GradientPreference("triangleDiagonalColors", "Triangle Diagonal Colors",
+                new Gradient(
+                    new PositionColor[]
+                    {
+                        new() { Position = 0.0, Color = Preference.Color.Black },
+                        new() { Position = 1.0, Color = Preference.Color.Blue }
+                    }
+                ));
+            MainGradientPreference.OnChange += (e, sender) =>
             {
                 lock (_diagonalColors)
                 {
                     _diagonalColors.Clear();
                 }
             };
-            context.GlobalSettings.Triangle.TriangleMainColors.OnChange += (e, sender) =>
+            DiagonalGradientPreference.OnChange += (e, sender) =>
             {
                 lock (_mainColors)
                 {
                     _mainColors.Clear();
                 }
             };
+        }
+
+        protected override IEnumerable<IPreferenceExport> GetPreferences()
+        {
+            return new IPreferenceExport[] { MainGradientPreference, DiagonalGradientPreference };
         }
 
         public abstract ITriangleDataLoader GetDataLoader(string dataPath, long[] dataDiagonalPositions);
@@ -44,13 +70,13 @@ namespace Luciol.Plugin.Core
         public int ValueTransformation(float value, float maxValue, bool onDiagonal)
         {
             var hash = value.GetHashCode();
-            Dictionary<int, Color> colors = onDiagonal ? _diagonalColors : _mainColors;
-            if (colors.TryGetValue(hash, out Color v))
+            Dictionary<int, System.Drawing.Color> colors = onDiagonal ? _diagonalColors : _mainColors;
+            if (colors.TryGetValue(hash, out System.Drawing.Color v))
             {
                 return v.ToArgb();
             }
-            var color = GradientPicker.GetColorFromPosition((Gradient)(onDiagonal ? Context.GlobalSettings.Triangle.TriangleDiagonalColors.ObjValue : Context.GlobalSettings.Triangle.TriangleMainColors.ObjValue), value / maxValue);
-            var sysColor = Color.FromArgb(color.A, color.R, color.G, color.B);
+            var color = GradientPicker.GetColorFromPosition((Gradient)(onDiagonal ? DiagonalGradientPreference.ObjValue : MainGradientPreference.ObjValue), value / maxValue);
+            var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
             lock (colors)
             {
                 if (!colors.ContainsKey(hash)) // We make sure a second time inside the lock, because of threads
@@ -67,7 +93,9 @@ namespace Luciol.Plugin.Core
             _diagonalColors.Clear();
         }
 
-        private readonly Dictionary<int, Color> _mainColors = new();
-        private readonly Dictionary<int, Color> _diagonalColors = new();
+        private readonly Dictionary<int, System.Drawing.Color> _mainColors = new();
+        private readonly Dictionary<int, System.Drawing.Color> _diagonalColors = new();
+
+        private GradientPreference MainGradientPreference, DiagonalGradientPreference;
     }
 }
