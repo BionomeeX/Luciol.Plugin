@@ -9,19 +9,15 @@ namespace Luciol.Plugin.Core
     public abstract class ATrianglePlugin : APlugin
     {
         protected ATrianglePlugin() : base()
-        { }
-
-        internal override void Init(IContext context, Dependency[] dependencies)
         {
-            base.Init(context, dependencies);
             MainGradientPreference =
                 new GradientPreference("triangleMainColors", "Triangle Main Colors",
                 new Gradient(
                     new PositionColor[]
                     {
-                        new() { Position = 0.4, Color = Preference.Color.Black },
-                        new() { Position = 0.75, Color = Preference.Color.FromRgb(107, 3, 79) },
-                        new() { Position = 1.0, Color = Preference.Color.FromRgb(255, 233, 0) }
+                        new() { Position = 0.4, Color = Color.Black },
+                        new() { Position = 0.75, Color = Color.FromRgb(107, 3, 79) },
+                        new() { Position = 1.0, Color = Color.FromRgb(255, 233, 0) }
                     }
                 ));
             DiagonalGradientPreference =
@@ -29,10 +25,15 @@ namespace Luciol.Plugin.Core
                 new Gradient(
                     new PositionColor[]
                     {
-                        new() { Position = 0.0, Color = Preference.Color.Black },
-                        new() { Position = 1.0, Color = Preference.Color.Blue }
+                        new() { Position = 0.0, Color = Color.Black },
+                        new() { Position = 1.0, Color = Color.Blue }
                     }
                 ));
+        }
+
+        internal override void Init(IContext context, Dependency[] dependencies)
+        {
+            base.Init(context, dependencies);
             MainGradientPreference.OnChange += (e, sender) =>
             {
                 lock (_diagonalColors)
