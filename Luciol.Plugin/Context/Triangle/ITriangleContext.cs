@@ -1,4 +1,6 @@
-﻿namespace Luciol.Plugin.Context.Triangle
+﻿using Luciol.Plugin.Preference;
+
+namespace Luciol.Plugin.Context.Triangle
 {
     /// <summary>
     /// Data about all the triangles
@@ -9,6 +11,12 @@
         /// Returns the names of all the available triangles
         /// </summary>
         public IEnumerable<string> GetOptions();
+        /// <summary>
+        /// Returns the names of all the active triangles
+        /// </summary>
+        public IEnumerable<string> GetActives();
+        public GradientPreference MainGradient(string key);
+        public GradientPreference DiagonalGradient(string key);
         /// <summary>
         /// Enable a triangle to be displayed
         /// </summary>

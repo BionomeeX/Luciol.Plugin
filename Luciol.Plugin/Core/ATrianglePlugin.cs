@@ -3,7 +3,6 @@ using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Triangle;
 using Luciol.Plugin.Preference;
-using System.Drawing;
 
 namespace Luciol.Plugin.Core
 {
@@ -96,6 +95,6 @@ namespace Luciol.Plugin.Core
         private readonly Dictionary<int, System.Drawing.Color> _mainColors = new();
         private readonly Dictionary<int, System.Drawing.Color> _diagonalColors = new();
 
-        private GradientPreference MainGradientPreference, DiagonalGradientPreference;
+        public GradientPreference MainGradientPreference, DiagonalGradientPreference; // TODO: Don't expose
     }
 }
