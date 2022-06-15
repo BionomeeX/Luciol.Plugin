@@ -36,16 +36,16 @@ namespace Luciol.Plugin.Core
             base.Init(context, dependencies);
             MainGradientPreference.OnChange += (e, sender) =>
             {
-                lock (_diagonalColors)
+                lock (_mainColors)
                 {
-                    _diagonalColors.Clear();
+                    _mainColors.Clear();
                 }
             };
             DiagonalGradientPreference.OnChange += (e, sender) =>
             {
-                lock (_mainColors)
+                lock (_diagonalColors)
                 {
-                    _mainColors.Clear();
+                    _diagonalColors.Clear();
                 }
             };
         }
