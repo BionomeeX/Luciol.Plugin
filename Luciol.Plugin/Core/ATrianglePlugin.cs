@@ -57,7 +57,7 @@ namespace Luciol.Plugin.Core
 
         public abstract ITriangleDataLoader GetDataLoader(string dataPath, long[] dataDiagonalPositions);
 
-        public abstract int GetValue((int X, int Y) pos, float value);
+        public abstract System.Drawing.Color GetValue((int X, int Y) pos, float value);
 
         public abstract bool HaveDiagonal { get; }
 
@@ -67,13 +67,13 @@ namespace Luciol.Plugin.Core
         /// <param name="value">Current value of the point</param>
         /// <param name="maxValue">Max value in the triangle</param>
         /// <returns>Color to display</returns>
-        public int ValueTransformation(float value, float maxValue, bool onDiagonal)
+        public System.Drawing.Color ValueTransformation(float value, float maxValue, bool onDiagonal)
         {
             var hash = value.GetHashCode();
             Dictionary<int, System.Drawing.Color> colors = onDiagonal ? _diagonalColors : _mainColors;
             if (colors.TryGetValue(hash, out System.Drawing.Color v))
             {
-                return v.ToArgb();
+                return v;
             }
             var color = GradientPicker.GetColorFromPosition((Gradient)(onDiagonal ? DiagonalGradientPreference.ObjValue : MainGradientPreference.ObjValue), value / maxValue);
             var sysColor = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -84,7 +84,7 @@ namespace Luciol.Plugin.Core
                     colors.Add(hash, sysColor);
                 }
             }
-            return sysColor.ToArgb();
+            return sysColor;
         }
 
         public void ClearTriangleColorCache()

@@ -11,27 +11,10 @@ namespace Luciol.Plugin.Context.Triangle
         /// Returns the names of all the available triangles
         /// </summary>
         public IEnumerable<string> GetOptions();
-        /// <summary>
-        /// Returns the names of all the active triangles
-        /// </summary>
-        public IEnumerable<string> GetActives();
+        public string MainTriangle { set; get; }
+        public string SubTriangle { set; get; }
         public GradientPreference MainGradient(string key);
         public GradientPreference DiagonalGradient(string key);
-        /// <summary>
-        /// Enable a triangle to be displayed
-        /// </summary>
-        /// <param name="key">Name of the triangle to display</param>
-        public void Enable(string key);
-        /// <summary>
-        /// Hide a triangle from the display
-        /// </summary>
-        /// <param name="key">Name of the triangle to hide</param>
-        public void Disable(string key);
-        /// <summary>
-        /// Is a triangle displayed
-        /// </summary>
-        /// <param name="key">Triangle to check</param>
-        public bool IsEnabled(string key);
         /// <summary>
         /// Get the raw triangle display
         /// </summary>
