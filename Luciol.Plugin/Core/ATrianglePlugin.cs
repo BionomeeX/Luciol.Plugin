@@ -87,6 +87,8 @@ namespace Luciol.Plugin.Core
             return sysColor;
         }
 
+        public abstract float GetRawValuePercent(float value, bool isDiagonal);
+
         public void ClearTriangleColorCache()
         {
             _mainColors.Clear();
