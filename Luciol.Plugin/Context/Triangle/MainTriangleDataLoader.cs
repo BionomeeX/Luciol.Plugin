@@ -9,8 +9,8 @@
         /// <param name="layerName">Name of the folder containing all layers</param>
         /// <param name="diagonal">Diagonal data associating values and positions</param>
         /// <param name="loader">Method used to load a file, return a set of data given a path</param>
-        public MainTriangleDataLoader(string infoPath, string layerName, IReadOnlyCollection<SemiInteractionData<float>> diagonal, Func<string, float[]> loader)
-            => (InfoPath, LayerName, Diagonal, Loader) = (infoPath, layerName, diagonal, loader);
+        public MainTriangleDataLoader(string infoPath, string layerName, IReadOnlyCollection<SemiInteractionData<float>> diagonal, Func<string, float[]> loader, Deserialization.TriangleInfo config)
+            => (InfoPath, LayerName, Diagonal, Loader, Config) = (infoPath, layerName, diagonal, loader, config);
 
         /// <summary>
         /// Main folder containing all triangle data
@@ -33,6 +33,7 @@
         /// Main triangle information
         /// </summary>
         public IMainTriangle<float> MainTriangle { set; get; }
+        public Deserialization.TriangleInfo Config { set; get; }
 
         /// <inheritdoc/>
         public float LoadData(int layer, int x, int y)

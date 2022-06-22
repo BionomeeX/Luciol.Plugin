@@ -1,6 +1,7 @@
 ﻿using ExtendedAvalonia;
 using ExtendedAvalonia.Slider;
 using Luciol.Plugin.Context;
+using Luciol.Plugin.Context.Deserialization;
 using Luciol.Plugin.Context.Triangle;
 using Luciol.Plugin.Preference;
 
@@ -55,7 +56,7 @@ namespace Luciol.Plugin.Core
             return new IPreferenceExport[] { MainGradientPreference, DiagonalGradientPreference };
         }
 
-        public abstract ITriangleDataLoader GetDataLoader(string dataPath, long[] dataDiagonalPositions);
+        public abstract ITriangleDataLoader GetDataLoader(string dataPath, long[] dataDiagonalPositions, TriangleInfo config);
 
         public abstract System.Drawing.Color GetValue((int X, int Y) pos, float value);
 
