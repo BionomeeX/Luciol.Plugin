@@ -11,10 +11,12 @@ namespace Luciol.Plugin.Context.Triangle
         /// Returns the names of all the available triangles
         /// </summary>
         public IEnumerable<string> GetOptions();
-        public string MainTriangle { set; get; }
-        public string SubTriangle { set; get; }
-        public GradientPreference MainGradient(string key);
-        public GradientPreference DiagonalGradient(string key);
+        public IEnumerable<string> GetActives();
+        public GradientPreference GetMainGradient(string key);
+        public GradientPreference GetDiagonalGradient(string key);
+        public void AddActive(string key);
+        public void RemoveActive(string key);
+        public bool IsOnlyOneActive { get; }
         /// <summary>
         /// Get the raw triangle display
         /// </summary>
