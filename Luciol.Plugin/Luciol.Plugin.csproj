@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<TargetFramework>net6.0</TargetFramework>
@@ -19,7 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Update="MessageWindow.axaml">
+      <SubType>Designer</SubType>
+    </AvaloniaXaml>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="App.axaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="MessageWindow.axaml.cs">
+      <SubType>Code</SubType>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
   </ItemGroup>
