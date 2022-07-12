@@ -39,5 +39,6 @@ namespace Luciol.Plugin.Context.Annotation
         /// Is the annotation displayed on the triangle
         /// </summary>
         public bool IsActive { set; get; }
+        public string ID { get; }
     }
 }

@@ -72,5 +72,7 @@ namespace Luciol.Plugin.Context.Annotation
 
         private bool Equals(RangeAnnotation other)
             => other != null && Layer == other.Layer && Min == other.Min && Max == other.Max && Key == other.Key;
+
+        public string ID => $"{(int)Type}{Layer}{Min}{Max}";
     }
 }
