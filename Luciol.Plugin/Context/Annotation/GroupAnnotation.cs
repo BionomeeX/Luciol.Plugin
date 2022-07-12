@@ -76,7 +76,7 @@ namespace Luciol.Plugin.Context.Annotation
             => Equals(obj as GroupAnnotation);
 
         public override int GetHashCode()
-            => (Layer, Snp1Start, Snp1Stop, Snp2Start, Snp2Stop).GetHashCode();
+            => (Layer, Snp1Start, Snp1Stop, Snp2Start, Snp2Stop, Type).GetHashCode();
 
         private bool Equals(GroupAnnotation other)
             => other != null && Layer == other.Layer &&

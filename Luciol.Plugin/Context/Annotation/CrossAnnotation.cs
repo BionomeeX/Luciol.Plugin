@@ -68,7 +68,7 @@ namespace Luciol.Plugin.Context.Annotation
             => Equals(obj as CrossAnnotation);
 
         public override int GetHashCode()
-            => (Layer, Snp1, Snp2).GetHashCode();
+            => (Layer, Snp1, Snp2, Type).GetHashCode();
 
         private bool Equals(CrossAnnotation other)
             => other != null && Layer == other.Layer && Snp1 == other.Snp1 && Snp2 == other.Snp2 && Key == other.Key;
