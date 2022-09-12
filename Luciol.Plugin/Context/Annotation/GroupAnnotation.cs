@@ -76,11 +76,13 @@ namespace Luciol.Plugin.Context.Annotation
             => Equals(obj as GroupAnnotation);
 
         public override int GetHashCode()
-            => (Layer, Snp1Start, Snp1Stop, Snp2Start, Snp2Stop).GetHashCode();
+            => (Layer, Snp1Start, Snp1Stop, Snp2Start, Snp2Stop, Type).GetHashCode();
 
         private bool Equals(GroupAnnotation other)
             => other != null && Layer == other.Layer &&
             Snp1Start == other.Snp1Start && Snp1Stop == other.Snp1Stop &&
             Snp2Start == other.Snp2Start && Snp2Stop == other.Snp2Stop && Key == other.Key;
+
+        public string ID => $"{(int)Type}{Layer}{Snp1Start}{Snp1Stop}{Snp2Start}{Snp2Stop}";
     }
 }

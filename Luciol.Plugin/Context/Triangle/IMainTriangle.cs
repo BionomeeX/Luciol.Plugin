@@ -17,7 +17,8 @@ namespace Luciol.Plugin.Context.Triangle
         /// <param name="loader">Method used to load a file, return a set of data given a path</param>
         public void LoadData(string infoPath, string layerName,
             IReadOnlyCollection<SemiInteractionData<TIn>> diagonal,
-            Func<string, TIn[]> loader);
+            Func<string, TIn[]> loader,
+            Deserialization.TriangleInfo config);
 
         /// <summary>
         /// Get data about a SNP

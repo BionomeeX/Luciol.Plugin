@@ -25,6 +25,9 @@ namespace Luciol.Plugin.Preference.Global
             get => (ColorPalettePreference)_export[1];
         }
 
+        [JsonIgnore]
+        public NumberInputTextPreference<int> MaxSelection => (NumberInputTextPreference<int>)_export[2];
+
         private static readonly IPreferenceExport[] _export = new IPreferenceExport[]
         {
             new ColorPreference("mainColor", "Main Graph Color", Color.Black),
@@ -40,7 +43,8 @@ namespace Luciol.Plugin.Preference.Global
                         Color.FromRgb(230, 171, 2),
                         Color.FromRgb(166, 118, 29)
                     }
-                })
+                }),
+            new NumberInputTextPreference<int>("maxSelection", "Max Nb of Points Selectable", 100)
         };
     }
 }
