@@ -10,12 +10,15 @@ namespace Luciol.Plugin.Core
         protected APlugin()
         { }
 
-        internal virtual void Init(IContext context, Dependency[] dependencies)
+        internal virtual void Init(IContext context, Dependency[] dependencies, string resourcesPath)
         {
             Context = context;
             Dependencies = dependencies;
+            ResourcesPath = resourcesPath;
             Init();
         }
+
+        public string ResourcesPath { private set; get; }
 
         /// <summary>
         /// Plugins need to do their initialization here instead of the ctor

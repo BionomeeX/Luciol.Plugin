@@ -17,9 +17,9 @@ namespace Luciol.Plugin.Core
         /// Internal initialization, set context and call Init for child class
         /// </summary>
         /// <param name="context">General context of the application</param>
-        internal override void Init(IContext context, Dependency[] dependencies)
+        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath)
         {
-            base.Init(context, dependencies);
+            base.Init(context, dependencies, resourcesPath);
             _viewModelInstance.Init(this);
         }
 

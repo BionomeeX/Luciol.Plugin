@@ -32,9 +32,9 @@ namespace Luciol.Plugin.Core
                 ));
         }
 
-        internal override void Init(IContext context, Dependency[] dependencies)
+        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath)
         {
-            base.Init(context, dependencies);
+            base.Init(context, dependencies, resourcesPath);
             MainGradientPreference.OnChange += (e, sender) =>
             {
                 lock (_mainColors)

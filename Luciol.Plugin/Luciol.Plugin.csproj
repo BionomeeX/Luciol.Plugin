@@ -32,6 +32,9 @@
       <SubType>Code</SubType>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Utility\LoadingWindow.axaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
