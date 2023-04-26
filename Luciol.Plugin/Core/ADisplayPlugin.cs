@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using Luciol.Plugin.Context;
+using Microsoft.Extensions.Logging;
 
 namespace Luciol.Plugin.Core
 {
@@ -17,9 +18,9 @@ namespace Luciol.Plugin.Core
         /// Internal initialization, set context and call Init for child class
         /// </summary>
         /// <param name="context">General context of the application</param>
-        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath)
+        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath, ILogger logger)
         {
-            base.Init(context, dependencies, resourcesPath);
+            base.Init(context, dependencies, resourcesPath, logger);
             _viewModelInstance.Init(this);
         }
 

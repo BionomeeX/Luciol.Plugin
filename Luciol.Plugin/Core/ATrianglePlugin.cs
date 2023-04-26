@@ -4,6 +4,7 @@ using Luciol.Plugin.Context;
 using Luciol.Plugin.Context.Deserialization;
 using Luciol.Plugin.Context.Triangle;
 using Luciol.Plugin.Preference;
+using Microsoft.Extensions.Logging;
 
 namespace Luciol.Plugin.Core
 {
@@ -32,9 +33,9 @@ namespace Luciol.Plugin.Core
                 ));
         }
 
-        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath)
+        internal override void Init(IContext context, Dependency[] dependencies, string resourcesPath, ILogger logger)
         {
-            base.Init(context, dependencies, resourcesPath);
+            base.Init(context, dependencies, resourcesPath, logger);
             MainGradientPreference.OnChange += (e, sender) =>
             {
                 lock (_mainColors)

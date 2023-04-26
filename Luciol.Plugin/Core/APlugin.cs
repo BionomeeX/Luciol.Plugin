@@ -1,6 +1,7 @@
 ﻿using Luciol.Plugin.Context;
 using Luciol.Plugin.Preference;
 using Luciol.Plugin.SaveLoad;
+using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 
 namespace Luciol.Plugin.Core
@@ -10,11 +11,12 @@ namespace Luciol.Plugin.Core
         protected APlugin()
         { }
 
-        internal virtual void Init(IContext context, Dependency[] dependencies, string resourcesPath)
+        internal virtual void Init(IContext context, Dependency[] dependencies, string resourcesPath, ILogger logger)
         {
             Context = context;
             Dependencies = dependencies;
             ResourcesPath = resourcesPath;
+            _logger = logger;
             Init();
         }
 
@@ -89,7 +91,8 @@ namespace Luciol.Plugin.Core
 
         protected virtual void Log(string message, LogLevel level)
         {
-            File.AppendAllText("error.log", $"{DateTime.Now} - {level}: {message}\n");
+            _logger.Log(level, message);
         }
+        private ILogger _logger;
     }
 }
